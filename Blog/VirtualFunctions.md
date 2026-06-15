@@ -1,4 +1,4 @@
-# The Invisible Performance Tax of C++ Virtual Functions
+# The Cost of a Virtual Function
 
 If you come from a pure software engineering or managed language background (like C# or Java), polymorphism feels natural. You create an abstract base class like `AEnemy`, mark a method as `virtual`, override it in `AGoblin` and `AOrc`, and call it in a loop. It feels clean, object-oriented, and safe.
 
