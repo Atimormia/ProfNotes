@@ -1,6 +1,6 @@
-# `Tick()` Pitfalls
+# The `Tick()` Pitfall
 
-One day I was optimizing an early-stage Rogue-like game with hundreds active combat AI agents. Everything was running smoothly until the player pulls a massive wave of enemies and drops a continuous area-of-effect spell or aura.
+One day I was optimizing an early-stage Rogue-like game with hundreds active combat AI agents. Everything ran smoothly until the player pulled a massive wave of enemies and dropped a continuous area-of-effect aura.
 
 Suddenly, the frame budget is annihilated. Profiler points directly at `AActor::Tick`.
 
@@ -20,7 +20,7 @@ void AAuraActor::Tick(float DeltaTime)
 
 ```
 
-If you are a self-taught developer, this looks like a paradox. If the function guards itself and does almost nothing when no targets are inside, why is it tanking your CPU?
+At first glance, this looks like a paradox. If the function guards itself and does almost nothing when no targets are inside, why is it tanking your CPU?
 
 ---
 
@@ -30,7 +30,7 @@ An empty engine lifecycle hook is never free. In reality, modern game-thread bot
 
 Whether you are using Unreal Engine C++ (`AActor::Tick`) or Unity C# (`MonoBehaviour.Update`), an active framework tick introduces structural friction:
 
-* **The Marshalling Tax:** Even if your `Tick()` early-exits in the very first line, the engine must still crawl through its internal lists of active scene entities every single frame. It evaluates their prerequisite tick groups, checks validity rules, manages dependencies, and navigates the reflection infrastructure just to invoke your script.
+* **The Lifecycle Dispatch Tax:** Even if your `Tick()` early-exits in the very first line, the engine must still crawl through its internal lists of active scene entities every single frame. It evaluates their prerequisite tick groups, checks validity rules, manages dependencies, and navigates the reflection infrastructure just to invoke your script.
 * **The Bridge Crossing (Unity Perspective):** In managed environments like Unity, this process forces the execution context to cross the **Native-to-Managed bridge** (C++ core engine to the C# Mono/IL2CPP runtime) for *every single instance*, triggering safety, marshalling, and security sweeps even if the function body is empty.
 
 Calling 5,000 individual, empty engine lifecycle functions can take **up to 10x longer** than running a standard, sequential loop over a flat array entirely within your own code space.
