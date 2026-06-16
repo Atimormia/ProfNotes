@@ -14,7 +14,7 @@ If you have a 10-year-old codebase, you can't afford to let it get broken by a n
 
 ## The Blind Spot: Leaky Boundaries & Hacked Source
 
-One day I was reviewing this CR. The feature required data tightly locked inside an engine class. The immediate impulse is to force the door open, it unblocks the daily sprint and just works with minimum effort.
+One day I was reviewing this CR (simplified and anonymized). The feature required data tightly locked inside an engine class. The immediate impulse is to force the door open: it unblocks the sprint, satisfies the feature request, and appears cheap in the moment.
 
 ### The Naive Code Review: Mutating the Engine
 
@@ -45,7 +45,7 @@ void UCombatTelemetry::LogShieldData(ACharacter* TargetCharacter)
 
 ```
 
-### 💣 The Cost of Upgrading a Compromised Engine
+### The Cost of Upgrading a Compromised Engine
 
 When the time comes to upgrade the engine, the engine creators completely refactor the internal pipelines. The automated upgrade script runs, pulls down the fresh, pristine source code for the new engine version, and attempts to apply the historical diffs. This is what the new version looks like:
 
@@ -68,25 +68,36 @@ class ENGINE_API ACharacter : public APawn
 
 ---
 
-## The Fix: Architectural Discipline and Tight Decoupling
+## The Fix: Governed Boundaries
 
-A good tech lead treats the underlying game engine as an **immutable third-party library**. Maintaining a 10-year-old live-ops project requires strict architectural discipline to ensure engine changes are completely abstracted and never tightly coupled to your gameplay systems.
+A good tech lead does not treat engine sources as a convenient place to unblock every feature request. Even when a studio maintains an engine fork, modifications need to be deliberate, reviewed, isolated, and documented.
 
-If you absolutely must access restricted engine data or alter native behavior, you enforce a strict code of conduct that keeps the core engine source code pristine:
+The goal is not “never touch the engine.” The goal is to prevent engine internals from becoming part of your gameplay architecture.
 
-### 1. Extensibility via Subclassing or Components
+### 1. Prefer Sanctioned Extension Points
 
-Instead of modifying base engine actors, handle your data extension within your own project modules. If you need a custom property or tracking state, inherit from the engine class or attach a modular actor component (`UActorComponent`) owned entirely by your project.
+Before editing engine source, exhaust the extension mechanisms the engine already provides: subclassing, components, delegates, interfaces, plugins, subsystems, configuration, or data-driven hooks.
 
-### 2. Runtime Memory Detouring (Hooks)
+If a gameplay system needs additional state, keep that state in project-owned classes rather than exposing private engine fields directly.
 
-If a native engine function is not virtual and you *must* alter its logic, do not edit the source file. Use runtime memory detouring (function hooking) via lightweight engine-safe utilities or platform-specific libraries. This intercepts the execution flow at runtime, keeping your custom changes safely confined to your project directory.
+### 2. Put a Project-Owned Boundary Around Engine Internals
 
-### 3. Isolated Friend Accessors
+If gameplay code needs information from the engine, do not let hundreds of systems reach directly into engine types. Create a narrow adapter or accessor layer owned by your project.
 
-If you maintain an internal engine fork and absolutely must bypass an access modifier, do not flip a block from `private` to `public`. Insert a single `friend class FMyProjectAccessor;` directive into the engine class. Then, handle all raw data extraction strictly within that isolated accessor class inside your project module.
+That way, when the engine changes, you update one boundary instead of performing archaeology across the entire codebase.
 
-This ensures that the engine's internal encapsulation details remain intact for the rest of your 400+ gameplay files, localizing the impact of any future engine refactoring.
+### 3. Govern Unavoidable Engine Fork Changes
+
+Sometimes engine edits are unavoidable. To enforce considering other options before making an engine change, put additional control points in the development process:
+
+- require code review from an engine owner
+- document the reason for the change
+- link the change to the consuming project system
+- add tests or validation where possible
+- keep a migration note for future engine upgrades
+- fail CI if expected engine patches no longer apply
+
+The real discipline is not avoiding every engine modification. It is making sure each modification has an owner, a purpose, and a controlled blast radius.
 
 ---
 
