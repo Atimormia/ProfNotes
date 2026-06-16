@@ -82,7 +82,7 @@ void AAuraWithMagicCircleActor::OnProcessingInterval()
 
 ## When Does Tick Make Sense?
 
-A professional engineer understands that replacing every instance of `Tick` isn't a silver bullet—doing so can break frame-perfect visual continuity. Use this baseline heuristic to guide your architectural decisions:
+Replacing every instance of `Tick` isn't a silver bullet — doing so can break frame-perfect visual continuity. Use this baseline heuristic to guide your architectural decisions:
 
 | Scenario / Goal | Prefer Engine `Tick` | Prefer Demand-Driven / Events |
 | --- | --- | --- |
