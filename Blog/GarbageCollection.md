@@ -8,7 +8,7 @@ We look at garbage collection as a magical janitor that runs quietly in the back
 
 ---
 
-## The Core: Unreal’s UObject Clustering vs. Unity’s Managed GC
+## The Blind Spot: Unreal’s UObject Clustering vs. Unity’s Managed GC
 
 While both engines use automated memory management for their object hierarchies, they solve the problem in fundamentally different ways based on their low-level programming models.
 
@@ -27,9 +27,9 @@ In contrast, Unity relies on the managed C# garbage collection environment. Mode
 
 ---
 
-## The Practice: Writing Zero-Allocation Gameplay Loops
+## The Fix: Writing Zero-Allocation Gameplay Loops
 
-To prove senior-level engineering capability to a Tech Lead, your code should never rely on the engine's GC to clean up after routine gameplay updates. High-frequency loops (like weapon fire systems, movement simulations, or particle tracking) must achieve **zero runtime allocation**.
+First of all, your code should never rely on the engine's GC to clean up after routine gameplay updates. High-frequency loops (like weapon fire systems, movement simulations, or particle tracking) must achieve **zero runtime allocation**.
 
 Here are the strict production disciplines you must enforce in your modules:
 
