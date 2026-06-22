@@ -1,4 +1,4 @@
-# The `Tick()` Pitfall
+# The `Tick()` Pitfalls
 
 One day I was optimizing an early-stage Rogue-like game with hundreds active combat AI agents. Everything ran smoothly until the player pulled a massive wave of enemies and dropped a continuous area-of-effect aura.
 
@@ -80,7 +80,7 @@ void AAuraWithMagicCircleActor::OnProcessingInterval()
 
 ---
 
-## When Does Tick Make Sense?
+## The Insight: When Does Tick Make Sense?
 
 Replacing every instance of `Tick` isn't a silver bullet — doing so can break frame-perfect visual continuity. Use this baseline heuristic to guide your architectural decisions:
 
