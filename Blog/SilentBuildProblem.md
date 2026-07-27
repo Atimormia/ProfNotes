@@ -44,7 +44,7 @@ A **centralized build farm** with shared artifact caching (like Epic's own Horde
 
 **Process, not unreachable infrastructure, is what was actually reachable.**
 
-As I discussed in [The Art of the Living Codebase](EngineUpgradeCase.md), managing engine changes requires strict governance. Here is the framework worth enforcing to turn an unpredictable morning ambush into a visible, managed process:
+As I discussed in [Upgrading Game Engines Safely](EngineUpgradeCase.md), managing engine changes requires strict governance. Here is the framework worth enforcing to turn an unpredictable morning ambush into a visible, managed process:
 
 ```mermaid
 flowchart LR
@@ -78,4 +78,4 @@ None of this touches compile time. What it buys is predictability and a paper tr
 
 > **Chosen Debt:** A two-hour rebuild isn't a technical problem waiting for a clever fix. It's a cost the organization had already, implicitly, decided was cheaper to tolerate than to own. The senior move isn't finding the perfect tool to eliminate a cost outright; it's noticing that an unmeasured tool sitting in the tray for years is the same failure as a complaint that never became a ticket, and knowing which layer of that failure is actually yours to fix. In my case, that meant trading a silent, unverified system for a visible, boring process: not because it was more powerful, but because nobody could quietly ignore it.
 > 
-> It's the same architectural gap from [The Art of the Living Codebase](EngineUpgradeCase.md): the cost showed up once, catastrophically, at upgrade time. Here, it showed up a few mornings a month, in smaller doses, easy for everyone, including a tool that was supposed to help, to quietly stop paying attention to.
+> It's the same architectural gap from [Upgrading Game Engines Safely](EngineUpgradeCase.md): the cost showed up once, catastrophically, at upgrade time. Here, it showed up a few mornings a month, in smaller doses, easy for everyone, including a tool that was supposed to help, to quietly stop paying attention to.
