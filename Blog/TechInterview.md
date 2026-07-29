@@ -62,7 +62,7 @@ The live round contains zero new code. The conversation is entirely about the re
 
 ### 6. Domain-Matched Task Customization
 
-The task itself is a customization point, not a fixed choice. I built out a full worked example, a task with real mathematical and systems depth, walked through step by step across six rungs from naive correctness up to live architectural extension, along with branch points to watch for and a scoring rubric, as [a separate resource](GameOfLifeInterviewLadder.md). I'm giving the actual task material there rather than just describing it, so a reader can look at it directly and judge for themselves whether it fits their own team.
+The task itself is a customization point, not a fixed choice. I built out a full worked example, a task with real mathematical and systems depth, walked through step by step across six rungs from naive correctness up to live architectural extension, along with branch points to watch for and a scoring rubric, as [a separate resource](../Process/TechTaskDesign.md). I'm giving the actual task material there rather than just describing it, so a reader can look at it directly and judge for themselves whether it fits their own team.
 
 That resource uses a well-known algorithmic problem chosen mainly to demonstrate the shape. A geometry-heavy team, for instance, might get more out of a task built around finding the *n*-th 5-smooth number instead, same six-rung structure, different domain, chosen to match what the team actually builds day to day.
 
