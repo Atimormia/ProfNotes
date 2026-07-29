@@ -45,16 +45,20 @@ private:
 
 **Rung 6: Live architectural extension.** Two directions: extending to a rule variant (e.g., HighLife's `{3,6}` birth rule) tests whether rule logic was ever separated from grid iteration in the first place; integrating into a per-frame tick budget tests whether the candidate recognizes that dense/frontier approaches can often be chunked incrementally across frames, while Hashlife's recursive structure resists slicing.
 
+---
+
 ## 3. Process Overview
 
-| Stage | Format | Duration | Candidate effort | Purpose |
+| Stage | Format | Target time | Candidate effort | Purpose |
 |---|---|---|---|---|
-| Step 1 | Async, written submission | Delivered async, ~1 hour of work | Solve + write up | Correctness + basic scale (Rungs 1–2) |
-| Step 2 | Async, written submission | ~1 hour of work | Solve + write up | Generalization (Rung 3) |
-| Step 3 | Async, written submission | ~45 min of work | Review + comment | Code review under real conditions (seeded mistakes) |
+| Step 1 | Async, written submission | ~90 minutes | Solve + write up | Correctness + basic scale (Rungs 1–2) |
+| Step 2 | Async, written submission | ~75 minutes | Solve + write up | Generalization (Rung 3) |
+| Step 3 | Async, written submission | ~45 minutes | Review + comment | Code review under real conditions (seeded mistakes) |
 | Step 4 | Live, video call | 45–60 minutes | Conversation only, no coding | Numerical judgment, systems thinking, live extension (Rungs 4–6) |
 
-Each async step unlocks the next only once submitted. This can be [automated](#10-environment--tooling) so no interviewer has to manually gate progress. Total candidate time investment: roughly 3 hours async + under an hour live, spread across as many days as the candidate needs.
+Each async step unlocks the next only once submitted. This can be [automated](#10-environment--tooling) so no interviewer has to manually gate progress.
+
+Total target time: roughly 4 hours async plus under an hour live, in line with common take-home conventions. 
 
 ---
 
@@ -204,24 +208,31 @@ See [full rubric](#8-rubric) for this section.
 | Response to pushback | Live discussion | Caves immediately when challenged on a correct decision | Holds reasoning, explains tradeoff calmly, revises only when actually persuaded |
 | Comfort with ambiguity | The open-ended architecture question | Freezes, or asserts false certainty | Reasons aloud, commits to a defensible tradeoff, names what they're uncertain about |
 
-### B. Technical / Architecture Signals
+### B. Architecture & Boundary Signals
 
 | Rung / Moment | Weak signal | Strong signal |
 |---|---|---|
 | Before Rung 1 | Codes directly against a raw array, no seam | Defines an interface (`IsAlive`, `Step()`) before implementation; representation is swappable later |
 | Rung 1 → 2 | Waits to be told to optimize | Flags scale risk before being asked |
-| Rung 2 | Picks bit-packing or active-frontier tracking, can't justify against the other | Explains why one fits this context better, grounded in the stated workload assumption |
-| Rung 2 | Optimizes without measuring first | Benchmarks Part A at scale before changing it |
 | Rung 3 | Treats "unbounded" as equivalent to "just a bigger fixed array" | Recognizes it requires a genuinely different (sparse) representation, not a bigger version of the dense one |
 | Rung 3 | Requested checks (still life, oscillator, edges) are present but superficial or copy-pasted without understanding | Requested checks are meaningful, and the candidate adds further cases of their own (e.g. a glider, an empty board) |
-| Rung 4 | Diagnoses the hash-clustering issue only after being shown it | Predicts the degradation before being told |
-| Rung 5 | Proposes Hashlife reflexively as "the smart answer" | Names the precondition (repeated structure) it depends on |
 | Rung 6 | Hardcodes the new rule inline, duplicates the loop | Adds it as a swappable rule object |
 | Rung 6 | Assumes the simulation always runs to completion | Recognizes some approaches resist incremental slicing, others don't |
+| Step 3 (review) | Misses or shrugs off the seeded encapsulation/responsibility break | Flags the exposed internal state and the inline rule logic as maintainability risks, independent of whether output is currently correct |
 | Anywhere | Escalates sophistication even where a simple solution is already sufficient | States plainly when the simple version is already fine |
 | Anywhere | Generic naming (`data`, `temp`, `helper2`) | Domain-specific naming (`LiveCells`, `CanonicalizePattern`) |
 | Anywhere | Never asks about deployment context | Asks unprompted about threading, frame budget, determinism |
 
+### C. Algorithmic & Systems-Depth Signals
+
+| Rung / Moment | Weak signal | Strong signal |
+|---|---|---|
+| Rung 2 | Picks bit-packing or active-frontier tracking, can't justify against the other | Explains why one fits this context better, grounded in the stated workload assumption |
+| Rung 2 | Optimizes without measuring first | Benchmarks Part A at scale before changing it |
+| Rung 4 | Diagnoses the hash-clustering issue only after being shown it | Predicts the degradation before being told |
+| Rung 4 | Unaware that naive whole-board hashing fails to detect a moving periodic pattern | Recognizes cycle detection needs translation-invariant canonicalization |
+| Rung 5 | Proposes Hashlife reflexively as "the smart answer" | Names the precondition (repeated structure) it depends on |
+| Step 3 (review) | Misses the performance regression seed | Flags the needless reallocation/copy as a real, if non-breaking, concern |
 ---
 
 ## 9. Role-Level Variants
@@ -253,4 +264,31 @@ This section is directional, adapt to what a given team already runs.
 
 ---
 
-*Open items for future revision: a second worked domain example (geometry/5-smooth numbers) with matching prompts and seeded-PR material; guidance on adapting Rubric B's scoring into a numeric scale for cross-candidate comparison; a short calibration guide for interviewers running Step 4 for the first time.*
+## 11. Task Criteria
+
+Game of Life is one instance of a shape, not the shape itself. If it doesn't fit your team's domain, here's what to look for when choosing or designing a different seed problem. A good candidate task should satisfy all of the following:
+
+**A short, learnable rule set.** The problem itself should be explainable in a few sentences, with no prior domain-specific knowledge required to get started. If a candidate has to first learn an unfamiliar field before they can attempt Rung 1, you're testing prior exposure, not judgment. (Game of Life: three rules. 5-smooth numbers: numbers whose only prime factors are 2, 3, and 5.)
+
+**A naive solution that's fast to reach, and genuinely correct.** Rung 1 should be reachable in well under the time budget for that step, by nearly any competent candidate, with or without AI assistance. If the floor is too high, you lose signal on everyone; the point of Rung 1 is a clean baseline, not a filter.
+
+**At least one dimension that forces a real representation change, not just a speed optimization.** This is the most important, and easiest to get wrong, criterion. Many problems have an "efficiency" rung (rewrite the loop, cache something, parallelize) without ever forcing a genuinely different data structure or design. Look specifically for a follow-up constraint that makes the Rung 1 representation actively wrong, not just slow, the way an unbounded board makes a fixed array wrong, not merely inefficient. If you can't find this fork, the task will plateau at "optimization exercise" and never reach architecture.
+
+**A subtle, well-known failure mode that most people get wrong on first try.** Look for an edge case, precision issue, or hidden invariant that's documented and real (not invented for the exercise), and that a competent engineer would only know from having hit it before or thought carefully about it. This is what separates Rung 4 from a trivia question, the failure mode should be discoverable through reasoning, not require having memorized the specific gotcha.
+
+**A genuinely famous, non-obvious technique that rewards recognizing preconditions, not the name.** Look for a real, documented, "surprising" algorithm or technique that solves an extreme version of the problem elegantly, but only under specific conditions. The goal is never "have they heard of X," it's "can they reason about when X would and wouldn't help," so the live-discussion prompt should always work even for a candidate who's never heard of the technique, provided the interviewer is willing to briefly explain the premise.
+
+**A natural extension point that mirrors a real production constraint.** The live architectural rung should connect to something your team actually deals with, a frame budget, a network boundary, a live-service constraint, a config-driven variant, not an arbitrary add-on. This is what keeps the task from feeling like a pure algorithms exercise disconnected from the job.
+
+**Enough surface area for a code-review step without inventing an unrelated feature.** You should be able to seed a design-principle break, a correctness/safety break, and a performance break inside one plausible extension to the candidate's own [Rung 3 solution](#6-step-3-async-code-review-seeded-mistakes), rather than needing a separate, unrelated PR. If the natural extension point from the previous criterion is well-chosen, this usually falls out for free.
+
+**A ceiling high enough that senior and staff candidates can't trivially max it out.** If an experienced candidate can blow through every rung with no real tension, the task doesn't have the depth this format requires. A good test: if you, as the task designer, can't immediately name the "hard part" past Rung 3, the problem is probably too shallow for the senior end of this process (see [Role-Level Variants](#9-role-level-variants) for scaling to other levels).
+
+### Other Examples
+
+Two other seed problems that hold up well against these criteria, for teams whose domain suits them better:
+
+- **Pathfinding.** Naive BFS/Dijkstra → A* at scale → grid-to-navmesh generalization → heuristic admissibility/tie-breaking edge cases → hierarchical pathfinding for huge open worlds → live extension into dynamic replanning when the world changes at runtime. Strong fit for gameplay/AI-heavy teams.
+- **Spatial hashing / broad-phase collision.** Naive O(n²) pairwise checks → uniform grid hash → generalization to wildly different object sizes → AABB vs. swept-volume precision at high velocity → incremental grid updates for thousands of moving objects → live extension into continuous collision detection for fast projectiles. Strong fit for physics/engine teams.
+
+Both follow the same underlying shape as Game of Life; only the domain and the specific failure modes change.
