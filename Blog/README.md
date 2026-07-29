@@ -25,7 +25,7 @@ The common thread: many problems that look like optimization, tooling, or workfl
 ## Searching for Engineering Judgment
 
 - [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md)
-- How to Hire Engineers When Syntax Is Free
+- [How to Hire Engineers When Syntax Is Free](TechInterview.md)
 - AI Makes Juniors Faster, Not Automatically Better
 - The Sandbox Is the Curriculum
 - A Mentoring Framework for Engineering Judgment
