@@ -1,9 +1,3 @@
-Fair — you're right that AI&ArchitectureSkills.md itself doesn't strictly follow the "flowing paragraph" pattern either, it has its own numbered structure (Lock the Schema First, Treat AI Code Like an Engine Fork, etc.), so holding this post to a stricter standard than that one isn't really consistent. And for a post that's explicitly a "here's a proposed process with several concrete components" piece, numbered/labeled sections genuinely do make it easier to scan and reference back to, which matters if this is meant to be something a tech lead could actually action.
-
-So let's go back to the previous version's structure (the `###` numbered sections), just keep the language pass we did on top of it, plainer phrasing, no colons-as-explanation, shorter sentences, since that part was a real improvement regardless of heading style.
-
-Here's that combination:
-
 # How to Hire Engineers When Syntax Is Free
 
 A few years ago, I was given a take-home task that started as a simple algorithmic problem. I worked through it, wrote up my reasoning, submitted it, and got genuinely excited. My teaching experience hinted at how far this specific problem could go: harder constraints, generalization, memory limits, numerical edge cases, concurrency, live redesigns. It had real room for depth.
