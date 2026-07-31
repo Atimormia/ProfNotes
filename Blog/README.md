@@ -22,7 +22,7 @@ The common thread: many problems that look like optimization, tooling, or workfl
 - Clean Code Ends Where the Hot Path Begins
 - Architecture First, Optimization Second
 
-## Searching for Engineering Judgment
+## Engineering Judgment Skill
 
 - [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md)
 - [How to Hire Engineers When Syntax Is Free](TechInterview.md)
