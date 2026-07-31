@@ -58,7 +58,7 @@ private:
 
 Each async step unlocks the next only once submitted. This can be [automated](#10-environment--tooling) so no interviewer has to manually gate progress.
 
-Total target time: roughly 4 hours async plus under an hour live, in line with common take-home conventions. 
+Total target time: roughly 4 hours async plus under an hour live, in line with common take-home conventions. Actual time spent is not itself a rubric input.
 
 ---
 

@@ -21,8 +21,8 @@ There's a second piece to this, and it connects to something I've written about 
 I also spent four years teaching CS before moving fully into engineering, and I saw the same measurement gap play out there:
 
 - A **written test** shows you an answer, not the reasoning behind it.
-- **Live coding** shows you performance under pressure, not judgment.
 - A **conversation** shows you communication and how someone frames a problem, not whether they can actually solve it.
+- **Live coding** shows you performance under pressure, not judgment.
 
 None of these formats are wrong exactly, they're just each measuring something adjacent to the real target, and a person's actual understanding is almost always broader than whichever single format happens to catch. A rubric matters, but it's only as good as the process feeding it. You need enough different kinds of moments, written, live, reasoning under a new constraint, to actually see architecture and engineering judgment, rather than one of its shadows.
 
@@ -34,15 +34,15 @@ Rather than one intense live session, the format I'd propose is a short async se
 
 ### 1. Laddered Async Steps, AI Allowed
 
-Break the task into 2-3 steps, delivered one at a time, each scoped to about an hour. A candidate submits a step and, this can be fully automated, receives the next one only once they have.
+Break the task into 2-3 steps, delivered one at a time, each scoped to about an hour. A candidate submits a step and (this can be fully automated) receives the next one only once they have.
 
 Each step deliberately assumes AI assistance is fine to use. If the goal is testing judgment rather than typing speed, prohibiting the tools a candidate would actually use on the job doesn't make the signal cleaner, it just makes the test artificial.
 
 ### 2. Written Submissions Graded as Communication
 
-Require a short write-up with each step. How clearly someone explains their reasoning, flags a limitation, or outlines a tradeoff in a brief doc is a real, directly transferable proxy for how they'd write a PR description on the job, and it's a skill nobody tests in a live-coding round at all.
+Require a short write-up with each step. How clearly someone explains their reasoning, flags a limitation, or outlines a tradeoff in a brief doc is a real, directly transferable proxy for how they'd write a PR description on the job. It's a skill nobody tests in a live-coding round at all.
 
-### 3. AI Chat Logs as a Rich, Opt-In Signal
+### 3. AI Chat Logs is a Rich Signal
 
 Where a candidate is comfortable sharing it, their AI chat history alongside a submission is a genuinely rich signal: what they asked, whether they pushed back on a suggestion, whether they caught something the model got wrong. This should stay opt-in, plenty of strong candidates won't want to share raw chat logs, but where it's offered, it says more about judgment than the final diff does alone.
 
@@ -56,7 +56,7 @@ The live round contains zero new code. The conversation is entirely about the re
 
 ### 6. Domain-Matched Task Customization
 
-The task itself is a customization point, not a fixed choice. I built out a full worked example, a task with real mathematical and systems depth, walked through step by step across six rungs from naive correctness up to live architectural extension, along with branch points to watch for and a scoring rubric, as [a separate resource](../Process/TechTaskDesign.md). I'm giving the actual task material there rather than just describing it, so a reader can look at it directly and judge for themselves whether it fits their own team.
+The task itself is a customization point, not a fixed choice. I built out a full worked [example](../Process/TechTaskDesign.md) that would work for the most gaming teams: a task with real mathematical and systems depth, walked through step by step across six rungs from naive correctness up to live architectural extension, along with branch points to watch for and a scoring rubric.
 
 That resource uses a well-known algorithmic problem chosen mainly to demonstrate the shape. A geometry-heavy team, for instance, might get more out of a task built around finding the *n*-th 5-smooth number instead, same six-rung structure, different domain, chosen to match what the team actually builds day to day.
 
