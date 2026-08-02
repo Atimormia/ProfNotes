@@ -18,7 +18,7 @@ The common thread: many problems that look like optimization, tooling, or workfl
 - [Garbage Collector Spikes](GarbageCollection.md)
 - [The Cost of a Virtual Function](VirtualFunctions.md)
 - [Quaternions in Games](Quaternions.md)
-- Data Layout Is Architecture
+- [Data Layout Is Architecture](DataLayoutIsArchitecture.md)
 - Clean Code Ends Where the Hot Path Begins
 - Architecture First, Optimization Second
 
