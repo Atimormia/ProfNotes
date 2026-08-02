@@ -55,13 +55,15 @@ This is the part that's easy to skip once the benchmarks look this convincing, a
 - **Harder to generalize.** A `Particle` type with polymorphic behavior doesn't map cleanly onto parallel flat arrays. There's no natural place to hang per-type logic anymore, because there's no longer a single object to attach it to. Subclassing gets worse still: a derived type either has to reuse its parent's arrays and indices, or duplicate the whole layout for a handful of new fields.
 - **Harder to read and extend.** Adding a field to an AoS struct is a one-line change. Adding a field to an SoA layout means touching every array, every loop, every call site that iterates the data, at least without something built specifically to prevent that. The encapsulation that made SOLID work, one point of change, is partly what you're trading away for throughput.
 
-None of that is an argument against SoA. It's an argument against treating it as a default. The readability and extension costs above are real, but they're recoverable, at the price of a complexity layer that has to live somewhere. The Architecture Fixes below are that layer.
+None of that is an argument against SoA. It's an argument against treating it as a default. The readability and extension costs above are real, but they're recoverable, at the price of a complexity layer that has to live somewhere. The boundary below is that layer.
 
 ---
 
-## Architecture Fixes
+## The Architectural Boundary: Interface Over a Volatile Layout
 
-The way to keep that cost from spreading through the whole codebase is to pay it only where the hot loop actually needs it, behind a boundary the rest of the system never has to see. That means two things have to be true at once: the storage has to be SoA, and the interface has to stay as readable as the AoS version it replaced. Getting both at once is what the generalization work is actually for.
+The actual architecture here is one decision, stated plainly: the interface doesn't change when the layout does. `update`, `add`, `size`, `positions` stay the same whether the data underneath is a `std::vector<Particle>` or five separate arrays. That's what lets the memory shape be revisited per system later without anything outside that boundary needing to know or care.
+
+Let's look at the mechanics: the specific C++ techniques that make that boundary cheap to hold in this particular language. Tags, concepts, fold expressions, none of that is the point on its own. They're what it takes to keep the interface stable and readable at the same time, in a language without reflection to do it for you.
 
 ### Naming Fields Instead of Indexing Them
 
@@ -185,6 +187,7 @@ Both classes expose the exact same interface. The caller never needs to know whi
 
 This is what keeps that cost contained: pay it once, in the container implementation, and let every caller keep reading like normal, structured code.
 
+### C++ Limitations
 Worth being honest about the limits of this, too. I originally wanted the container to generalize further, to handle a field that's itself a nested type (a `Vector2D` inside a `Particle`, for instance) without hand-declaring it as a special case. Doing that properly means the container needs to know a type's shape at compile time without being told, which is exactly what reflection is meant to give you. C++ is only just getting there: static reflection was voted into C++26, and as of this writing it's still experimental, available in an unofficial Clang fork rather than any shipping compiler. Getting there without reflection means either writing it by hand per type, as I did, or reaching for a macro-based code generator.
 
 A few approaches other people have tried on the way to a more general SoA layout:
