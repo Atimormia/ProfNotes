@@ -2,11 +2,12 @@
 
 Short essays on game engineering, architecture, performance, production workflows, and how AI changes the value of engineering judgment.
 
-The common thread: many problems that look like optimization, tooling, or workflow issues often start as missing boundaries, unclear ownership, or weak process.
+The common thread: many problems that look like optimization, tooling, hiring, or workflow issues often start as missing boundaries, unclear ownership, or weak process.
 
 ## Game Engineering Architecture
 
 - [Engineer-Designer Boundary in Unreal Engine](BlueprintMess.md)
+- [Ownership Tax in Unreal Engine](OwnershipTaxUE.md)
 - [Upgrading Game Engines Safely](EngineUpgradeCase.md)
 - [The Invisible Rebuild Bottleneck](SilentBuildProblem.md)
 - [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md)
@@ -22,10 +23,11 @@ The common thread: many problems that look like optimization, tooling, or workfl
 - Clean Code Ends Where the Hot Path Begins
 - Architecture First, Optimization Second
 
-## Engineering Judgment Skill
+## Engineering Judgment
 
 - [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md)
 - [How to Hire Engineers When Syntax Is Free](TechInterview.md)
+- Code Review as Architecture Governance
 - AI Makes Juniors Faster, Not Automatically Better
 - The Sandbox Is the Curriculum
 - A Mentoring Framework for Engineering Judgment

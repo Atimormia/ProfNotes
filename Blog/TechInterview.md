@@ -16,7 +16,7 @@ I've written before about why [live-coding as a format measures the wrong thing]
 
 A rich task dropped into a format built for something else, verify they didn't cheat, then run a second, disconnected problem, gets almost none of its value extracted. The bottleneck isn't the task design anymore. It's whether the process is built to reach the parts of the task that actually reveal judgment.
 
-There's a second piece to this, and it connects to something I've written about separately: [AI didn't remove the need for engineers, it removed the friction that used to force architectural thinking](AI_ArchitectureSkills.md). If AI makes syntax generation fast and easy to fake, testing "can you produce this code" measures a skill that's rapidly becoming free. What's left to test, designing boundaries, reasoning about tradeoffs, reading ambiguous requirements, communicating decisions clearly, is exactly what a live syntax round can't see.
+There's a second piece to this, and it connects to something I've written about separately: [AI didn't remove the need for engineers, it removed the friction that used to force architectural thinking](AI&ArchitectureSkills.md). If AI makes syntax generation fast and easy to fake, testing "can you produce this code" measures a skill that's rapidly becoming free. What's left to test, designing boundaries, reasoning about tradeoffs, reading ambiguous requirements, communicating decisions clearly, is exactly what a live syntax round can't see.
 
 I also spent four years teaching CS before moving fully into engineering, and I saw the same measurement gap play out there:
 
