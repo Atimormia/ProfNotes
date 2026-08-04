@@ -11,7 +11,10 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Upgrading Game Engines Safely](EngineUpgradeCase.md)
 - [The Invisible Rebuild Bottleneck](SilentBuildProblem.md)
 - [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md)
-- Object Lifetime Is a System Boundary
+- [Concurrency Is Architecture](ParallelArchitecture.md)
+- Data-Driven Design As Architecture Boundary (avoiding hardcode)
+- The Cost of Decoupling Everything (demand-driven pitfalls)
+- Refactoring Without Stopping Production
 
 ## Performance as Architecture
 
