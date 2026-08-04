@@ -10,8 +10,6 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Ownership Tax in Unreal Engine](OwnershipTaxUE.md)
 - [Upgrading Game Engines Safely](EngineUpgradeCase.md)
 - [The Invisible Rebuild Bottleneck](SilentBuildProblem.md)
-- [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md)
-- [Concurrency Is Architecture](ParallelArchitecture.md)
 - Data-Driven Design As Architecture Boundary (avoiding hardcode)
 - The Cost of Decoupling Everything (demand-driven pitfalls)
 - Refactoring Without Stopping Production
@@ -23,11 +21,13 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [The Cost of a Virtual Function](VirtualFunctions.md)
 - [Quaternions in Games](Quaternions.md)
 - [Data Layout Is Architecture](DataLayoutIsArchitecture.md)
+- [Concurrency Is Architecture](ParallelArchitecture.md)
 - Clean Code Ends Where the Hot Path Begins
 - Architecture First, Optimization Second
 
 ## Engineering Judgment
 
+- [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md)
 - [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md)
 - [How to Hire Engineers When Syntax Is Free](TechInterview.md)
 - Code Review as Architecture Governance
