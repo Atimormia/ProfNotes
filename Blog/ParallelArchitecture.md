@@ -66,7 +66,7 @@ void ThreadPoolScheduler::parallelFor(
         const size_t chunkBegin = begin + c * chunkSize;
         const size_t chunkEnd = std::min(chunkBegin + chunkSize, end);
 
-        submit([=]
+        submit([&fn, chunkBegin, chunkEnd]
         {
             for (size_t i = chunkBegin; i < chunkEnd; ++i)
                 fn(i);
@@ -78,7 +78,7 @@ void ThreadPoolScheduler::parallelFor(
 
 ```
 
-This design pays a real performance cost: `submit([=]{ ... })` captures by value into a type-erased `std::function` for every chunk call. As noted in [The Hidden Cost of Garbage Collection](GarbageCollection.md), capturing by value creates a hidden heap allocation inside the closure.
+This design pays a real performance cost: `submit([...]{ ... })` captures by value into a type-erased `std::function` for every chunk call. As noted in [The Hidden Cost of Garbage Collection](GarbageCollection.md), capturing by value creates a hidden heap allocation inside the closure.
 
 Where this scheduler succeeds is where the underlying data architecture was already correct. The particle update loop parallelizes cleanly:
 
@@ -124,7 +124,7 @@ No two workers ever write to the same memory location, not because a lock stoppe
 
 Comparing this approach across the industry shows four distinct levels of concurrency architecture:
 
-1. **Hand-Built Phase Separation (ParticleSim):** Manually restructuring algorithms into non-overlapping memory sweeps separated by synchronization fences.
+1. **Hand-Built Phase Separation ([ParticleSim](https://github.com/Atimormia/ParticleSim)):** Manually restructuring algorithms into non-overlapping memory sweeps separated by synchronization fences.
 2. **Task Graph Systems (Unreal Engine):** Dependency-driven graphs of work units tracked via `FGraphEventRef`. It relies on the programmer to declare dependencies correctly and offers no structural compiler guarantees if they fail to do so.
 3. **Container-Level Safety (Unity Job System):** Tracks data access at schedule time using `NativeContainer` wrappers. The scheduler refuses to run two jobs that write to the same container without a declared dependency, throwing an exception instead of corrupting memory.
 4. **Fiber-Based Job Systems (Naughty Dog):** Solves the problem of waiting on dependencies mid-execution. A worker thread suspends the waiting job's fiber (saving stack and register state without an OS context switch) and immediately picks up another queued job, keeping worker threads at 100% utilization.
