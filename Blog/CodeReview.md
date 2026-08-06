@@ -1,7 +1,5 @@
 # Code Review as Architecture Governance
 
-![diff.png](misc/diff.png)
-
 I was new to the team. The processes were loose, and a few days in, I asked around about how people read urgency on a review request. One person said they read it off the Jira ticket. Another said urgency was really about how much time felt acceptable before picking a review up, with the lowest tier landing somewhere around "sometime this week." Then the tech lead walked past and said none of that was quite right, without saying what was.
 
 The next day I ran into the same fog somewhere else: approve versus upvote. My instinct was that if I wasn't the assigned reviewer, I only upvote. Except in the review I was looking at, there was no assigned reviewer at all.

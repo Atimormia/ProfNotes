@@ -1,6 +1,6 @@
 # Data-Driven Design Is an Architecture Boundary
 
-I keep running into the same shape of bug report. An enemy's behavior looks inconsistent across sessions: sometimes it uses an aggressive attack pattern, sometimes a passive one, with no code path that should branch on anything but the encounter itself. It reads like a race condition, a bad random seed, or state bleeding between sessions. Someone reproduces it, hands it to a programmer, and the programmer spends a day chasing threading and RNG before finding the actual cause: a staged rollout percentage in a remote live-ops config, quietly assigning a different behavior variant to a different fraction of sessions.
+I keep seeing the same shape of bug report. An enemy's behavior looks inconsistent across sessions: sometimes it uses an aggressive attack pattern, sometimes a passive one, with no code path that should branch on anything but the encounter itself. It reads like a race condition, a bad random seed, or state bleeding between sessions. Someone reproduces it, hands it to a programmer, and the programmer spends a day chasing threading and RNG before finding the actual cause: a staged rollout percentage in a remote live-ops config, quietly assigning a different behavior variant to a different fraction of sessions.
 
 Nothing in the code was non-deterministic. The value deciding which branch ran wasn't in the code at all.
 
@@ -14,7 +14,7 @@ Most treatments of data-driven design frame it as a binary: code owns behavior, 
 
 ![data_layer_ladder.svg](misc/data_layer_ladder.svg)
 
-Every step down this table trades three things at once:
+Every step down this diagram trades three things at once:
 
 1. **Performance vs. iteration speed:** a literal costs nothing at runtime; a cloud payload costs a network round trip and a parse.
 2. **Compile-time safety vs. designer flexibility:** a typo in a constant fails the build; a typo in a CSV fails at runtime (if it fails at all).
@@ -46,23 +46,36 @@ flowchart TD
     class L1,L2,L3,L4 spectrumStyle;
     class T,Dev failStyle;
 
+
 ```
 
 ---
 
-## The Practice: Two Ways Layering Collapses in Practice
+## The Practice: Collapsing of Layers
 
-### 1. Value Provenance Isn't Tracked by Default
+### Layers Have a Lifecycle, Not Just a Location
 
-When every gameplay value lived in code, "check the code" was the entire search space. That wasn't a deliberate design choice: it was a side effect of there being nowhere else to look. The moment values spread across a dozen possible layers, "check the code" stops being sufficient, and a data-layered system doesn't generate a replacement for it on its own.
+Provenance is a search problem, and triage is a trust problem, but the baseline cost of adding a layer is an **ongoing maintenance tax**.
+
+Moving a value out of C++ doesn't delete its complexity; it just moves that complexity into a space with fewer compile checks and less review rigor. Over a multi-year development cycle, every layer introduced creates three distinct forms of friction:
+
+* **Combinatorial testing surface:** When a single gameplay value can be set in code, modified in a CSV, overridden in a boot config, and conditionally flipped by a Live-Ops payload, your testing matrix explodes. You are no longer debugging a system; you are debugging permutations of overrides.
+* **Orphaned configuration debt:** Features get refactored or cut, but their configuration entries live forever. Old boot `.ini` overrides, dead data table columns, and stale remote flags linger because nobody wants to delete a key that *might* be doing something somewhere.
+* **Schema drift:** Code types and asset structures evolve, but loose configs lag behind. A type mismatch that would immediately fail a C++ build instead degrades into a silent runtime fallback or subtle data corruption.
+
+Unless a layer includes an explicit lifecycle strategy for pruning and expiration, every externalized value becomes permanent technical debt that team members must test around, re-parse, and maintain indefinitely.
+
+### Value Provenance Isn't Tracked by Default
+
+When every gameplay value lived in code, "check the code" was the entire search space. That wasn't a deliberate design choice: it was a side effect of having nowhere else to look. The moment values spread across a dozen possible layers, "check the code" stops being sufficient, and a data-layered system doesn't generate a replacement for it on its own.
 
 This is the exact same pattern from [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md): a piece of friction was quietly doing a job nobody assigned to it, and removing the friction removes the job along with it. There, the compile step was accidentally enforcing architectural discipline. Here, "everything lives in one place" was accidentally providing a map.
 
 Once data spreads out, tracing a behavior back to its source of truth has to become a deliberate part of the architecture, or a bug that's actually a stale CSV row or a misconfigured remote flag turns into an hour or more of reading systems code that was never wrong.
 
-### 2. Escalation Defaults to the Deepest Layer
+### Escalation Defaults to the Deepest Layer
 
-The second pitfall is subtler, and a documented ladder of layers doesn't remove it on its own. Even on projects where the config file, the data table, and the CVar are all findable, tickets still tend to route to a programmer first, regardless of which layer actually holds the answer.
+A third pitfall is subtler, and a documented ladder of layers doesn't remove it on its own. Even on projects where the config file, the data table, and the CVar are all findable, tickets still tend to route to a programmer first, regardless of which layer actually holds the answer.
 
 The reason is trust, not difficulty. A layer can be checked and ruled out at any point in the ladder (a table value confirmed correct, a boot config confirmed clean), but that verdict doesn't automatically close the ticket unless the process explicitly says it can.
 
@@ -72,28 +85,30 @@ Without an explicit rule, only a programmer's answer is treated as final, so tri
 
 ## The Fix: Design the Boundary, Make It Discoverable, Grant Standing
 
-### 1. Choose the Layer on Purpose
+### Choose the Layer on Purpose
 
-Before a value gets externalized at all, it's worth asking three questions instead of defaulting to whatever layer is closest at hand:
+Before a value gets externalized at all, it's worth asking four questions instead of defaulting to whatever layer is closest at hand:
 
-* **Change frequency:** does this move once a year, once a sprint, or mid-session?
-* **Blast radius:** if this value is wrong, who notices, and how badly?
-* **Required owner:** does this need to be changeable by a programmer, a designer, or live-ops, without waiting on anyone else?
+1. **Change frequency:** Does this move once a year, once a sprint, or mid-session?
+2. **Blast radius:** If this value is wrong, who notices, and how badly?
+3. **Required owner:** Does this need to be changeable by a programmer, a designer, or live-ops, without waiting on anyone else?
+4. **Lifecycle & cleanup cost:** What is the expiration date on this override, and who owns pruning it when the feature changes or dies?
 
-A value that changes once a year and only a programmer ever touches belongs at layer two or three, not layer nine. Pulling it further down the table doesn't make the codebase more data-driven in any way that matters: it just adds a runtime lookup, a parsing step, and one more place a bug can hide, for flexibility nobody is using.
+A value that changes once a year and only a programmer ever touches belongs at layer two or three, not layer nine. Pulling it further down the table doesn't make the codebase more data-driven in any way that matters: it just adds a runtime lookup, a parsing step, an extra testing permutation, and one more place a bug can hide, for flexibility nobody is using.
 
 This is the same move as [Data Layout Is Architecture](DataLayoutIsArchitecture.md): the decision isn't "data-driven is correct," it's deciding the shape per value, behind a boundary, instead of defaulting the same way every time.
 
-### 2. Make the Choice Discoverable
+### Make the Choice Discoverable
 
-Choosing the right layer solves nothing if the choice isn't recorded anywhere a QA lead or a new programmer can find it without already knowing the system. Two concrete options, neither expensive:
+Choosing the right layer solves nothing if the choice isn't recorded anywhere a QA lead or a new programmer can find it without already knowing the system. Three concrete patterns solve this at the engine level:
 
-* **A provenance convention:** log or surface, at the point a value is actually used, which layer it resolved from. A debug overlay that says `MaxSpeed = 42.5, source: Weapons.csv, row 12` turns a systems-code dive into a five-second lookup.
-* **A discoverable registry:** one page or one file mapping gameplay-visible behaviors to where their values actually live. It doesn't need to be exhaustive on day one: it needs to exist and be the thing people are pointed at instead of Slack history.
+* **A provenance metadata convention:** Wrap dynamic gameplay values or feature flags in a lightweight wrapper or lookup struct (such as a `TTrackedVal<T>` or custom config manager) that carries metadata alongside the primitive value. When resolving a value, store its layer ID, file path, and line or row number. At runtime, surface this origin through an in-engine overlay like ImGui or `DrawDebugText`. Seeing `MaxSpeed = 42.5 [Source: Weapons.csv, Row 12, Layer: Cooked Asset]` on a debug HUD turns a two-hour systems-code dive into a five-second lookup.
+* **Leverage built-in engine source tracking:** Standard engine features often already provide mechanisms for this. For example, Unreal Engine’s CVar system natively tracks priority and source flags (`ECVF_SetByCode`, `ECVF_SetByProjectSetting`, `ECVF_SetByCommandline`), allowing you to query who set a variable and when. Mimicking this stack hierarchy for custom gameplay systems ensures runtime overrides don't obscure origin points.
+* **A discoverable registry:** Maintain a single registry, whether through a generated document or an in-editor inspector panel, mapping gameplay behaviors to their source layer. It doesn't need to be exhaustive on day one: it just needs to exist and be the primary destination during triage instead of Slack history.
 
 This is the same idea as the documentation mechanism in [Code Review as Architecture Governance](CodeReview.md): a record that outlives whoever wrote it, so the next person does a lookup instead of archaeology.
 
-### 3. Give Non-Programmers Standing to Close the Loop
+### Give Non-Programmers Standing to Close the Loop
 
 Discoverability fixes the search problem, but it doesn't fix the trust problem. If a producer checks the CSV, finds it correct, and still can't close the ticket without a programmer's sign-off, the ladder is decorative.
 
@@ -103,7 +118,7 @@ Standing has to be given deliberately, not assumed: a triage convention where "r
 
 ## The Insight: Credit the Case, Track the Pattern
 
-Even with all three pieces of the fix in place, tickets will still land on a programmer's desk when they didn't need to. Deadlines get tight, leads are new, producers are stretched thin, and every one of those has a real reason behind it that I usually can't fully see from where I sit. I've learned to give that benefit of the doubt case by case: once, twice, a handful of times, that's just how production goes.
+Even with these fixes in place, tickets will still land on a programmer's desk when they didn't need to. Deadlines get tight, leads are new, producers are stretched thin, and every one of those has a real reason behind it that I usually can't fully see from where I sit. I've learned to give that benefit of the doubt case by case: once, twice, a handful of times, that's just how production goes.
 
 What I've settled into as my own approach is this: **the individual case gets credit, but the pattern across cases doesn't get to stay invisible.**
 
@@ -118,5 +133,5 @@ It's closer to the same instinct from [The Invisible Rebuild Bottleneck](SilentB
 ## The Production Bottom Line
 
 > **A Spectrum Needs a Map, Not Just Layers:** Moving a value out of code was never the whole decision. Data-driven design only pays off when three things are chosen on purpose instead of defaulted into: which layer a given value actually belongs on, how anyone traces a behavior back to that layer without already knowing the system, and whether the people closest to that layer are trusted to close the loop themselves.
->
+> 
 > Miss any one of the three, and the spectrum doesn't disappear: it just quietly routes every unknown case to the person holding the deepest layer, whether or not that's where the answer actually lives.
