@@ -10,8 +10,9 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Ownership Tax in Unreal Engine](OwnershipTaxUE.md)
 - [Upgrading Game Engines Safely](EngineUpgradeCase.md)
 - [The Invisible Rebuild Bottleneck](SilentBuildProblem.md)
-- Data-Driven Design As Architecture Boundary (avoiding hardcode)
+- [Data-Driven Design As Architecture Boundary](DataDrivenDesign.md)
 - The Cost of Decoupling Everything (demand-driven pitfalls)
+- Backward Compatibility (+ feature-flags?)
 - Refactoring Without Stopping Production
 
 ## Performance as Architecture
@@ -19,9 +20,9 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [The `Tick()` Pitfalls](TickPitfalls.md)
 - [Garbage Collector Spikes](GarbageCollection.md)
 - [The Cost of a Virtual Function](VirtualFunctions.md)
-- [Quaternions in Games](Quaternions.md)
 - [Data Layout Is Architecture](DataLayoutIsArchitecture.md)
 - [Concurrency Is Architecture](ParallelArchitecture.md)
+- Compile-Time Performance vs. Runtime Flexibility
 - Clean Code Ends Where the Hot Path Begins
 - Architecture First, Optimization Second
 

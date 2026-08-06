@@ -1,0 +1,181 @@
+<svg width="100%" viewBox="0 0 680 940" role="img" xmlns="http://www.w3.org/2000/svg">
+    <title>The twelve-layer data ladder</title>
+    <desc>A vertical ladder diagram showing twelve layers where a game value can live, from inline code literals at the top to remote live-ops config at the bottom, grouped into four bands: compile-time code, cooked assets and tables, runtime overrides, and live and remote.</desc>
+    <style>
+        /* Define CSS custom properties (variables) for the colors */
+        :root {
+        /* General Colors (Light Mode) */
+        --color-text-label: #F0F0F0;
+        --color-text-primary: #52514E;
+        --color-border-subtle: #888780;
+        --color-border-strong: #5F5E5A;
+
+        /* Category 1 (Compile-time code - Cream) */
+        --color-c1-bg: #F1EFE8;
+        --color-c1-text: #444441;
+        --color-c1-subtext: #5F5E5A;
+        --color-c1-border: #5F5E5A;
+
+        /* Category 2 (Cooked assets and tables - Green) */
+        --color-c2-bg: #E1F5EE;
+        --color-c2-text: #085041;
+        --color-c2-subtext: #0F6E56;
+        --color-c2-border: #0F6E56;
+
+        /* Category 3 (Runtime overrides - Amber) */
+        --color-c3-bg: #FAEEED; /* Updated for proper light/dark color shift */
+        --color-c3-text: #633806;
+        --color-c3-subtext: #854F0B;
+        --color-c3-border: #854F0B;
+
+        /* Category 4 (Live and remote - Orange/Red) */
+        --color-c4-bg: #FAECE7;
+        --color-c4-text: #712B13;
+        --color-c4-subtext: #993C1D;
+        --color-c4-border: #993C1D;
+        }
+
+        /* Define variables for Dark Mode */
+        @media (prefers-color-scheme: dark) {
+        :root {
+        /* General Colors (Dark Mode) */
+        --color-text-label: #0B0B0B;
+        --color-text-primary: #A0A0A0;
+        --color-border-subtle: #505050;
+        --color-border-strong: #A0A0A0;
+
+        /* Category 1 (Charcoal / Inverse Cream) */
+        --color-c1-bg: #282828;
+        --color-c1-text: #CCCCCC;
+        --color-c1-subtext: #AAAAAA;
+        --color-c1-border: #AAAAAA;
+
+        /* Category 2 (Dark Forest Green) */
+        --color-c2-bg: #102E26;
+        --color-c2-text: #66C2A5;
+        --color-c2-subtext: #3CB371;
+        --color-c2-border: #3CB371;
+
+        /* Category 3 (Dark Coffee Brown) */
+        --color-c3-bg: #3A2303;
+        --color-c3-text: #E8A24F;
+        --color-c3-subtext: #CC8333;
+        --color-c3-border: #CC8333;
+
+        /* Category 4 (Dark Crimson Brown) */
+        --color-c4-bg: #3A180E;
+        --color-c4-text: #FC8D62;
+        --color-c4-subtext: #E05E44;
+        --color-c4-border: #E05E44;
+        }
+        }
+
+        /* Standard element styling using those variables */
+        text {
+        font-family: "Anthropic Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+    </style>
+
+    <!-- Diagram Elements -->
+    <text x="340" y="30" text-anchor="middle" fill="var(--color-text-primary)" font-size="12px" font-weight="400">Static, compile-time</text>
+    <line x1="70" y1="42" x2="70" y2="898" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+    <line x1="610" y1="42" x2="610" y2="898" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+
+    <!-- Compile-time code Group -->
+    <text x="90" y="50" fill="var(--color-text-label)" font-size="14px" font-weight="500">Compile-time code</text>
+    <g>
+        <rect x="90" y="60" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c1-bg)" stroke="var(--color-c1-border)"/>
+        <line x1="70" y1="86" x2="90" y2="86" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="86" x2="610" y2="86" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="79" text-anchor="middle" dominant-baseline="central" fill="var(--color-c1-text)" font-size="14px" font-weight="500">Inline literal</text>
+        <text x="340" y="97" text-anchor="middle" dominant-baseline="central" fill="var(--color-c1-subtext)" font-size="12px" font-weight="400">Gameplay programmer</text>
+    </g>
+    <g>
+        <rect x="90" y="122" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c1-bg)" stroke="var(--color-c1-border)"/>
+        <line x1="70" y1="148" x2="90" y2="148" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="148" x2="610" y2="148" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="141" text-anchor="middle" dominant-baseline="central" fill="var(--color-c1-text)" font-size="14px" font-weight="500">Local constant</text>
+        <text x="340" y="159" text-anchor="middle" dominant-baseline="central" fill="var(--color-c1-subtext)" font-size="12px" font-weight="400">Gameplay programmer</text>
+    </g>
+    <g>
+        <rect x="90" y="184" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c1-bg)" stroke="var(--color-c1-border)"/>
+        <line x1="70" y1="210" x2="90" y2="210" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="210" x2="610" y2="210" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="203" text-anchor="middle" dominant-baseline="central" fill="var(--color-c1-text)" font-size="14px" font-weight="500">Central constant library</text>
+        <text x="340" y="221" text-anchor="middle" dominant-baseline="central" fill="var(--color-c1-subtext)" font-size="12px" font-weight="400">Engine, core programmer</text>
+    </g>
+    <g>
+        <rect x="90" y="246" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c1-bg)" stroke="var(--color-c1-border)"/>
+        <line x1="70" y1="272" x2="90" y2="272" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="272" x2="610" y2="272" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="265" text-anchor="middle" dominant-baseline="central" fill="var(--color-c1-text)" font-size="14px" font-weight="500">Build, preprocessor flag</text>
+        <text x="340" y="283" text-anchor="middle" dominant-baseline="central" fill="var(--color-c1-subtext)" font-size="12px" font-weight="400">Build, systems programmer</text>
+    </g>
+
+    <!-- Cooked assets Group -->
+    <text x="90" y="326" fill="var(--color-text-label)" font-size="14px" font-weight="500">Cooked assets and tables</text>
+    <g>
+        <rect x="90" y="336" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c2-bg)" stroke="var(--color-c2-border)"/>
+        <line x1="70" y1="362" x2="90" y2="362" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="362" x2="610" y2="362" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="355" text-anchor="middle" dominant-baseline="central" fill="var(--color-c2-text)" font-size="14px" font-weight="500">Cooked engine asset</text>
+        <text x="340" y="373" text-anchor="middle" dominant-baseline="central" fill="var(--color-c2-subtext)" font-size="12px" font-weight="400">Tech artist, designer</text>
+    </g>
+    <g>
+        <rect x="90" y="398" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c2-bg)" stroke="var(--color-c2-border)"/>
+        <line x1="70" y1="424" x2="90" y2="424" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="424" x2="610" y2="424" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="417" text-anchor="middle" dominant-baseline="central" fill="var(--color-c2-text)" font-size="14px" font-weight="500">Boot-time config</text>
+        <text x="340" y="435" text-anchor="middle" dominant-baseline="central" fill="var(--color-c2-subtext)" font-size="12px" font-weight="400">Systems programmer, lead</text>
+    </g>
+    <g>
+        <rect x="90" y="460" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c2-bg)" stroke="var(--color-c2-border)"/>
+        <line x1="70" y1="486" x2="90" y2="486" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="486" x2="610" y2="486" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="479" text-anchor="middle" dominant-baseline="central" fill="var(--color-c2-text)" font-size="14px" font-weight="500">Data table (CSV)</text>
+        <text x="340" y="497" text-anchor="middle" dominant-baseline="central" fill="var(--color-c2-subtext)" font-size="12px" font-weight="400">Balance designer</text>
+    </g>
+
+    <!-- Runtime overrides Group -->
+    <text x="90" y="540" fill="var(--color-text-label)" font-size="14px" font-weight="500">Runtime overrides</text>
+    <g>
+        <rect x="90" y="550" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c3-bg)" stroke="var(--color-c3-border)"/>
+        <line x1="70" y1="576" x2="90" y2="576" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="576" x2="610" y2="576" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="569" text-anchor="middle" dominant-baseline="central" fill="var(--color-c3-text)" font-size="14px" font-weight="500">Console variable (CVar)</text>
+        <text x="340" y="587" text-anchor="middle" dominant-baseline="central" fill="var(--color-c3-subtext)" font-size="12px" font-weight="400">Systems programmer, QA</text>
+    </g>
+    <g>
+        <rect x="90" y="612" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c3-bg)" stroke="var(--color-c3-border)"/>
+        <line x1="70" y1="638" x2="90" y2="638" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="638" x2="610" y2="638" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="631" text-anchor="middle" dominant-baseline="central" fill="var(--color-c3-text)" font-size="14px" font-weight="500">Hot-reloaded file</text>
+        <text x="340" y="649" text-anchor="middle" dominant-baseline="central" fill="var(--color-c3-subtext)" font-size="12px" font-weight="400">Tools, gameplay programmer</text>
+    </g>
+    <g>
+        <rect x="90" y="674" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c3-bg)" stroke="var(--color-c3-border)"/>
+        <line x1="70" y1="700" x2="90" y2="700" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="700" x2="610" y2="700" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="693" text-anchor="middle" dominant-baseline="central" fill="var(--color-c3-text)" font-size="14px" font-weight="500">In-game debug GUI</text>
+        <text x="340" y="711" text-anchor="middle" dominant-baseline="central" fill="var(--color-c3-subtext)" font-size="12px" font-weight="400">Tools programmer, tech designer</text>
+    </g>
+
+    <!-- Live and remote Group -->
+    <text x="90" y="754" fill="var(--color-text-label)" font-size="14px" font-weight="500">Live and remote</text>
+    <g>
+        <rect x="90" y="764" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c4-bg)" stroke="var(--color-c4-border)"/>
+        <line x1="70" y1="790" x2="90" y2="790" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="790" x2="610" y2="790" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="783" text-anchor="middle" dominant-baseline="central" fill="var(--color-c4-text)" font-size="14px" font-weight="500">Embedded script</text>
+        <text x="340" y="801" text-anchor="middle" dominant-baseline="central" fill="var(--color-c4-subtext)" font-size="12px" font-weight="400">Technical, gameplay designer</text>
+    </g>
+    <g>
+        <rect x="90" y="826" width="500" height="52" rx="8" stroke-width="0.5" fill="var(--color-c4-bg)" stroke="var(--color-c4-border)"/>
+        <line x1="70" y1="852" x2="90" y2="852" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <line x1="590" y1="852" x2="610" y2="852" stroke="var(--color-border-subtle)" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="845" text-anchor="middle" dominant-baseline="central" fill="var(--color-c4-text)" font-size="14px" font-weight="500">Remote cloud config</text>
+        <text x="340" y="863" text-anchor="middle" dominant-baseline="central" fill="var(--color-c4-subtext)" font-size="12px" font-weight="400">Live-ops, backend engineer</text>
+    </g>
+
+    <text x="340" y="920" text-anchor="middle" fill="var(--color-text-primary)" font-size="12px" font-weight="400">Live, runtime</text>
+</svg>
