@@ -22,6 +22,38 @@ Every step down this diagram trades three things at once:
 
 None of that is new information to anyone who has worked across a few of these layers. What is missing from the usual "hardcode bad, data good" argument is what happens once a project actually has values spread across eight or ten of these layers at once. That's where the real failure mode shows up, and it isn't a technical one.
 
+---
+
+## The Practice: Collapsing of Layers
+
+### Layers Have a Lifecycle, Not Just a Location
+
+Adding a layer costs more than deciding where it lives: it's an **ongoing maintenance tax**, and even once that's paid, provenance is a search problem and triage is a trust problem.
+
+Moving a value out of C++ doesn't delete its complexity; it just moves that complexity into a space with fewer compile checks and less review rigor. Over a multi-year development cycle, every layer introduced creates three distinct forms of friction:
+
+* **Combinatorial testing surface:** When a single gameplay value can be set in code, modified in a CSV, overridden in a boot config, and conditionally flipped by a Live-Ops payload, your testing matrix explodes. You are no longer debugging a system; you are debugging permutations of overrides.
+* **Orphaned configuration debt:** Features get refactored or cut, but their configuration entries live forever. Old boot `.ini` overrides, dead data table columns, and stale remote flags linger because nobody wants to delete a key that *might* be doing something somewhere.
+* **Schema drift:** Code types and asset structures evolve, but loose configs lag behind. A type mismatch that would immediately fail a C++ build instead degrades into a silent runtime fallback or subtle data corruption.
+
+Unless a layer includes an explicit lifecycle strategy for pruning and expiration, every externalized value becomes permanent technical debt that team members must test around, re-parse, and maintain indefinitely.
+
+### Value Provenance Isn't Tracked by Default
+
+When every gameplay value lived in code, "check the code" was the entire search space. That wasn't a deliberate design choice: it was a side effect of having nowhere else to look. The moment values spread across a dozen possible layers, "check the code" stops being sufficient, and a data-layered system doesn't generate a replacement for it on its own.
+
+This is the exact same pattern from [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md): a piece of friction was quietly doing a job nobody assigned to it, and removing the friction removes the job along with it. There, the compile step was accidentally enforcing architectural discipline. Here, "everything lives in one place" was accidentally providing a map.
+
+Once data spreads out, tracing a behavior back to its source of truth has to become a deliberate part of the architecture, or a bug that's actually a stale CSV row or a misconfigured remote flag turns into an hour or more of reading systems code that was never wrong.
+
+### Escalation Defaults to the Deepest Layer
+
+A third pitfall is subtler, and a documented ladder of layers doesn't remove it on its own. Even on projects where the config file, the data table, and the CVar are all findable, tickets still tend to route to a programmer first, regardless of which layer actually holds the answer.
+
+The reason is trust, not difficulty. A layer can be checked and ruled out at any point in the ladder (a table value confirmed correct, a boot config confirmed clean), but that verdict doesn't automatically close the ticket unless the process explicitly says it can.
+
+Without an explicit rule, only a programmer's answer is treated as final, so triage keeps sliding to the bottom of the ladder no matter how inspectable the layers above it are. That means a layered system can be technically sound (every value has a documented home, every home is inspectable) and still collapse in practice, because the ownership axis was never backed by a process rule that gives it standing. A layer needs governance behind it, not just a place to live.
+
 ```mermaid
 flowchart TD
     subgraph S["The Untraceable Data Spectrum"]
@@ -48,38 +80,6 @@ flowchart TD
 
 
 ```
-
----
-
-## The Practice: Collapsing of Layers
-
-### Layers Have a Lifecycle, Not Just a Location
-
-Provenance is a search problem, and triage is a trust problem, but the baseline cost of adding a layer is an **ongoing maintenance tax**.
-
-Moving a value out of C++ doesn't delete its complexity; it just moves that complexity into a space with fewer compile checks and less review rigor. Over a multi-year development cycle, every layer introduced creates three distinct forms of friction:
-
-* **Combinatorial testing surface:** When a single gameplay value can be set in code, modified in a CSV, overridden in a boot config, and conditionally flipped by a Live-Ops payload, your testing matrix explodes. You are no longer debugging a system; you are debugging permutations of overrides.
-* **Orphaned configuration debt:** Features get refactored or cut, but their configuration entries live forever. Old boot `.ini` overrides, dead data table columns, and stale remote flags linger because nobody wants to delete a key that *might* be doing something somewhere.
-* **Schema drift:** Code types and asset structures evolve, but loose configs lag behind. A type mismatch that would immediately fail a C++ build instead degrades into a silent runtime fallback or subtle data corruption.
-
-Unless a layer includes an explicit lifecycle strategy for pruning and expiration, every externalized value becomes permanent technical debt that team members must test around, re-parse, and maintain indefinitely.
-
-### Value Provenance Isn't Tracked by Default
-
-When every gameplay value lived in code, "check the code" was the entire search space. That wasn't a deliberate design choice: it was a side effect of having nowhere else to look. The moment values spread across a dozen possible layers, "check the code" stops being sufficient, and a data-layered system doesn't generate a replacement for it on its own.
-
-This is the exact same pattern from [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md): a piece of friction was quietly doing a job nobody assigned to it, and removing the friction removes the job along with it. There, the compile step was accidentally enforcing architectural discipline. Here, "everything lives in one place" was accidentally providing a map.
-
-Once data spreads out, tracing a behavior back to its source of truth has to become a deliberate part of the architecture, or a bug that's actually a stale CSV row or a misconfigured remote flag turns into an hour or more of reading systems code that was never wrong.
-
-### Escalation Defaults to the Deepest Layer
-
-A third pitfall is subtler, and a documented ladder of layers doesn't remove it on its own. Even on projects where the config file, the data table, and the CVar are all findable, tickets still tend to route to a programmer first, regardless of which layer actually holds the answer.
-
-The reason is trust, not difficulty. A layer can be checked and ruled out at any point in the ladder (a table value confirmed correct, a boot config confirmed clean), but that verdict doesn't automatically close the ticket unless the process explicitly says it can.
-
-Without an explicit rule, only a programmer's answer is treated as final, so triage keeps sliding to the bottom of the ladder no matter how inspectable the layers above it are. That means a layered system can be technically sound (every value has a documented home, every home is inspectable) and still collapse in practice, because the ownership axis was never backed by a process rule that gives it standing. A layer needs governance behind it, not just a place to live.
 
 ---
 
