@@ -5,7 +5,7 @@
         /* Define CSS custom properties (variables) for the colors */
         :root {
         /* General Colors (Light Mode) */
-        --color-text-label: #F0F0F0;
+        --color-text-label: #0B0B0B;
         --color-text-primary: #52514E;
         --color-border-subtle: #888780;
         --color-border-strong: #5F5E5A;
@@ -39,7 +39,7 @@
         @media (prefers-color-scheme: dark) {
         :root {
         /* General Colors (Dark Mode) */
-        --color-text-label: #0B0B0B;
+        --color-text-label: #F0F0F0;
         --color-text-primary: #A0A0A0;
         --color-border-subtle: #505050;
         --color-border-strong: #A0A0A0;
