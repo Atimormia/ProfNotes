@@ -118,15 +118,15 @@ Standing has to be given deliberately, not assumed: a triage convention where "r
 
 ## The Insight: Credit the Case, Track the Pattern
 
-Even with these fixes in place, tickets will still land on a programmer's desk when they didn't need to. Deadlines get tight, leads are new, producers are stretched thin, and every one of those has a real reason behind it that I usually can't fully see from where I sit. I've learned to give that benefit of the doubt case by case: once, twice, a handful of times, that's just how production goes.
+Even with technical fixes and clear boundaries in place, tickets will still end up on a programmer's desk when they didn't need to. Tight deadlines, onboarding leads, and stretched production bandwidth are normal realities of shipping a game. Individual escalations are usually reasonable in isolation.
 
-What I've settled into as my own approach is this: **the individual case gets credit, but the pattern across cases doesn't get to stay invisible.**
+The critical distinction is separating individual noise from systemic signal: **credit the individual case, but track the pattern across cases.**
 
-If the fourth escalation this quarter is something the data table would have answered, that's a data point about the system, not about the person who escalated it. It's worth asking what part of that is actually mine to change: maybe it's documentation, maybe it's moving where a value lives, or maybe it's just making the pattern visible to someone who can act on it instead of quietly absorbing another hour.
+A fourth unnecessary escalation in a single quarter is telemetry about the system, not a mistake by the person who logged it. Repeatedly absorbing these interruptions without surfacing them masks the true operational cost of a missing boundary. The engineering response to a recurring misroute isn't to blame the sender, but to evaluate what needs to adjust: improving discoverability, repositioning a value onto a better layer, or making the escalation pattern visible to production leads so it can be addressed structurally.
 
-That last part is a judgment call more than a process, and it's a personal one: how long to sit with a repeated signal before raising it, and whether there were cheaper options to try first (a provenance log, a registry entry, a conversation) before treating it as something that needs escalating past your own desk. I don't think there's a clean formula for that threshold.
+Determining when a recurring friction point crosses from normal production noise into a structural issue is an engineering judgment call. It requires evaluating whether low-cost interventions (a provenance log, a registry entry, or a quick process conversation) can resolve the friction locally before treating it as an organizational problem that needs escalating further.
 
-It's closer to the same instinct from [The Invisible Rebuild Bottleneck](SilentBuildProblem.md): noticing which layer of a recurring cost is actually yours to fix, rather than either ignoring it or trying to fix everything upstream of you.
+This mirrors the principle in [The Invisible Rebuild Bottleneck](SilentBuildProblem.md): identifying which layer of a recurring cost is actionable within systems architecture, rather than either quietly absorbing the tax or attempting to fix every upstream process at once.
 
 ---
 
