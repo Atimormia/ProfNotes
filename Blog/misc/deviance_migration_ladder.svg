@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="0 0 760 860" font-family="Helvetica, Arial, sans-serif">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4A5568"/>
+        </marker>
+    </defs>
+
+    <text x="380" y="28" text-anchor="middle" font-size="20" font-weight="600" fill="#1A202C">
+        Tracing the Deviance Downward
+    </text>
+    <text x="380" y="48" text-anchor="middle" font-size="13" fill="#4A5568">
+        What surfaced first at the top. What it turned out to be compensating for, layer by layer.
+    </text>
+
+    <!-- Box 1: UI Markup -->
+    <rect x="60" y="70" width="640" height="90" rx="8" ry="8" fill="#FFF5F5" stroke="#E53E3E" stroke-width="1.5"/>
+    <text x="380" y="100" text-anchor="middle" font-size="16" font-weight="600" fill="#9B2C2C">UI Markup</text>
+    <text x="380" y="122" text-anchor="middle" font-size="12.5" fill="#9B2C2C">
+        Per-widget logic hardcoded per setting, since nothing below it exposed
+    </text>
+    <text x="380" y="140" text-anchor="middle" font-size="12.5" fill="#9B2C2C">
+        a declarative representation to read from
+    </text>
+
+    <line x1="380" y1="160" x2="380" y2="220" stroke="#4A5568" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="400" y="193" font-size="12" fill="#4A5568">traces back to</text>
+
+    <!-- Box 2: Blueprint Logic -->
+    <rect x="60" y="230" width="640" height="90" rx="8" ry="8" fill="#FFF5F5" stroke="#E53E3E" stroke-width="1.5"/>
+    <text x="380" y="260" text-anchor="middle" font-size="16" font-weight="600" fill="#9B2C2C">Blueprint Logic</text>
+    <text x="380" y="282" text-anchor="middle" font-size="12.5" fill="#9B2C2C">
+        Hardcoded dependencies scattered across the graph, compensating for
+    </text>
+    <text x="380" y="300" text-anchor="middle" font-size="12.5" fill="#9B2C2C">
+        a class with no clean extension point
+    </text>
+
+    <line x1="380" y1="320" x2="380" y2="380" stroke="#4A5568" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="400" y="353" font-size="12" fill="#4A5568">traces back to</text>
+
+    <!-- Box 3: GameSettings Class -->
+    <rect x="60" y="390" width="640" height="90" rx="8" ry="8" fill="#FFFAF0" stroke="#DD6B20" stroke-width="1.5"/>
+    <text x="380" y="420" text-anchor="middle" font-size="16" font-weight="600" fill="#9C4221">GameSettings Class</text>
+    <text x="380" y="442" text-anchor="middle" font-size="12.5" fill="#9C4221">
+        Every setting jammed into one class, no boundary between concerns,
+    </text>
+    <text x="380" y="460" text-anchor="middle" font-size="12.5" fill="#9C4221">
+        no room to extend without touching everything else
+    </text>
+
+    <line x1="380" y1="480" x2="380" y2="540" stroke="#4A5568" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+    <text x="400" y="513" font-size="12" fill="#4A5568">shape matches</text>
+
+    <!-- Box 4: Epic's GameSettings Pattern (Swapped) -->
+    <rect x="60" y="550" width="640" height="90" rx="8" ry="8" fill="#F7FAFC" stroke="#718096" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <text x="380" y="580" text-anchor="middle" font-size="16" font-weight="600" fill="#2D3748">Unreal Engine GameSettings Pattern</text>
+    <text x="380" y="602" text-anchor="middle" font-size="12.5" fill="#2D3748">
+        Probable origin. The shape most teams inherit by default,
+    </text>
+    <text x="380" y="620" text-anchor="middle" font-size="12.5" fill="#2D3748">
+        just because it’s the pattern the engine itself demonstrates
+    </text>
+
+    <line x1="380" y1="640" x2="380" y2="700" stroke="#4A5568" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Box 5: CVars & Engine Types (Swapped) -->
+    <rect x="60" y="710" width="640" height="90" rx="8" ry="8" fill="#EDF2F7" stroke="#4A5568" stroke-width="1.5"/>
+    <text x="380" y="740" text-anchor="middle" font-size="16" font-weight="600" fill="#1A202C">CVars &amp; Engine Types</text>
+    <text x="380" y="762" text-anchor="middle" font-size="12.5" fill="#1A202C">
+        Ad hoc, hardcoded black and white lists, no single source of truth
+    </text>
+    <text x="380" y="780" text-anchor="middle" font-size="12.5" fill="#1A202C">
+        for what should be blocked from cheating or misuse
+    </text>
+
+    <text x="380" y="835" text-anchor="middle" font-size="12" fill="#4A5568">
+        Each layer’s workaround looked locally reasonable. None of them, alone, looked like a system-wide failure.
+    </text>
+</svg>

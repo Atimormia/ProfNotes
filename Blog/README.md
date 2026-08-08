@@ -11,9 +11,10 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Upgrading Game Engines Safely](EngineUpgradeCase.md)
 - [The Invisible Rebuild Bottleneck](SilentBuildProblem.md)
 - [Data-Driven Design As Architecture Boundary](DataDrivenDesign.md)
+- [Refactoring a Legacy System at a Critical Point](RefactoringCase.md)
+- Process is Architecture
 - The Cost of Decoupling Everything (demand-driven pitfalls)
 - Backward Compatibility (+ feature-flags?)
-- Refactoring Without Stopping Production
 
 ## Performance as Architecture
 
