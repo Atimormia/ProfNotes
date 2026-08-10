@@ -1,6 +1,6 @@
-## The Engineer-Process Boundary
+# The Engineer-Process Boundary
 
-Refactoring a rotted system on nothing but my own hours (the story told in [Refactoring a Legacy System at Critical Point](RefactoringCase.md)) took real engineering judgment. It turned out to be the trivial part of the solution.
+Refactoring a rotten system on limited resources (the story told in [Refactoring a System at Critical Point](RefactoringSystemAtCriticalPoint.md)) took real engineering judgment. It turned out to be the trivial part of the solution.
 
 I built the skeleton. I documented it, presented it to the team, and walked through my exact implementation multiple times. I did everything a line engineer is positioned to do to move a migration forward.
 
@@ -14,7 +14,7 @@ The migration didn't happen.
 
 ## The Blind Spot: Where the Signal Actually Goes
 
-I wasn't the first person to notice this system was rotten. Going through the codebase archaeology for the refactor, I found other people's fingerprints everywhere: a local validation improvement here, a half-written internal doc there, a structure in one corner of the codebase reaching for something bigger. Nobody had built what I built, but several people over several years had tried to build something like it on their own hours. Every attempt stalled in roughly the same place mine eventually did.
+I wasn't the first person to notice this system was rotten. Going through the codebase archaeology for the refactor, I found other people's fingerprints everywhere: a local validation improvement here, a half-written internal doc there, a structure in one corner of the codebase reaching for something bigger. Nobody had built what I built, but several people over several years had tried to build something like it. Every attempt stalled in roughly the same place mine eventually did.
 
 The failure breaks down into four distinct stages:
 
@@ -24,9 +24,9 @@ The failure breaks down into four distinct stages:
 
 ### 2. The False Sense of Resolution
 
-When a signal is finally heard (as mine was), a false sense of resolution sets in. My tech lead agreed the system needed work, but provided no timeline, no dedicated support, and nothing beyond an informal blessing to spend my own hours on it.
+When a signal is finally heard (as mine was), a false sense of resolution sets in. My tech lead agreed the system needed work, but provided no timeline, no dedicated support, nothing beyond an informal blessing to keep going without either.
 
-That felt like a reasonable response. It answered the immediate question (*"can this person keep going?"*) without answering the real one: **does this system have anything protecting it once this person stops?** A one-time grant of personal hours closes the ticket. It does not change what happens the next time the system needs attention.
+That felt like a reasonable response. It answered the immediate question (*"can this person keep going?"*) without answering the real one: **does this system have anything protecting it once this person stops?** A one-time nod closes the ticket. It does not change what happens the next time the system needs attention.
 
 ### 3. The Asymmetric Pricing of Risk
 
@@ -44,7 +44,7 @@ When a structural boundary problem needed someone to track and enforce a fix, th
 
 ![organizational_iceberg.svg](misc/organizational_iceberg.svg)
 
-Four stages, and only the first one is visible from the outside. Hiring (as it was argued in [How to Hire Engineers When Syntax Is Free](https://www.google.com/search?q=TechInterview.md)) can select for engineers who notice critical points; it cannot hire its way out of the organizational blind spots that follow.
+Four stages, and only the first one is visible from the outside. Noticing a critical point is a trait hiring can select for ([How to Hire Engineers When Syntax Is Free](TechInterview.md)). It cannot hire its way out of the organizational blind spots that follow.
 
 ---
 
@@ -74,32 +74,32 @@ What it didn't do (because it wasn't designed to) was make the new path cheaper 
 
 ### Workaround Couldn't Help Twice
 
-The archaeology and the build were, in the end, a problem one person could solve given enough hours and enough patience for reconstructing what nobody had written down. That's the core premise of the refactoring story: a defensible middle position existed between jamming the change in and running the full textbook sequence, and a single engineer could locate it and build it.
+The archaeology and the build were, in the end, a problem one person could solve given enough time and enough patience for reconstructing what nobody had written down. That's the core premise of the refactoring story: a defensible middle position existed between jamming the change in and running the full textbook sequence, and a single engineer could locate it and build it.
 
-Migration adoption doesn't offer that same middle ground because what is missing isn't information I could reconstruct or judgment I could apply. It is other people's hours, and there is no clever individual workaround for spending time that belongs to someone else. **I could out-think a missing map; I couldn't out-think fifteen other engineers, each weighing their own roadmap against a migration nobody was requiring of them.**
+Migration adoption doesn't offer that same middle ground because what is missing isn't information I could reconstruct or judgment I could apply. It is other people's time, and there is no clever individual workaround for spending time that belongs to someone else. **I could out-think a missing map; I couldn't out-think fifteen other engineers, each weighing their own roadmap against a migration nobody was requiring of them.**
 
 ### Why Nobody Else Made the Same Bet
 
-There is a harder version of this point worth not skipping past. From where I sat, spending real hours on graphics made sense: I had already sunk two weeks into archaeology, I could see exactly where the rot lived, and building the skeleton on top of what I had learned cost me less than it would ever cost anyone starting fresh.
+There is a harder version of this point worth not skipping past. From where I sat, investing real effort in graphics made sense: I had already sunk two weeks into archaeology, I could see exactly where the rot lived, and building the skeleton on top of what I had learned cost me less than it would ever cost anyone starting fresh.
 
 From any other line engineer's seat, none of that held. Migrating their category meant paying a cost nobody had assigned them, on a responsibility that existed nowhere in writing, backed by no guarantee the organization would ever recognize the investment, let alone fund the next one.
 
-Staying on the old system wasn't laziness wearing caution's clothes. **It was the better bet.** A known system, quietly getting worse, is exactly the kind of cost that eventually gets expensive enough that leadership has to notice and pay for a real fix. Granting more hours doesn't build toward that pressure: it releases it.
+Staying on the old system wasn't laziness wearing caution's clothes. **It was the better bet.** A known system, quietly getting worse, is exactly the kind of cost that eventually gets expensive enough that leadership has to notice and pay for a real fix. Granting more time doesn't build toward that pressure: it releases it.
 
-This is the exact same coping-mechanism shape seen in [Ownership Tax in Unreal Engine](OwnershipTaxUE.md) and [The Invisible Rebuild Bottleneck](SilentBuildProblem.md), just running through me this time instead of through someone else's `IsValid()` check or someone else's productive-looking wait during a rebuild. **Diligence that quietly absorbs a systemic cost is what stops anyone from asking why the cost exists**, whether that diligence lives in a line of defensive code or in one engineer's evenings.
+This is the exact same coping-mechanism shape seen in [Ownership Tax in Unreal Engine](OwnershipTaxUE.md) and [The Invisible Rebuild Bottleneck](SilentBuildProblem.md), just running through me this time instead of through someone else's `IsValid()` check or someone else's productive-looking wait during a rebuild. **Diligence that quietly absorbs a systemic cost is what stops anyone from asking why the cost exists**, whether that diligence lives in a line of defensive code or in one engineer quietly carrying a cost nobody assigned them.
 
 ### Making the Next Category Cheaper, Not Just Possible
 
 Once that distinction was clear, the actual question stopped being *"How do I convince people?"* and became **"What would make the next category cost less than graphics cost me?"** Two distinct investments fall under that, and neither one is optional if the other is missing:
 
-* **Tooling (Friction Reduction):** Engineering work that lowers the raw hours a migration takes, regardless of who ends up doing it. This means an automated validation pass comparing old-system and new-skeleton behavior, alongside scripts that surface where a given category's cvars, class fields, and Blueprint hooks live. None of that got built, because building it would have cost more of my own hours on a project that was already costing more time than anyone had signed off on.
-* **Organizational Support (Resourcing):** Support isn't the same thing as permission. Permission is what I already had: an informal blessing to keep going on my own time. **Support means migration work actually appearing in a planning cycle with a line item attached**, so the next engineer picking up a category isn't choosing between architecture health and their primary feature roadmap. They are doing both because both are now visibly the job, not because they were asked nicely to volunteer their evenings.
+* **Tooling (Friction Reduction):** Engineering work that lowers the raw hours a migration takes, regardless of who ends up doing it. This means an automated validation pass comparing old-system and new-skeleton behavior, alongside scripts that surface where a given category's cvars, class fields, and Blueprint hooks live. None of that got built, because building it would have taken more time on a project that was already costing more time than anyone had signed off on.
+* **Organizational Support (Resourcing):** Support isn't the same thing as permission. Permission is what I already had. **Support means migration work actually appearing in a planning cycle with a line item attached**, so the next engineer picking up a category isn't choosing between architecture health and their primary feature roadmap. They are doing both because both are now visibly the job, not because they were asked to quietly absorb it on the side.
 
 ### Why the Bottleneck Never Moved
 
-Here is the part that only became obvious in hindsight. Support for the original build was local from the very first conversation: use your own hours, figure it out, keep everyone else's calendar unchanged. Nothing about that arrangement contained a reason it would look any different once the build was done and migration started. The organizational default doesn't reset at the next stage just because the stage changed. It carries forward exactly as it was until something outside the person doing the work actively changes it.
+Here is the part that only became obvious in hindsight. Support for the original build was local from the very first conversation: figure it out yourself, keep everyone else's calendar unchanged. Nothing about that arrangement contained a reason it would look any different once the build was done and migration started. The organizational default doesn't reset at the next stage just because the stage changed. It carries forward exactly as it was until something outside the person doing the work actively changes it.
 
-I hit that same bottleneck a second time in a different shape, and there was no detour around it. Detouring around it the first time relied on the only lever available to an individual line engineer: more of my own hours. **That lever doesn't work on other people's calendars**, and no amount of engineering judgment on my end was ever going to make it work.
+I hit that same bottleneck a second time in a different shape, and there was no detour around it. Detouring around it the first time relied on the only lever available to an individual line engineer: doing more of the work myself. **That lever doesn't work on other people's calendars**, and no amount of engineering judgment on my end was ever going to make it work.
 
 ---
 
@@ -107,23 +107,24 @@ I hit that same bottleneck a second time in a different shape, and there was no 
 
 Signal recognition, honest scoping, and proof of safety are all deliverables a single engineer can produce through persistence. What an individual cannot produce alone is the other side of the boundary: **standing authority paired with standing resources.**
 
-It is tempting to read this outcome as a discipline failure (either mine for not pushing harder, or the team's for not caring enough). It was neither. The team's hesitation to spend unbacked hours on an unresourced requirement was the correct operational decision.
+It is tempting to read this outcome as a discipline failure (either mine for not pushing harder, or the team's for not caring enough). It was neither. The team's hesitation to take on an unassigned, unresourced responsibility was the correct operational decision.
 
 Being capable enough to quietly absorb a system's failures is not automatically the responsible move.
 
-> Sometimes the most valuable thing a senior engineer can do isn't finding a clever, personally funded workaround. It is recognizing that the workaround itself is hiding the problem from the people who could actually fund a solution, and choosing, deliberately, not to absorb the cost.
+> Sometimes the most valuable thing a senior engineer can do isn't finding a clever workaround at all. It is recognizing that a workaround, however capable the person building it, hides the problem from the people who could actually fund a solution, and choosing, deliberately, not to absorb the cost.
 
-This is not sabotage or withheld effort; it is a strategic decision to let a systemic failure surface loudly enough to be registered. **A signal is not a system.** Neither is one engineer's willingness to keep paying a system's maintenance tax by hand.
+This is not sabotage or withheld effort. It's a distinct move worth naming on its own: **transparent risk surfacing.** The job isn't to go quiet, and it isn't to go silent out of frustration either. It's to put the risk on record, in writing, before it materializes, specific enough that when the system does eventually fail loudly, the failure reads as exactly what it is: a known, flagged cost the organization chose not to fund, not a surprise, and not a mark against whoever raised it first. The paper trail is what separates this from recklessness. 
+
+Quietly absorbing the cost protects the organization from ever seeing the bill. Saying nothing protects no one, least of all the engineer who gets asked afterward why they didn't say something. Transparent risk surfacing sits in between: documented, specific, and impossible to pin on the person who wrote it down.
+
+A signal is not a system. Neither is one engineer quietly absorbing a cost while the four other people who tried this before them stay invisible to anyone who could have connected their attempts to mine.
 
 ---
 
 ## The Production Bottom Line
 
-**Prove It, Then Fund It.** An engineer who identifies a critical failure point and builds a working fix on their own time has demonstrated strong technical capability, but that is only half the problem. Mistaking a working prototype for a completed migration is how good solutions end up abandoned.
-
-What was missing was not more engineering diligence. It was two structural prerequisites:
-
-* **Friction-reducing tooling** that lowers the raw cost of adoption for subsequent teams.
-* **Standing organizational investment** that doesn't expire the moment the initial engineer moves on.
-
-Hiring someone who spots critical failure points is only the visible tip of the iceberg. The organization still has to build and fund the support structure underneath it.
+> **Prove It, Then Fund It:** An engineer who identifies a critical failure point and builds a working fix has demonstrated strong technical capability, but that is only half the problem. Mistaking a working prototype for a completed migration is how good solutions end up abandoned. 
+> 
+>What was missing was not more engineering diligence. It was two structural prerequisites: friction-reducing tooling that lowers the raw cost of adoption for whoever comes next, and standing organizational investment that doesn't expire the moment the initial engineer moves on. Hiring someone who spots critical failure points is only the visible tip of the iceberg. The organization still has to build and fund the support structure underneath it. 
+> 
+>Sometimes the most senior move available isn't building that support alone, it's transparent risk surfacing: putting the risk on record, in writing, and letting it stay visible and unaddressed long enough that funding it becomes leadership's problem instead of a fix nobody asked for. Done on the record, that isn't a career risk. It's the one move that keeps the failure from ever being quietly pinned on whoever noticed it first.
