@@ -12,7 +12,6 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [The Invisible Rebuild Bottleneck](SilentBuildProblem.md)
 - [Data-Driven Design As Architecture Boundary](DataDrivenDesign.md)
 - [Refactoring a Legacy System at a Critical Point](RefactoringCase.md)
-- [The Engineer-Process Boundary](EngineerProcessBoundary.md)
 - The Cost of Decoupling Everything (demand-driven pitfalls)
 - Backward Compatibility (+ feature-flags?)
 
@@ -27,9 +26,12 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - Clean Code Ends Where the Hot Path Begins
 - Architecture First, Optimization Second
 
-## Engineering Judgment
-
+## Organization vs. Architecture
 - [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md)
+- [The Engineer-Process Boundary](EngineerProcessBoundary.md)
+- [Matching Effort To Evidence](MatchingEffortToEvidence.md)
+
+## Engineering Judgment
 - [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md)
 - [How to Hire Engineers When Syntax Is Free](TechInterview.md)
 - [Code Review as Architecture Governance](CodeReview.md)
