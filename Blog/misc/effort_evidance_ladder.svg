@@ -1,0 +1,158 @@
+<svg viewBox="0 0 1150 720" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Modern drop shadows for depth -->
+        <filter id="shadow-sm" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.06"/>
+        </filter>
+        <filter id="shadow-md" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08"/>
+        </filter>
+
+        <!-- Arrowhead for the climb axis -->
+        <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8"/>
+        </marker>
+    </defs>
+
+    <style>
+        /* Clean, modern typographic scale */
+        text { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .title { font-size: 34px; font-weight: 800; fill: #0F172A; letter-spacing: -0.5px; }
+        .subtitle { font-size: 16px; font-weight: 400; fill: #64748B; }
+
+        .step-num { font-size: 34px; font-weight: 800; }
+        .step-name { font-size: 11.5px; font-weight: 700; letter-spacing: 0.6px; }
+
+        .desc-title { font-size: 18px; font-weight: 700; fill: #1E293B; }
+        .desc-text { font-size: 14.5px; font-weight: 400; fill: #475569; }
+
+        .gate-text { font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px; fill: #B45309; }
+        .capsule-text { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; }
+
+        .side-panel-title { font-size: 18px; font-weight: 700; fill: #6B21A8; }
+        .side-panel-text { font-size: 13.5px; font-weight: 400; fill: #581C87; }
+    </style>
+
+    <!-- Background Canvas -->
+    <rect x="0" y="0" width="1250" height="720" fill="#FAFAF9"/>
+
+    <!-- Main Header -->
+    <text x="575" y="60" class="title" text-anchor="middle">Matching Effort to Evidence</text>
+    <text x="575" y="90" class="subtitle" text-anchor="middle">The base is wide and default. The top is rare, and earned only by evidence.</text>
+
+    <!-- Left Axis (Climb) -->
+    <line x1="45" y1="620" x2="45" y2="180" stroke="#94A3B8" stroke-width="3" marker-end="url(#arrow2)"/>
+    <text x="130" y="500" text-anchor="middle" font-size="12" font-weight="700" fill="#64748B" letter-spacing="2" transform="rotate(-90 30 500)">CLIMB ONLY AS EVIDENCE ACCUMULATES</text>
+
+    <text x="0" y="540" font-size="12" font-weight="700" fill="#16A34A" letter-spacing="2" transform="rotate(-90 30 500)">ACT BY DEFAULT</text>
+    <text x="140" y="540" font-size="12" font-weight="700" fill="#DC2626" letter-spacing="2" transform="rotate(-90 30 500)">ACT ON PROOF</text>
+
+    <!-- Top Capsule (centered over Step 4) -->
+    <text x="290" y="160" text-anchor="middle" class="capsule-text" fill="#DC2626">RARE · EXPENSIVE · SPENT ONCE</text>
+
+    <!-- ==================== PYRAMID BLOCKS (right-aligned to x=480, steep angle) ==================== -->
+
+    <!-- Step 4 (Top, narrowest) -->
+    <rect x="370" y="180" width="110" height="100" rx="16" fill="#FEE2E2" stroke="#F87171" stroke-width="2" filter="url(#shadow-sm)"/>
+    <text x="425" y="232" text-anchor="middle" class="step-num" fill="#B91C1C">4</text>
+    <text x="425" y="260" text-anchor="middle" class="step-name" fill="#B91C1C">APERTURE</text>
+
+    <!-- Step 3 -->
+    <rect x="280" y="290" width="200" height="100" rx="16" fill="#FEF3C7" stroke="#FBBF24" stroke-width="2" filter="url(#shadow-sm)"/>
+    <text x="380" y="342" text-anchor="middle" class="step-num" fill="#B45309">3</text>
+    <text x="380" y="370" text-anchor="middle" class="step-name" fill="#B45309">RECURRENCE</text>
+
+    <!-- Step 2 -->
+    <rect x="190" y="410" width="290" height="100" rx="16" fill="#DCFCE7" stroke="#4ADE80" stroke-width="2" filter="url(#shadow-sm)"/>
+    <text x="335" y="462" text-anchor="middle" class="step-num" fill="#15803D">2</text>
+    <text x="335" y="490" text-anchor="middle" class="step-name" fill="#15803D">TRANSITION</text>
+
+    <!-- Step 1 (Base, widest) -->
+    <rect x="100" y="520" width="380" height="100" rx="16" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2" filter="url(#shadow-sm)"/>
+    <text x="290" y="572" text-anchor="middle" class="step-num" fill="#16A34A">1</text>
+    <text x="290" y="600" text-anchor="middle" class="step-name" fill="#16A34A">RECORD</text>
+
+
+    <!-- ==================== EVIDENCE GATE ==================== -->
+    <!-- Placed between Step 2 and Step 3, spanning the full diagram width -->
+    <line x1="60" y1="400" x2="320" y2="400" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.8"/>
+    <line x1="520" y1="400" x2="900" y2="400" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.8"/>
+    <text x="420" y="405" text-anchor="middle" class="gate-text">EVIDENCE GATE</text>
+
+
+    <!-- Bottom Capsule (centered under Step 1) -->
+    <text x="290" y="650" text-anchor="middle" class="capsule-text" fill="#16A34A">CHEAP · DEFAULT · USED CONSTANTLY</text>
+
+
+    <!-- ==================== CONNECTORS & DESCRIPTIONS ==================== -->
+    <!-- All blocks share a right edge at x=480, so every connector and description starts at the same x, close to the pyramid -->
+
+    <!-- Step 4 Description -->
+    <line x1="480" y1="230" x2="495" y2="230" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="5 5"/>
+    <circle cx="505" cy="230" r="5" fill="#94A3B8"/>
+    <text x="522" y="222" class="desc-title">Widen the Aperture</text>
+    <text x="522" y="244" class="desc-text">Propose a structural fix to whoever can fund it.</text>
+    <text x="522" y="264" class="desc-text">Verify with others first. The costliest rung, used rarely.</text>
+
+    <!-- Step 3 Description -->
+    <line x1="480" y1="340" x2="495" y2="340" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="5 5"/>
+    <circle cx="505" cy="340" r="5" fill="#94A3B8"/>
+    <text x="522" y="332" class="desc-title">Recognize Recurrence</text>
+    <text x="522" y="354" class="desc-text">A second instance turns a private frustration into a</text>
+    <text x="522" y="374" class="desc-text">pattern. Nothing above this rung is licensed without it.</text>
+
+    <!-- Step 2 Description -->
+    <line x1="480" y1="460" x2="495" y2="460" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="5 5"/>
+    <circle cx="505" cy="460" r="5" fill="#94A3B8"/>
+    <text x="522" y="452" class="desc-title">Name the Transition Point</text>
+    <text x="522" y="474" class="desc-text">One note when a prototype should have graduated</text>
+    <text x="522" y="494" class="desc-text">into a real contract, and didn't. No response required.</text>
+
+    <!-- Step 1 Description -->
+    <line x1="480" y1="570" x2="495" y2="570" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="5 5"/>
+    <circle cx="505" cy="570" r="5" fill="#94A3B8"/>
+    <text x="522" y="562" class="desc-title">Leave a Record, Not a Request</text>
+    <text x="522" y="584" class="desc-text">Date the assumption where it lives. Costs a paragraph.</text>
+    <text x="522" y="604" class="desc-text">Asks nothing of anyone. Do this by default, every time.</text>
+
+
+    <!-- ==================== SIDE PANEL (STEP 5) ==================== -->
+    <!-- Pushed further right, well clear of the longest description line -->
+
+    <!-- Connectors to Side Panel -->
+    <line x1="905" y1="230" x2="940" y2="230" stroke="#D8B4FE" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="950" cy="230" r="4" fill="#C084FC"/>
+
+    <line x1="905" y1="340" x2="940" y2="340" stroke="#D8B4FE" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="950" cy="340" r="4" fill="#C084FC"/>
+
+    <line x1="905" y1="460" x2="940" y2="460" stroke="#D8B4FE" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="950" cy="460" r="4" fill="#C084FC"/>
+
+    <line x1="905" y1="570" x2="940" y2="570" stroke="#D8B4FE" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="950" cy="570" r="4" fill="#C084FC"/>
+
+    <!-- Panel Background -->
+    <rect x="960" y="180" width="150" height="440" rx="16" fill="#FAF5FF" stroke="#D8B4FE" stroke-width="2" filter="url(#shadow-md)"/>
+
+    <!-- Panel Content -->
+    <text x="1035" y="255" text-anchor="middle" font-size="56" font-weight="800" fill="#9333EA">5</text>
+
+    <text x="1035" y="295" text-anchor="middle" class="side-panel-title">Read the</text>
+    <text x="1035" y="318" text-anchor="middle" class="side-panel-title">Answer</text>
+
+    <line x1="995" y1="340" x2="1075" y2="340" stroke="#E9D5FF" stroke-width="2"/>
+
+    <text x="1035" y="375" text-anchor="middle" class="side-panel-text">Applies at</text>
+    <text x="1035" y="395" text-anchor="middle" class="side-panel-text">whichever rung</text>
+    <text x="1035" y="415" text-anchor="middle" class="side-panel-text">you stop on.</text>
+
+    <text x="1035" y="455" text-anchor="middle" class="side-panel-text">Silence or a "no"</text>
+    <text x="1035" y="475" text-anchor="middle" class="side-panel-text">is data about the</text>
+    <text x="1035" y="495" text-anchor="middle" class="side-panel-text">org, not a grade</text>
+    <text x="1035" y="515" text-anchor="middle" class="side-panel-text">on your effort.</text>
+
+
+    <!-- Footer -->
+    <text x="575" y="705" text-anchor="middle" font-size="14" font-style="italic" fill="#64748B">Most gaps should stop at step two. That is not a lesser outcome, it is the correct one.</text>
+</svg>

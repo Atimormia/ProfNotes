@@ -56,6 +56,8 @@ This rung isn't available, or worth using, on every gap a line engineer notices.
 
 Whatever comes back, a rejection, a year of silence, a fix that lands without you and that you never get to see work, isn't a verdict on whether you did enough. It's data about where the organization's attention already lives, delivered through a channel that wasn't built to say so directly. The proposal didn't fail to get funded because it was weak. It didn't get funded because leadership's priorities sat somewhere else, and the response revealed that plainly, whether or not anyone ever said it out loud.
 
+![effort_evidance_ladder.svg](misc/effort_evidance_ladder.svg)
+
 This rung runs backward too, onto yourself, not just onto the org. Writing about a stalled effort with enough rigor to make the argument to a stranger is sometimes the only way to see clearly what you actually did, separate from what it felt like in the moment. I believed, right up until I tried to build a structured argument out of an earlier stalled migration, that I hadn't pushed hard enough. Building the argument showed the opposite: the stopping point had been correct, and what felt like failure was restraint, working exactly as it should have. That's a harder thing to trust in the moment than in hindsight, but it holds up better than the feeling of not enough does while you're still standing inside it.
 
 ---
