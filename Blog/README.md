@@ -22,19 +22,17 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [The Cost of a Virtual Function](VirtualFunctions.md)
 - [Data Layout Is Architecture](DataLayoutIsArchitecture.md)
 - [Concurrency Is Architecture](ParallelArchitecture.md)
-- Compile-Time Performance vs. Runtime Flexibility
+- [Compile-Time Performance vs. Runtime Flexibility](CompileTimeVsRuntime.md)
 - Clean Code Ends Where the Hot Path Begins
 - Architecture First, Optimization Second
 
-## Organization vs. Architecture
-- [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md)
-- [The Engineer-Process Boundary](EngineerProcessBoundary.md)
-- [Matching Effort To Evidence](MatchingEffortToEvidence.md)
-
 ## Engineering Judgment
+- [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md)
 - [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md)
 - [How to Hire Engineers When Syntax Is Free](TechInterview.md)
 - [Code Review as Architecture Governance](CodeReview.md)
+- [The Engineer-Process Boundary](EngineerProcessBoundary.md)
+- [Matching Effort To Evidence](MatchingEffortToEvidence.md)
 - AI Makes Juniors Faster, Not Automatically Better
 - The Sandbox Is the Curriculum
 - A Mentoring Framework for Engineering Judgment

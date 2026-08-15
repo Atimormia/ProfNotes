@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1000" height="620" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#1A202C">The Compile-Time Spectrum</text>
+  <text x="500" y="66" text-anchor="middle" font-size="14" fill="#4A5568">Moving right buys performance and certainty. It spends who can change the decision, and how fast.</text>
+
+  <!-- Legend -->
+  <line x1="390" y1="90" x2="415" y2="90" stroke="#2B6CB0" stroke-width="4"/>
+  <text x="422" y="94" font-size="13" fill="#1A202C">Performance &amp; Certainty</text>
+
+  <line x1="390" y1="110" x2="415" y2="110" stroke="#DD6B20" stroke-width="4"/>
+  <text x="422" y="114" font-size="13" fill="#1A202C">Who Can Change It, How Fast</text>
+
+  <!-- Arrow marker defs -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2B6CB0"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#DD6B20"/>
+    </marker>
+  </defs>
+
+  <!-- Endpoint headers -->
+  <text x="100" y="118" text-anchor="start" font-size="14" font-weight="bold" fill="#4A5568">RUNTIME</text>
+  <text x="900" y="118" text-anchor="end" font-size="14" font-weight="bold" fill="#4A5568">COMPILE TIME</text>
+
+  <!-- Vertical dashed guides -->
+  <line x1="100" y1="130" x2="100" y2="480" stroke="#CBD5E0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="300" y1="130" x2="300" y2="480" stroke="#CBD5E0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="500" y1="130" x2="500" y2="480" stroke="#CBD5E0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="700" y1="130" x2="700" y2="480" stroke="#CBD5E0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="900" y1="130" x2="900" y2="480" stroke="#CBD5E0" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- Trend lines -->
+  <line x1="100" y1="400" x2="880" y2="146" stroke="#2B6CB0" stroke-width="3.5" marker-end="url(#arrowBlue)"/>
+  <line x1="100" y1="146" x2="880" y2="400" stroke="#DD6B20" stroke-width="3.5" marker-end="url(#arrowOrange)"/>
+
+  <!-- Axis baseline -->
+  <line x1="80" y1="480" x2="920" y2="480" stroke="#4A5568" stroke-width="2"/>
+
+  <!-- Point: Interface + DI -->
+  <circle cx="100" cy="480" r="7" fill="#2D3748"/>
+  <text x="100" y="508" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A202C">Interface + DI</text>
+  <text x="100" y="526" text-anchor="middle" font-size="12" fill="#4A5568">(Open/Closed)</text>
+
+  <!-- Point: Virtual Dispatch -->
+  <circle cx="300" cy="480" r="7" fill="#2D3748"/>
+  <text x="300" y="508" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A202C">Virtual Dispatch</text>
+  <text x="300" y="526" text-anchor="middle" font-size="12" fill="#4A5568">(Polymorphism)</text>
+
+  <!-- Point: shared_ptr, hybrid marker -->
+  <rect x="491" y="471" width="18" height="18" rx="3" fill="#ECC94B" stroke="#B7791F" stroke-width="1.5" transform="rotate(45 500 480)"/>
+  <text x="500" y="508" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A202C">shared_ptr</text>
+  <text x="500" y="526" text-anchor="middle" font-size="12" fill="#975A16">(hybrid, not a clean split)</text>
+
+  <!-- Point: Concepts -->
+  <circle cx="700" cy="480" r="7" fill="#2D3748"/>
+  <text x="700" y="508" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A202C">Concepts</text>
+  <text x="700" y="526" text-anchor="middle" font-size="12" fill="#4A5568">(Contract enforcement)</text>
+
+  <!-- Point: CRTP / unique_ptr -->
+  <circle cx="900" cy="480" r="7" fill="#2D3748"/>
+  <text x="900" y="508" text-anchor="middle" font-size="13" font-weight="bold" fill="#1A202C">CRTP / unique_ptr</text>
+  <text x="900" y="526" text-anchor="middle" font-size="12" fill="#4A5568">(Bound at build time)</text>
+
+  <!-- Bottom callouts -->
+  <text x="100" y="560" text-anchor="start" font-size="13" fill="#2B6CB0">Resolved while the program runs</text>
+  <text x="900" y="560" text-anchor="end" font-size="13" fill="#2B6CB0">Resolved before the program runs</text>
+
+  <text x="100" y="580" text-anchor="start" font-size="13" fill="#DD6B20">Swappable by config, designer, or live-ops</text>
+  <text x="900" y="580" text-anchor="end" font-size="13" fill="#DD6B20">Fixed until an engineer recompiles</text>
+</svg>
