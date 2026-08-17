@@ -28,7 +28,7 @@ The evidence proved this was serious, but it didn't explain why. When I dug deep
 
 To be precise about what this diagram claims: **this is not an argument that Epic's default pattern is at fault**. Building an abstraction layer on top of engine defaults (and noticing early enough that one was missing) was our responsibility, not the engine's. Why four layers of compensation went unflagged long enough to reach the UI is a valid question, but it is a process question about team ownership, not an architecture question. Mechanically, the diagram shows **how a missing boundary at one layer quietly becomes the next layer's problem to solve**, climbing upward as long as each local fix appears reasonable in isolation.
 
-This follows the exact same pattern as the [Ownership Tax in Unreal Engine](https://www.google.com/search?q=OwnershipTaxUE.md) chain, observed migrating across system layers rather than remaining inside a single function. In that case, every `IsValid()` check felt like diligence, which allowed underlying coupling to go unquestioned. Here, **every layer's workaround looked like a reasonable, self-contained patch**, allowing architectural deviance to travel four layers deep without anyone questioning the root cause.
+This follows the exact same pattern as the [Ownership Tax in Unreal Engine](OwnershipTaxUE.md) chain, observed migrating across system layers rather than remaining inside a single function. In that case, every `IsValid()` check felt like diligence, which allowed underlying coupling to go unquestioned. Here, **every layer's workaround looked like a reasonable, self-contained patch**, allowing architectural deviance to travel four layers deep without anyone questioning the root cause.
 
 ---
 

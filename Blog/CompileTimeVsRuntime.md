@@ -52,12 +52,12 @@ What came out of it wasn't just a benchmark: it was a list of **C# instincts I k
 
 * **The C# Reflex:** When a system needs to vary, define an interface (`IProcessor`) and inject an implementation at runtime.
 * **The C++ Anti-Pattern:** Reaching for an abstract base class with virtual methods because it matches the surface-level C# syntax. This quietly introduces unnecessary runtime vtable lookups and pointer indirection for design choices that never change at runtime.
-* **The Modern C++ Idiom:** Use a **template constrained by a concept**. In [ParticleSim](https://github.com/Atimormia/ParticleSim), `SoAField` plays the exact same role an interface contract plays in C#: it defines what any field type must support. However, the compiler enforces this contract *before* the program ever runs. (This leverages the same tag-struct and concept machinery discussed in [Data Layout Is Architecture](https://www.google.com/search?q=DataLayoutIsArchitecture.md)).
+* **The Modern C++ Idiom:** Use a **template constrained by a concept**. In [ParticleSim](https://github.com/Atimormia/ParticleSim), `SoAField` plays the exact same role an interface contract plays in C#: it defines what any field type must support. However, the compiler enforces this contract *before* the program ever runs. (This leverages the same tag-struct and concept machinery discussed in [Data Layout Is Architecture](DataLayoutIsArchitecture.md)).
 
 ### 2. Stop Treating `virtual` as the Only Form of Polymorphism
 
 * **The C# Reflex:** If behavior varies by type, write a virtual method, override it in a derived class, and dispatch dynamically.
-* **The C++ Idiom:** For low-frequency gameplay logic, virtual methods are fine. But for high-frequency systems, treating `virtual` as the *only* answer forces every call site to pay an instruction cache miss and pointer lookup. Use the **Curiously Recurring Template Pattern (CRTP)** to resolve call-site polymorphism at compile time (as detailed in [the true price of a virtual function](https://www.google.com/search?q=VirtualFunctions.md)). Because the derived type is known before execution, the compiler inlines the call entirely.
+* **The C++ Idiom:** For low-frequency gameplay logic, virtual methods are fine. But for high-frequency systems, treating `virtual` as the *only* answer forces every call site to pay an instruction cache miss and pointer lookup. Use the **Curiously Recurring Template Pattern (CRTP)** to resolve call-site polymorphism at compile time (as detailed in [the true price of a virtual function](VirtualFunctions.md)). Because the derived type is known before execution, the compiler inlines the call entirely.
 
 ### 3. Stop Treating a Missing GC as a Missing Capability
 
@@ -87,7 +87,7 @@ The most critical habit was testing architectural claims directly rather than de
 | **Contract Enforcement** | Interface checked at compile time, resolved at runtime | Concept satisfaction checked entirely at compile time |
 | **Memory & Lifetime Safety** | Garbage collector tracking objects at runtime | Smart pointers (`unique_ptr`) encoding ownership in types |
 
-> **Note on `std::shared_ptr`:** Smart pointers like `shared_ptr` act as a hybrid: ownership is expressed in the type, but cleanup resolves via runtime reference counting. C++ didn't reject automatic lifetime management; it simply refused to pay for it everywhere by default. This aligns with [the ownership chains I wrote about in Unreal](https://www.google.com/search?q=OwnershipTaxUE.md): the C# `?.` safe-navigation chain is a runtime safety net standing in for an ownership boundary that C++ expects you to design explicitly.
+> **Note on `std::shared_ptr`:** Smart pointers like `shared_ptr` act as a hybrid: ownership is expressed in the type, but cleanup resolves via runtime reference counting. C++ didn't reject automatic lifetime management; it simply refused to pay for it everywhere by default. This aligns with [the ownership chains I wrote about in Unreal](OwnershipTaxUE.md): the C# `?.` safe-navigation chain is a runtime safety net standing in for an ownership boundary that C++ expects you to design explicitly.
 
 ---
 
@@ -109,7 +109,7 @@ Moving structural choices into compile-time templates fixes those decisions at b
 
 ![compile_time_spectrum.svg](misc/compile_time_spectrum.svg)
 
-An interface resolved via Dependency Injection or loaded from a data file can be swapped by a designer, modified via dynamic config, or toggled by a live-ops flag without touching code. As established in [Data-Driven Design Is an Architecture Boundary](https://www.google.com/search?q=DataDrivenDesign.md), **the deeper a decision moves toward compile time, the more it gains in hardware performance, and the more it sacrifices in operational adaptability.**
+An interface resolved via Dependency Injection or loaded from a data file can be swapped by a designer, modified via dynamic config, or toggled by a live-ops flag without touching code. As established in [Data-Driven Design Is an Architecture Boundary](DataDrivenDesign.md), **the deeper a decision moves toward compile time, the more it gains in hardware performance, and the more it sacrifices in operational adaptability.**
 
 ### Testability Takes More Effort
 
@@ -117,7 +117,7 @@ Mocking an interface for unit testing is nearly frictionless in C# because DI co
 
 ### The Practical Balance
 
-Applying the core message from [Tick Pitfalls](https://www.google.com/search?q=TickPitfalls.md): **evaluate what the target system specifically requires rather than relying on default coding habits.**
+Applying the core message from [Tick Pitfalls](TickPitfalls.md): **evaluate what the target system specifically requires rather than relying on default coding habits.**
 
 * **Choose Compile-Time Resolution when:** Logic is stable, operates on a hot execution path (high frame-rate or throughput requirements), and is maintained entirely by programmers who can recompile binaries.
 * **Choose Runtime Resolution when:** Behavior must change dynamically without rebuilding binaries, needs to be configured by designers/non-engineers, or requires clean runtime substitution for testing.
