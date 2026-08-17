@@ -2,7 +2,7 @@
 
 A player opens their bank tab and the game stutters for half a second. Not a crash, not a hitch anyone would file a bug over on its own, just a small, ugly pause every single time. QA flags it. I open the profiler expecting to find the usual suspect: one bloated function doing far too much work, the kind of thing [TickPitfalls.md](TickPitfalls.md)'s aura actor turned out to be.
 
-There wasn't one. The frame's cost was spread across a dozen small functions, each one taking a percent or two, each one (read on its own) completely reasonable. Nothing lit up. Nothing screamed. The profiler was answering the question it's built to answer (what's expensive?), and the honest answer this time was: **a little bit of everything, all at once, three hundred times.**
+There wasn't one. The frame's cost was spread across a dozen small functions, each taking a percent or two, each reasonable in isolation. The profiler was answering the question it is built to answer: _what's expensive?_ And the honest answer this time was: **a little bit of everything, all at once, three hundred times.**
 
 ---
 
@@ -11,11 +11,12 @@ There wasn't one. The frame's cost was spread across a dozen small functions, ea
 There are two easy answers to how much abstraction a performance-sensitive codebase should tolerate, and I've observed both of them at different points in my career:
 
 * **The Reactive Approach:** Write clean code everywhere, and trust the architecture to stay flexible enough to fix whatever the profiler eventually flags. That's a reasonable instinct, and good architecture usually can absorb a fix. But a system can inherit a bottleneck nobody predicted simply because nobody expected it to become a hot path. By the time it is one, the cost is already load-bearing across a dozen features built on top of it. Worse, a profiler is built to find the loudest single function: a cost spread thin across many small, individually innocent functions doesn't reliably produce one.
-* **The Raw C-Style Approach:** Abandon interfaces entirely and strip out boundaries everywhere in the name of performance. Eliminating boundaries triggers the exact failure [OwnershipTaxUE.md](OwnershipTaxUE.md) already named (just on purpose instead of by accident): nothing owns a clean seam anymore, so nothing is easy to isolate, whether the bug is a crash or a frame spike.
+* **The No-Abstraction Approach:** Abandon interfaces entirely and strip out boundaries everywhere in the name of performance. Eliminating boundaries triggers the exact failure [OwnershipTaxUE.md](OwnershipTaxUE.md) already named (just on purpose instead of by accident): nothing owns a clean seam anymore, so nothing is easy to isolate, whether the bug is a crash or a frame spike.
 
 Neither extreme survives contact with what actually happened in the bank tab. The real mechanic sits underneath both:
 
 $$\text{Cost} = \text{Frequency} \times \text{Depth} \times \text{Boundary Type}$$
+where $BoundaryType$ is how visible each hop is to the compiler and runtime optimizer.
 
 **Depth alone was never the enemy.** A five-hop chain of ordinary function calls sitting inside one translation unit often costs nothing: the compiler can see straight through every hop and inline the whole thing away.
 
@@ -58,7 +59,7 @@ Caching isn't free, and it's worth being honest about that before reaching for i
 
 ### 4. Move resolution earlier when chains mature
 
-If a specific chain turns out to be both hot and stable (behavior that stopped changing once the system matured), resolve it at compile time instead of runtime, using the trade-offs worked out in [Compile-Time Performance vs. Runtime Flexibility](CompileTimeVsRuntime.md). That's rarely the first move for designer-editable item modifiers, but it remains a valid option for the rare hot chain that has genuinely stopped needing to change.
+If a specific chain turns out to be both hot and stable (behavior that stopped changing once the system matured), resolve it at compile time instead of runtime, using the trade-offs worked out in [Compile-Time Performance vs. Runtime Flexibility](CompileTimeVsRuntime.md). In practice, that might mean baking lookup tables during asset cooking, generating resolved modifier data, or replacing designer-authored indirection with a fixed representation once the design has stopped moving. That's rarely the first move, but it remains a valid option for the rare hot chain that has genuinely stopped needing to change.
 
 ---
 
@@ -75,5 +76,6 @@ The trigger isn't foresight: nobody predicts at design time that a bank tab two 
 ---
 
 ## Production Bottom Line
-
-> **Depth Was Never the Cost:** A chain of clean, well-reviewed abstraction layers can sit untouched and free for years, and every layer in it can be the right call. What turns it expensive isn't how deep it is, but whether a hop crosses a boundary the compiler can't see through, multiplied by how often that hop now runs. Flattening the chain on principle breaks the flexibility it was built for. Waiting for the profiler misses a cost spread too thin to light up any single frame. The only thing that actually catches it is watching for the moment a call's frequency changes, and treating that moment (not a fixed depth limit or profiler alert) as the explicit signal to optimize.
+> **Depth Was Never the Cost:** A chain of clean, well-reviewed abstraction layers can sit untouched and free for years, and every layer in it can be the right call. What turns it expensive isn't how deep it is, but whether a hop crosses a boundary the compiler can't see through, multiplied by how often that hop now runs.
+>
+> Flattening the chain on principle breaks the flexibility it was built for. Waiting for the profiler can miss a cost spread too thin to light up any single function. The useful signal is the moment a call's frequency changes: treat that moment, not a fixed depth limit or profiler alert, as the prompt to optimize.
