@@ -23,7 +23,7 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Data Layout Is Architecture](DataLayoutIsArchitecture.md)
 - [Concurrency Is Architecture](ParallelArchitecture.md)
 - [Compile-Time Performance vs. Runtime Flexibility](CompileTimeVsRuntime.md)
-- Clean Code Ends Where the Hot Path Begins
+- [Where Abstraction Meets The Hot Path](AbstractionMeetsTheHotPath.md)
 - Architecture First, Optimization Second
 
 ## Engineering Judgment
