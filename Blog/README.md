@@ -4,7 +4,17 @@ Short essays on game engineering, architecture, performance, production workflow
 
 The common thread: many problems that look like optimization, tooling, hiring, or workflow issues often start as missing boundaries, unclear ownership, or weak process.
 
-## Game Engineering Architecture
+## Start Here
+
+>**Technical symptoms often expose missing ownership, missing boundaries, or missing process.**
+
+1. [Data Layout Is Architecture](DataLayoutIsArchitecture.md)
+2. [Ownership Tax in Unreal Engine](OwnershipTaxUE.md)
+3. [Code Review as Architecture Governance](CodeReview.md)
+4. [Matching Effort To Evidence](MatchingEffortToEvidence.md)
+
+## Content
+### Game Engineering Architecture
 
 - [Engineer-Designer Boundary in Unreal Engine](BlueprintMess.md)
 - [Ownership Tax in Unreal Engine](OwnershipTaxUE.md)
@@ -15,7 +25,7 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - The Cost of Decoupling Everything (demand-driven pitfalls)
 - Backward Compatibility (+ feature-flags?)
 
-## Performance as Architecture
+### Performance as Architecture
 
 - [The `Tick()` Pitfalls](TickPitfalls.md)
 - [Garbage Collector Spikes](GarbageCollection.md)
@@ -26,7 +36,7 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Where Abstraction Meets The Hot Path](AbstractionMeetsTheHotPath.md)
 - Architecture First, Optimization Second
 
-## Engineering Judgment
+### Engineering Judgment
 - [AI Exposes Gaps in Architecture Design](AI&ArchitectureSkills.md)
 - [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md)
 - [How to Hire Engineers When Syntax Is Free](TechInterview.md)

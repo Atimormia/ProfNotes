@@ -1,6 +1,6 @@
 # The Engineer-Process Boundary
 
-Refactoring a rotten system on limited resources (the story told in [Refactoring a System at Critical Point](RefactoringSystemAtCriticalPoint.md)) took real engineering judgment. It turned out to be the trivial part of the solution.
+Refactoring a rotten system on limited resources (the story told in [Refactoring a System at Critical Point](RefactoringCase.md)) took real engineering judgment. It turned out to be the trivial part of the solution.
 
 I built the skeleton. I documented it, presented it to the team, and walked through my exact implementation multiple times. I did everything a line engineer is positioned to do to move a migration forward.
 
