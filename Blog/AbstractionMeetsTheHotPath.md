@@ -29,13 +29,46 @@ The cost shows up specifically when a hop crosses a boundary the compiler can't 
 
 In Unreal specifically, this is exactly what happens under a Gameplay Effect. Attribute resolution doesn't run as plain member access: it walks the reflection system, resolving `FProperty` pointers, matching gameplay tags, and reading scalable-float curve tables. None of that is a mistake. It's precisely the machinery that lets a designer add a new rarity tier or set bonus without anyone recompiling. It just isn't free, and it was never supposed to be evaluated three hundred times in a single frame.
 
-That's what the bank tab was actually doing. An item's effective stats resolved through five layers built over five different milestones:
+That's what the bank tab was actually doing. From any call site, resolving an item's stats looks like a single, well-named function:
 
-1. **Base stat lookup**
-2. **Rarity multiplier**
-3. **Affix chain** (from socketed gems)
-4. **Set-bonus check** (against equipped gear)
-5. **Temporary buff overlay** (from the last consumable used)
+```cpp
+// Looks like a single, well-named function call from any consumer
+FItemStatSnapshot UInventoryItemInstance::GetEffectiveStats() const
+{
+    FItemStatSnapshot Stats = BaseStats;
+
+    ApplyRarityModifier(Stats);       // one DataTable row lookup
+    ApplyAffixChain(Stats);           // N socketed gems, each its own effect
+    ApplySetBonusCheck(Stats);        // queries every other equipped item's tags
+    ApplyTemporaryBuffOverlay(Stats); // reads the ASC's active effects
+
+    return Stats;
+}
+```
+
+Four clean, single-responsibility calls. Nothing here reads as a performance risk, and in review, it isn't one, taken hop by hop. The cost is hiding inside what each of those calls actually does. Here's the second one, expanded:
+
+```cpp
+// One of those four hops, expanded
+void UInventoryItemInstance::ApplyAffixChain(FItemStatSnapshot& Stats) const
+{
+    for (const FGemSocket& Socket : Sockets)
+    {
+        if (!Socket.SocketedGemEffect) continue;
+
+        // walk the effect's modifier array, resolve each attribute's
+        // underlying property through reflection, evaluate the magnitude.
+        const UGameplayEffect* GemEffectCDO = Socket.SocketedGemEffect.GetDefaultObject();
+        for (const FGameplayModifierInfo& Modifier : GemEffectCDO->Modifiers)
+        {
+            const float Magnitude = ResolveModifierMagnitude(Modifier, this);
+            Stats.ApplyModifier(Modifier.Attribute, Magnitude);
+        }
+    }
+}
+```
+
+This is the reflection-backed boundary from a few paragraphs up, made visible instead of asserted. Every socketed gem walks its effect's modifier array, resolves each attribute through a property lookup, and evaluates a magnitude, and the other three hops in `GetEffectiveStats` each do their own version of the same walk. `ApplyRarityModifier` crosses a data table. `ApplySetBonusCheck` has to query tags across every other equipped item. `ApplyTemporaryBuffOverlay` reads the ability system component's active effect list. None of it shows up as a red flag from the top-level function, because the top-level function is exactly as clean as it looks. The cost is one layer down, in four independently reasonable design decisions that were never reviewed together.
 
 Every layer was added for a real feature, reviewed on its own merits, and crossed the same reflection-backed boundary GAS uses for flexibility. At equip time (once per item, once every few seconds at most), that cost is completely invisible. Rendered fresh for three hundred items at once, it's the stutter QA flagged.
 
@@ -59,7 +92,7 @@ Caching isn't free, and it's worth being honest about that before reaching for i
 
 ### 4. Move resolution earlier when chains mature
 
-If a specific chain turns out to be both hot and stable (behavior that stopped changing once the system matured), resolve it at compile time instead of runtime, using the trade-offs worked out in [Compile-Time Performance vs. Runtime Flexibility](CompileTimeVsRuntime.md). In practice, that might mean baking lookup tables during asset cooking, generating resolved modifier data, or replacing designer-authored indirection with a fixed representation once the design has stopped moving. That's rarely the first move, but it remains a valid option for the rare hot chain that has genuinely stopped needing to change.
+If a specific chain turns out to be both hot and stable (behavior that stopped changing once the system matured), resolve it at compile time instead of runtime, using the trade-offs worked out in [Compile-Time Performance vs. Runtime Flexibility](CompileTimeVsRuntime.md). That's rarely the first move for designer-editable item modifiers, but it remains a valid option for the rare hot chain that has genuinely stopped needing to change.
 
 ---
 
