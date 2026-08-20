@@ -5,7 +5,7 @@ A rotten codebase and a burned-out team rarely trace back to one bad decision. T
 
 The alternative isn't the absence of pressure; it's the **same pressure, deliberately organized**. A system can grow just as fast under real, demanding constraints and still stay legible, provided those constraints arrive in a sequence chosen on purpose (each isolated enough to absorb and build on rather than fight). **The difference between a codebase that rots and one that matures under the exact same volume of change is the difference between reactive and planned growth.**
 
-I only understood this distinction after living through both project versions repeatedly. One taught me what reactive growth feels like by forcing me to suffer through it. Both turned out to be necessary, and neither would have worked without the other.
+I only understood this distinction after living through both project versions repeatedly. One taught me what planned growth feels like. The other taught me what reactive growth feels like, on purpose, by forcing me to suffer through it. Both turned out to be necessary, and neither would have worked without the other.
 
 ---
 
@@ -95,7 +95,7 @@ Spotting this drift depends heavily on culture:
 * **Proactive Cultures:** Treat mistakes as signals, create psychological safety to flag tech debt, and explicitly address reactive drift before it causes burnout.
 * **Reactive Cultures:** Quietly absorb systemic friction, view warning signs as complaining, and remain trapped in firefighting indefinitely.
 
-Real-world projects demand a practical balance between both. Shipping software under real constraints requires reactive iteration, while maintaining long-term stability requires planned architecture. The goal is never 100% ideological proactivity (which leads to over-engineering), but matching architectural investment to concrete requirements, as explored in [Matching Effort to Evidence](MatchingEffortToEvidence.md): structural problems visible to engineers don't turn into action because the culture may lack a receptor for the feedback.
+Real-world projects demand a practical balance between both. Shipping software under real constraints requires reactive iteration, while maintaining long-term stability requires planned architecture. The goal is never 100% ideological proactivity, but matching architectural investment to concrete requirements, as explored in [Matching Effort to Evidence](MatchingEffortToEvidence.md): structural problems visible to engineers don't turn into action because the culture may lack a receptor for the feedback.
 
 ---
 
