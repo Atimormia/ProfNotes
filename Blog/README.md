@@ -43,6 +43,7 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Code Review as Architecture Governance](CodeReview.md)
 - [The Engineer-Process Boundary](EngineerProcessBoundary.md)
 - [Matching Effort To Evidence](MatchingEffortToEvidence.md)
+- [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md)
 - AI Makes Juniors Faster, Not Automatically Better
 - The Sandbox Is the Curriculum
 - A Mentoring Framework for Engineering Judgment

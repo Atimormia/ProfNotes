@@ -16,6 +16,7 @@ There are two easy answers to how much abstraction a performance-sensitive codeb
 Neither extreme survives contact with what actually happened in the bank tab. The real mechanic sits underneath both:
 
 $$\text{Cost} = \text{Frequency} \times \text{Depth} \times \text{Boundary Type}$$
+
 where $BoundaryType$ is how visible each hop is to the compiler and runtime optimizer.
 
 **Depth alone was never the enemy.** A five-hop chain of ordinary function calls sitting inside one translation unit often costs nothing: the compiler can see straight through every hop and inline the whole thing away.
