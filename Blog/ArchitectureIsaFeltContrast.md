@@ -9,7 +9,7 @@ I only understood this distinction after living through both project versions re
 
 ---
 
-## The Blind Spot: Architectural Judgment Is Not a Knowledge
+## The Blind Spot: Architectural Judgment Is Not a Knowledge Problem
 
 Ask most engineers to describe good architecture and you'll get the standard vocabulary: loose coupling, single responsibility, clear ownership boundaries. Ask a team why their system is a mess despite knowing that vocabulary, and the answer is rarely ignorance. It's usually some version of *"we didn't have time to do it properly,"* delivered by people who could pass a design review on the exact principles they just violated.
 
@@ -49,7 +49,7 @@ The first project starts as a straightforward problem: generate numbers whose on
 
 Without a master plan, the interface broke repeatedly, requiring fixes without knowing if the current stage was the last.
 
-**The resolution is what turns suffering into insight.** Reaching an interface flexible enough to absorb the ninth change without a rewrite transforms an escalating spiral into a lesson (rather than the open wound described in [RefactoringCase.md](RefactoringCase.md)). Comparing that final interface to the version that broke at stage three delivers the core realization not as an abstract rule, but as pure relief.
+**The resolution is what turns suffering into insight.** Reaching an interface flexible enough to absorb the ninth change without a rewrite transforms an escalating spiral into a lesson (rather than the open wound described in [Refactoring a Legacy System at a Critical Point](RefactoringCase.md)). Comparing that final interface to the version that broke at stage three delivers the core realization not as an abstract rule, but as pure relief.
 
 ### Phase 2: Planned Growth (ParticleSim, Brick by Brick)
 
@@ -103,5 +103,5 @@ Real-world projects demand a practical balance between both. Shipping software u
 
 > **Good Architecture Is Felt as Relief.**
 > A learner cannot appreciate a flexible interface merely by being told it is good. They must build the rigid version first, feel it break, and experience the relief of the flexible design by direct contrast.
-> 
+>
 > At the team level, recognizing permanent reactive drift is an **organizational judgment call**, not a personal failure of willpower. **Planned growth isn't the absence of pressure (it is pressure organized on purpose), allowing the system to enforce discipline so engineers don't have to.**
