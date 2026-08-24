@@ -44,5 +44,5 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [The Engineer-Process Boundary](EngineerProcessBoundary.md)
 - [Matching Effort To Evidence](MatchingEffortToEvidence.md)
 - [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md)
-- AI Makes Juniors Faster, Not Automatically Better
+- [Training Juniors Is an Architecture Choice](TrainingJuniorsIsAnArchitechtureChoice.md)
 - A Mentoring Framework for Engineering Judgment

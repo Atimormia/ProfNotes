@@ -1,6 +1,4 @@
-# Training Responsibility in the Age of AI is Architecture
-
-*(working title)*
+# Training Juniors Is an Architecture Choice
 
 Software engineering was quietly compressing itself for twenty years before AI ever entered the picture:
 
@@ -46,7 +44,9 @@ When applied to AI, the four stages adjust so that the **AI relationship itself 
 * **Watch:** A senior engineer makes a real decision and narrates their process out loud (including where they use AI, and where they override or ignore it). The junior sees AI treated as one input among many, not an oracle.
 * **Do Together (Reviewed):** The junior proposes a decision using AI assistance, but a senior reviews the *reasoning* behind the choice, not just whether the code runs. Most curricula skip this because validating reasoning takes senior engineering time.
 * **Do Alone (Justified):** The junior works directly with AI, but must explicitly document and justify every instance where they deferred to the model. This makes delegation conscious and visible rather than automatic.
-* **Own It (Named):** The final decision and its real-world outcome are explicitly attached to the junior on the record, rather than buried anonymously in a merged pull request. Ownership of the outcome, rather than mere participation, drives true accountability.
+* **Own It (Named):** The final decision and its real-world outcome are explicitly attached to the junior on the record, rather than buried anonymously in a merged pull request. Ownership of the outcome, not just involvement in producing it, is what the psychology of accountability consistently finds actually builds a sense of responsibility.
+
+![grr_for_ai_ladder.svg](misc/grr_for_ai_ladder.svg)
 
 This approach mirrors aviation safety: **deliberately scheduled moments where automation is set aside** so underlying skills do not decay.
 
@@ -60,8 +60,8 @@ Consider a stark contrast: military targeting systems have compressed decision w
 A few concrete principles follow from this four-stage shape:
 
 * **Protect unassisted debugging:** Debugging erodes fastest under AI reliance, yet it is the primary mechanism by which engineers discover flawed logic before consequences become expensive. Juniors must spend real, uncomfortable hours tracing failing tests before AI is re-introduced.
-* **Assign work requiring non-codified context:** Focus exercises on tasks AI structurally cannot access: interviewing stakeholders, navigating undocumented system history, and balancing unwritten business constraints.
-* **Sequence growth intentionally:** Introduce AI stages deliberately rather than reactively under pressure. As argued in [Architecture Is a Felt Contrast](https://www.google.com/search?q=ArchitectureIsAFeltContrast.md), learners need isolated, deliberate constraints rather than chaotic exposures. Each stage should be gated by demonstrated competence.
+* **Assign work requiring non-codified context:** Focus exercises on tasks AI structurally cannot access, not because a future model might close the gap, but because the context was never written down anywhere for a model to learn from: interviewing stakeholders, navigating undocumented system history, and balancing unwritten business constraints.
+* **Sequence growth intentionally:** Introduce AI stages deliberately rather than reactively under pressure. As argued in [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md), learners need isolated, deliberate constraints rather than chaotic exposures. Each stage should be gated by demonstrated competence.
 * **Make ownership visible:** If contributions and mistakes dissolve anonymously into merged branches, the final stage of accountability never occurs.
 
 ---
@@ -70,7 +70,7 @@ A few concrete principles follow from this four-stage shape:
 
 Combining labor trends with educational research reveals the true challenge: fewer juniors are being hired, and those who enter join organizations already stripped of the safety nets (dedicated QA, dedicated ops) that once cushioned early mistakes. Simultaneously, AI tools make it easy to generate plausible outputs without developing underlying judgment.
 
-However, responsibility has not shifted to the tool. A model lacks a career, a team, or a stake in outcomes; it cannot hold accountability. Instead, the human role has become far more exposed. When AI generates the decision, the human's sole remaining role is evaluating whether to accept it: a narrower, higher-stakes position than simply writing code faster.
+However, responsibility has not shifted to the tool. A model lacks a career, a team, or a stake in outcomes; it cannot hold accountability. Instead, the human role has become far more exposed. Earlier tools sped up execution once a person had already decided; AI increasingly proposes the decision itself. When AI generates the decision, the human's sole remaining role is evaluating whether to accept it: a narrower, higher-stakes position than simply writing code faster.
 
 This is not about AI replacing junior developers. It is about replacing **accidental mentorship** (where juniors absorbed judgment by observing senior engineers) with an **intentional curriculum**. The informal, passive model of learning cannot survive tools that continuously supply immediate answers.
 

@@ -1,0 +1,99 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <!-- Background Card -->
+  <rect x="0" y="0" width="900" height="600" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+
+  <!-- Header -->
+  <text x="450" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#1A202C">Fading Support, Growing Ownership</text>
+  <text x="450" y="62" text-anchor="middle" font-size="13" fill="#718096">Applying the Gradual Release of Responsibility Model to AI-Assisted Engineering</text>
+
+  <!-- Arrow Indicator -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#DD6B20"/>
+    </marker>
+  </defs>
+  <line x1="80" y1="90" x2="820" y2="90" stroke="#DD6B20" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+  <text x="820" y="82" text-anchor="end" font-size="12" font-weight="700" fill="#DD6B20" letter-spacing="0.5">INCREASING JUNIOR ACCOUNTABILITY</text>
+
+  <!-- Ground Line -->
+  <line x1="50" y1="510" x2="850" y2="510" stroke="#CBD5E0" stroke-width="2"/>
+
+  <!-- ===================== STEP 1 ===================== -->
+  <!-- Single Stacked Bar: 85% Senior / 15% Junior -->
+  <rect x="70" y="370" width="144.5" height="22" fill="#4A5568" rx="3"/>
+  <rect x="214.5" y="370" width="25.5" height="22" fill="#38A169" rx="3"/>
+  <text x="142" y="385" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Senior Led 85%</text>
+
+  <!-- Card Platform -->
+  <rect x="70" y="400" width="170" height="110" rx="6" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.5"/>
+  <rect x="70" y="400" width="170" height="6" fill="#4A5568" rx="2"/>
+  <text x="155" y="428" text-anchor="middle" font-size="15" font-weight="700" fill="#1A202C">1. Watch</text>
+  <text x="155" y="450" text-anchor="middle" font-size="11" fill="#4A5568">
+    <tspan x="155" dy="0">Senior narrates choices;</tspan>
+    <tspan x="155" dy="15">AI treated as one input</tspan>
+    <tspan x="155" dy="15">among many.</tspan>
+  </text>
+
+  <!-- ===================== STEP 2 ===================== -->
+  <!-- Single Stacked Bar: 60% Guided / 40% Junior -->
+  <rect x="265" y="290" width="102" height="22" fill="#3182CE" rx="3"/>
+  <rect x="367" y="290" width="68" height="22" fill="#38A169" rx="3"/>
+  <text x="316" y="305" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Guided 60%</text>
+  <text x="401" y="305" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">40%</text>
+
+  <!-- Card Platform -->
+  <rect x="265" y="320" width="170" height="190" rx="6" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.5"/>
+  <rect x="265" y="320" width="170" height="6" fill="#3182CE" rx="2"/>
+  <text x="350" y="348" text-anchor="middle" font-size="15" font-weight="700" fill="#1A202C">2. Do Together</text>
+  <text x="350" y="370" text-anchor="middle" font-size="11" fill="#4A5568">
+    <tspan x="350" dy="0">Junior proposes decision;</tspan>
+    <tspan x="350" dy="15">Senior reviews the</tspan>
+    <tspan x="350" dy="15">underlying reasoning.</tspan>
+  </text>
+
+  <!-- ===================== STEP 3 ===================== -->
+  <!-- Single Stacked Bar: 25% AI / 75% Junior -->
+  <rect x="460" y="210" width="42.5" height="22" fill="#ED8936" rx="3"/>
+  <rect x="502.5" y="210" width="127.5" height="22" fill="#38A169" rx="3"/>
+  <text x="566" y="225" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Junior Owned 75%</text>
+
+  <!-- Card Platform -->
+  <rect x="460" y="240" width="170" height="270" rx="6" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.5"/>
+  <rect x="460" y="240" width="170" height="6" fill="#ED8936" rx="2"/>
+  <text x="545" y="268" text-anchor="middle" font-size="15" font-weight="700" fill="#1A202C">3. Do Alone</text>
+  <text x="545" y="290" text-anchor="middle" font-size="11" fill="#4A5568">
+    <tspan x="545" dy="0">Junior works with AI;</tspan>
+    <tspan x="545" dy="15">all AI deferrals must be</tspan>
+    <tspan x="545" dy="15">justified in writing.</tspan>
+  </text>
+
+  <!-- ===================== STEP 4 ===================== -->
+  <!-- Single Stacked Bar: 100% Full Ownership -->
+  <rect x="655" y="130" width="170" height="22" fill="#38A169" rx="3"/>
+  <text x="740" y="145" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">Full Ownership 100%</text>
+
+  <!-- Card Platform -->
+  <rect x="655" y="160" width="170" height="350" rx="6" fill="#F7FAFC" stroke="#CBD5E0" stroke-width="1.5"/>
+  <rect x="655" y="160" width="170" height="6" fill="#38A169" rx="2"/>
+  <text x="740" y="188" text-anchor="middle" font-size="15" font-weight="700" fill="#1A202C">4. Own It</text>
+  <text x="740" y="210" text-anchor="middle" font-size="11" fill="#4A5568">
+    <tspan x="740" dy="0">Decision &amp; outcomes</tspan>
+    <tspan x="740" dy="15">explicitly attached to</tspan>
+    <tspan x="740" dy="15">the junior on record.</tspan>
+  </text>
+
+  <!-- Legend -->
+  <rect x="220" y="545" width="14" height="14" rx="2" fill="#4A5568"/>
+  <text x="240" y="557" font-size="12" fill="#4A5568">Senior Modeling</text>
+
+  <rect x="360" y="545" width="14" height="14" rx="2" fill="#3182CE"/>
+  <text x="380" y="557" font-size="12" fill="#4A5568">Guided Review</text>
+
+  <rect x="490" y="545" width="14" height="14" rx="2" fill="#ED8936"/>
+  <text x="510" y="557" font-size="12" fill="#4A5568">AI Assisted (Justified)</text>
+
+  <rect x="660" y="545" width="14" height="14" rx="2" fill="#38A169"/>
+  <text x="680" y="557" font-size="12" fill="#4A5568">Junior Autonomous</text>
+
+</svg>
