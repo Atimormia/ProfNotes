@@ -12,6 +12,7 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 2. [Ownership Tax in Unreal Engine](OwnershipTaxUE.md)
 3. [Code Review as Architecture Governance](CodeReview.md)
 4. [Matching Effort To Evidence](MatchingEffortToEvidence.md)
+5. [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md)
 
 ## Content
 ### Game Engineering Architecture
