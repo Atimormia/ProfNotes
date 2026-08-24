@@ -6,7 +6,7 @@ Software engineering was quietly compressing itself for twenty years before AI e
 * **Agile methodology** made testing "everyone's responsibility," absorbing dedicated QA roles.
 * **Cloud tooling** made infrastructure work absorbable by generalists instead of specialists.
 
-By the time AI-assisted coding became standard, engineering organizations had already stripped out most of their operational slack. Dedicated QA staffing had been declining for years. At plenty of companies, including major tech leaders, there is simply no separate safety net checking a developer's work anymore.
+By the time AI-assisted coding became standard, engineering organizations had already stripped out most of their operational slack. An engineering team's architecture isn't just its services, DB schemas, or deployment pipelines; it includes the human failure-isolation layers that absorb mistakes before they hit production. Dedicated QA staffing had been declining for years. At plenty of companies, including major tech leaders, there is simply no separate safety net checking a developer's work anymore.
 
 **AI did not cause this compression; it exposed it.** It made structural thinness visible in the same way AI-driven load exposed GitHub's infrastructure: a platform that survived years of ordinary traffic without stress-testing its autoscaling policies or editor retry bugs until extreme load triggered an eight-hour global outage. Nothing about that failure was new. It was old and dormant. AI simply supplied enough volume, fast enough, to make quiet coping impossible.
 
@@ -31,7 +31,7 @@ A developer can be highly fluent in prompting while entirely outsourcing critica
 
 ___
 
-Both instincts bypass the core design challenge: **deciding when and how AI support is systematically withdrawn as a learner develops.** A human mentor does this naturally, fading assistance as competence grows. AI tools do the opposite; they persist and adapt by default. Unless this "fade" is intentionally engineered from the outside, skill transfer quietly fails.
+Both instincts treat developer training as an onboarding task rather than a **systems design decision**. They bypass the core architectural challenge: deciding when and how AI support is systematically withdrawn as a learner develops. A human mentor does this naturally, fading assistance as competence grows. AI tools do the opposite; they persist and adapt by default. Unless this "fade" is intentionally engineered from the outside, skill transfer quietly fails.
 
 ---
 
@@ -39,7 +39,7 @@ Both instincts bypass the core design challenge: **deciding when and how AI supp
 
 The solution exists in education's 40-year-old **Gradual Release of Responsibility** model. Handing over full responsibility instantly prevents judgment from forming; delaying it forever prevents autonomy.
 
-When applied to AI, the four stages adjust so that the **AI relationship itself is systematically faded**:
+Applied to AI, the four stages work, but the variable being faded is the AI relationship itself, not just the task. Designing this fade is an architectural choice. Just as a resilient system requires explicit circuit breakers and fallback policies, an engineering team requires explicit boundaries for where decision-making authority lives at each stage of growth:
 
 * **Watch:** A senior engineer makes a real decision and narrates their process out loud (including where they use AI, and where they override or ignore it). The junior sees AI treated as one input among many, not an oracle.
 * **Do Together (Reviewed):** The junior proposes a decision using AI assistance, but a senior reviews the *reasoning* behind the choice, not just whether the code runs. Most curricula skip this because validating reasoning takes senior engineering time.
@@ -76,6 +76,8 @@ This is not about AI replacing junior developers. It is about replacing **accide
 
 ## The Production Bottom Line
 
-**The fade must be designed, not assumed.** AI did not create the pressure squeezing junior engineers; twenty years of role compression did. AI simply arrived with the speed and volume required to make that thinness impossible to ignore.
-
-Responsibility for engineering decisions never transfers to a tool. In the past, the gradual transfer of judgment occurred naturally, absorbed invisibly from senior colleagues. That transfer cannot happen around an automated assistant that adapts constantly and never steps back on its own. A junior who never learns to hold a decision alone is not a flawed engineer by nature; they are the predictable result of an undesigned curriculum in an era where passive learning is no longer enough.
+>**The fade must be designed, not assumed.** AI did not create the pressure squeezing junior engineers; twenty years of role compression did. AI simply arrived with the speed and volume required to make that thinness impossible to ignore.
+>
+>Responsibility for engineering decisions never transfers to a tool. In the past, the gradual transfer of judgment occurred naturally, absorbed invisibly from senior colleagues. That transfer cannot happen around an automated assistant that adapts constantly and never steps back on its own. 
+>
+>A junior who never learns to hold a decision alone is not a flawed engineer by nature; they are the predictable output of a system configured without a feedback loop. Training juniors isn't a side effort run alongside engineering; it is a foundational architecture choice. If a system depends on senior human judgment to survive, it has to intentionally architect the pipeline that creates it.
