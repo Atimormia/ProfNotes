@@ -29,7 +29,7 @@ When bans prove unrealistic, organizations shift to teaching tool fluency: promp
 
 A developer can be highly fluent in prompting while entirely outsourcing critical thinking. AI literacy alone does not address that gap.
 
----
+___
 
 Both instincts bypass the core design challenge: **deciding when and how AI support is systematically withdrawn as a learner develops.** A human mentor does this naturally, fading assistance as competence grows. AI tools do the opposite; they persist and adapt by default. Unless this "fade" is intentionally engineered from the outside, skill transfer quietly fails.
 
@@ -62,7 +62,7 @@ A few concrete principles follow from this four-stage shape:
 * **Protect unassisted debugging:** Debugging erodes fastest under AI reliance, yet it is the primary mechanism by which engineers discover flawed logic before consequences become expensive. Juniors must spend real, uncomfortable hours tracing failing tests before AI is re-introduced.
 * **Assign work requiring non-codified context:** Focus exercises on tasks AI structurally cannot access, not because a future model might close the gap, but because the context was never written down anywhere for a model to learn from: interviewing stakeholders, navigating undocumented system history, and balancing unwritten business constraints.
 * **Sequence growth intentionally:** Introduce AI stages deliberately rather than reactively under pressure. As argued in [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md), learners need isolated, deliberate constraints rather than chaotic exposures. Each stage should be gated by demonstrated competence.
-* **Make ownership visible:** If contributions and mistakes dissolve anonymously into merged branches, the final stage of accountability never occurs.
+* **Make ownership visible:** If contributions and mistakes dissolve anonymously into merged branches, the final stage of accountability never occurs. Technical boundaries are critical for system stability, but code architecture ultimately mirrors organizational ownership. When individual responsibility is blurred, personal growth and system architecture degrade together.
 
 ---
 
