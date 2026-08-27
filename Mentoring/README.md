@@ -22,7 +22,7 @@ The Mentor Guide is the practical toolkit referenced throughout the Program's ph
 0. [Overview and How to Use This Guide](MentorGuide/Overview.md) — the shared vocabulary (iteration grain, signal language, the one hard rule) that every other toolkit assumes.
 1. [Diagnostic Toolkit](MentorGuide/1-Diagnose.md) — finding and evaluating gaps, at the baseline, module, and season grain.
 2. Training Approach Toolkit *(planned)* — choosing between planned and reactive curriculum design.
-3. Responsibility Transfer Toolkit *(planned)* — deliberately fading support as competence grows, including AI-specific guidance.
+3. [Responsibility Transfer Toolkit](MentorGuide/3-ResponsibilityTransfer.md) — deliberately fading support as competence grows, including AI-specific guidance.
 4. Document Templates and Content Guide *(planned)* — what belongs in each artifact named by the Program (Individual Goals Document, Mentoring Strategy Document, Module Plans, Review documentation, Final Summary Report), and why each needs to exist as a written record.
 5. Mentee Patterns and Psychology *(planned)* — a shared reference of recurring mentee patterns.
 6. Mentor Growth Toolkit *(planned)* — what a Mentor should watch for in their own development, including what to do when a Mentor shares the Mentee's gap.
