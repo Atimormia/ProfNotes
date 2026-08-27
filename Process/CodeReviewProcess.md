@@ -6,7 +6,7 @@ title: "Code Review Process"
 
 When code is ready for review, the following steps are taken:
 
-1. **Creating a Review:** The author creates a review in Swarm and posts a Code Review (CR) request in the designated [**Slack channel**](https://offworldindustries.slack.com/archives/C8TAMPHDK). The request includes:
+1. **Creating a Review:** The author creates a review in Swarm and posts a Code Review (CR) request in the designated **Slack channel**. The request includes:
 
    1. A link to the JIRA ticket.
    2. A link to the Swarm review.
