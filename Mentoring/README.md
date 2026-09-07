@@ -39,9 +39,9 @@ The Mentor Guide is the practical toolkit referenced throughout the Program's ph
 3. [Responsibility Transfer Toolkit](MentorGuide/3-ResponsibilityTransfer.md) — deliberately fading support as competence grows, including AI-specific guidance.
 4. [Document Templates and Content Guide](MentorGuide/4-Documents.md) — what belongs in each artifact named by the program and why each needs to exist as a written record.
 5. [Mentoring Psychology Patterns](MentorGuide/5-Psychology.md) — a shared reference of recurring mentee patterns.
-6. Mentor Growth Toolkit *(upcoming)* — what a Mentor should watch for in their own development, including what to do when a Mentor shares the Mentee's gap.
-7. Balancing Teaching and Project Priorities *(upcoming)* — deciding which tasks belong to mentoring versus dedicated exercises, and dividing time when the two compete.
-8. When Something Isn't Working *(upcoming)* — an evidence-gated escalation path for mentor-mentee friction that does not resolve on its own.
+6. [Mentor Growth Toolkit](MentorGuide/6-MentorGrowth.md) — what a Mentor should watch for in their own development, including what to do when a Mentor shares the Mentee's gap.
+7. [Balancing Teaching and Project Priorities](MentorGuide/7-TeachingInProduction.md) — deciding which tasks belong to mentoring versus dedicated exercises, and dividing time when the two compete.
+8. [When Something Isn't Working](MentorGuide/8-Escalation.md) — an evidence-gated escalation path for mentor-mentee friction that does not resolve on its own.
 
 ## Suggested Reading Paths
 
