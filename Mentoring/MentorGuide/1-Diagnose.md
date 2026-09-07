@@ -39,7 +39,7 @@ The method above runs identically at each of these; what changes is timing, stak
 
 ## A Caution on Stakes
 
-By the time a Checkpoint runs, the Mentee has invested real effort and has something to lose in a way they didn't at Baseline. This mirrors a well-documented effect in evaluated performance generally: awareness of being judged measurably changes how someone performs, independent of their underlying skill. Frame Checkpoint conversations with this in mind, and actively resist any framing, from the Mentee, a Manager, or HR, that treats a Checkpoint as a graded test. See Guide 00's "Diagnosis Is Not Performance Review."
+By the time a Checkpoint runs, the Mentee has invested real effort and has something to lose in a way they didn't at Baseline. This mirrors a well-documented effect in evaluated performance generally: awareness of being judged measurably changes how someone performs, independent of their underlying skill. Frame Checkpoint conversations with this in mind, and actively resist any framing, from the Mentee, a Manager, or HR, that treats a Checkpoint as a graded test. See Guide 00's "Diagnosis Is Not Performance Review." Where a Checkpoint surfaces a defensive or disproportionate reaction to feedback, see Guide 05's Defensive Response to Feedback pattern before assuming the reaction reflects the diagnosis itself.
 
 ## Software Engineering Example
 

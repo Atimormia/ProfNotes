@@ -89,6 +89,8 @@ Two rules apply across every artifact in this guide, since neither follows autom
 * Theoretical material to be reviewed, and by whom (Mentor prepares examples and questions; Mentee prepares questions, per the original Program's Theoretical Unit)
 * Exercise requirements and Definition of Done
 * Agreed closure definition (what evidence will confirm the gap has closed, per Guide 01's hard rule; for Planned Mode, this includes the required transfer step per Guide 02, Step 1)
+
+  These are not the same thing, and both are required. Definition of Done describes when the task itself is finished. Closure definition describes when the diagnosed gap is actually closed. A Mentee can complete a task without the underlying gap closing, which is precisely why the Checkpoint (Guide 01) runs against the closure definition, not against task completion.
 * Meeting cadence for this module specifically, where it differs from the session default
 
 **Feeds Forward:** the Module Outcome Record is assessed directly against this document's closure definition. If the closure definition changes after the module has started, this counts as a material revision under the Access and Revision rules above.
@@ -164,7 +166,7 @@ Two rules apply across every artifact in this guide, since neither follows autom
 **Minimal Content:**
 * Aggregate comparison of session goals to outcomes across pairs
 * Patterns worth the program's attention: gaps, successes, recurring friction (see Guide 08 for when a specific pairing's friction should feed into this review)
-* Library health: which modules were promoted from Guide 02's authored-or-curated tracking, and evidence they generalize across more than one Mentee
+* Library health: which modules were promoted per Guide 02's promotion criteria, and evidence they generalize across more than one Mentee
 * Recommendations for the next session period
 
 **Feeds Forward:** informs whether and how the program's structure, cadence, or platform (per the original Program's setup phase) should change going into the next session.

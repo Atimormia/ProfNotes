@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This toolkit covers what to do when friction in a mentoring relationship does not resolve on its own: a mismatch that isn't closing, a relationship that has stopped functioning, or a recurring conflict named in an earlier toolkit (Guide 07's pattern of mentoring losing to project priorities, for instance) that needs to go somewhere beyond the pairing itself. The original Program names "Conflict Resolution" as a responsibility handled with empathy and soft skills; this toolkit makes that concrete, since empathy alone does not tell a Mentor or Mentee when to act, or who to bring in.
+This toolkit covers what to do when friction in a mentoring relationship does not resolve on its own: a mismatch that isn't closing, a relationship that has stopped functioning, a diagnosed gap that fails to close across multiple seasons despite an otherwise healthy pairing, or a recurring conflict named in an earlier toolkit (Guide 07's pattern of mentoring losing to project priorities, for instance) that needs to go somewhere beyond the pairing itself. The original Program names "Conflict Resolution" as a responsibility handled with empathy and soft skills; this toolkit makes that concrete, since empathy alone does not tell a Mentor or Mentee when to act, or who to bring in.
 
 ## The Core Principle: Match the Response to the Evidence
 
@@ -29,6 +29,7 @@ Once recurrence is confirmed, bring in the appropriate stakeholder, per the role
 * **The Mentee's or Mentor's Manager**, where the friction concerns workload, project-priority conflict (Guide 07), or a mismatch in expectations that the pairing itself cannot resolve.
 * **HR**, where the friction concerns the psychological or interpersonal dynamic of the relationship itself, including any of the patterns named in Guide 05 (affinity bias, a Mentee's or Mentor's defensive dynamic that has not improved) or Guide 06 (a Mentor's over-extension that workload reassignment alone hasn't addressed).
 * **Both**, where the friction touches both the working relationship and organizational factors, such as a pattern of mentoring consistently losing to project priorities across multiple seasons (Guide 07).
+* **The Mentee's Manager**, where the friction is a persistently unclosed gap rather than a relationship problem, since this often indicates a resourcing or fit issue (the wrong Mentor for this specific gap, or a gap that needs a different kind of support than mentoring can provide) rather than something the pairing itself can solve by trying harder.
 
 Bring the Rung 1 and Rung 2 records with you. Widening the scope on a documented pattern is a straightforward request for support; widening it on an undocumented feeling is a much harder position for a stakeholder to act on.
 
@@ -43,6 +44,7 @@ Not every situation needs to start at Rung 1. Use judgment about where to enter:
 * A single missed session, a scheduling conflict, or an isolated disagreement: start at Rung 1.
 * A repeated, minor friction the pairing can plausibly resolve itself: start at Rung 2.
 * A safety concern, a bias pattern (Guide 05) affecting the Mentee directly, or a Mentor's over-extension (Guide 06) that is visibly affecting their wellbeing: skip directly to Rung 4. Evidence-gating exists to prevent premature escalation of ordinary friction, not to delay action on a genuine concern for someone's wellbeing.
+* A gap that fails to close across two or more Season Syntheses (Guide 01) despite reclassification, in a pairing with no other signs of friction: confirm this is recurrence, not a single slow season, then enter at Rung 3, since the evidence needed to justify widening scope is the Season Synthesis record itself, not a Rung 1 or Rung 2 note.
 
 ## Result
 

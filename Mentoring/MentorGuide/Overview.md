@@ -16,7 +16,7 @@ This guide is built to sit between those two failure modes. Every toolkit offers
 
 The Mentoring Program operates across four nested levels of iteration. Mentors should be explicit, with themselves and their Mentee, about which grain they are operating at when applying any toolkit in this guide.
 
-* **Stage:** A single unit within a module (a theory discussion, a practice exercise, a review meeting).
+* **Unit:** A single component within a module (a Theoretical Unit, a Practical Unit, a Review Unit, per the original Program's own terminology).
 * **Module:** A bounded block of the curriculum with its own goals, as defined in the Mentoring Program's Phase 2 and Phase 3.
 * **Season:** A full mentoring session, as defined by the Mentoring Program's session periods (e.g., a 3-month or 4-month cycle).
 * **Year:** The level at which mentoring outcomes may connect to the company's broader performance review cycle. Year-level results are one input into that process, not a mentoring-specific evaluation of their own.
@@ -48,7 +48,7 @@ This guide consists of the following documents. Each addresses a recurring decis
 
 1. **Diagnostic Toolkit** — finding and evaluating gaps, at the baseline, module, and season grain.
 2. **Training Approach Toolkit** — choosing between planned and reactive curriculum design, and why both are needed.
-3. **Responsibility Transfer Toolkit** — deliberately fading support, including AI-specific guidance, as a Mentee's competence grows.
+3. **Responsibility Transfer Toolkit** — deliberately fading support, including AI-specific guidance, as a Mentee's competence grows. Includes a scope note on management-track mentoring as a distinct case not yet fully covered.
 4. **Document Templates and Content Guide** — what belongs in each artifact named by the Mentoring Program, and why each one needs to exist as a written record.
 5. **Mentee Patterns and Psychology** — a shared reference of recurring mentee patterns, referenced by the toolkits above rather than repeated within them.
 6. **Mentor Growth Toolkit** — what a Mentor should watch for in their own development, including what to do when a Mentor shares the Mentee's gap.

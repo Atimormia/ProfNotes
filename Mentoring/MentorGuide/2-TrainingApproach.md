@@ -17,6 +17,8 @@ Two factors inform this decision at any point in the program's maturity:
 
 If existing material covers the gap adequately, use it directly, noting the source per Guide 04. If it partially covers the gap, a smaller custom addition on top of existing material is often sufficient. If nothing suitable exists, proceed to author it, informed by Steps 1 through 3 below.
 
+**Promotion to the Shared Library.** An authored module does not enter the internal library automatically once it exists. It is promoted once it has been used successfully with at least one Mentee beyond the one it was originally built for, with Checkpoint evidence (Guide 01) supporting that it closed the intended gap in both cases, and the Mentor has reviewed it for anything specific to the first pairing that wouldn't generalize. Record the promotion decision and its supporting evidence in the Curriculum Record (Guide 04). This keeps the library from filling with untested material on the strength of effort alone.
+
 ## Step 1: Choose the Design Mode
 
 Where original exercise design is needed, two modes are available. Neither is the default; the choice depends on what the module needs to build in the Mentee, and follows directly from the gap type identified in Guide 01.
