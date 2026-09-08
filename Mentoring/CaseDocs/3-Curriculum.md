@@ -4,6 +4,8 @@
 **Season:** Pilot Season 1, Weeks 1–12
 **Access:** Mentor and Mentee
 
+**Scope of This Document:** Where the Mentoring Strategy Document sets the long-term priority order across gaps (practice gap first, judgment gap as a multi-season concern), this record scopes exactly what Season 1 covers within that order, and states explicitly what is deferred. This document is revised every module; the Strategy Document is revised only if the long-term priority itself changes.
+
 ---
 
 ## Module 1: Naive Baseline and Benchmarking Harness
@@ -29,6 +31,15 @@
 * **Material source:** Exercise authored (allocator segment); not completed within the pilot, carried forward as unfinished.
 * **Design mode:** Planned Mode for the allocator segment; the closing transfer step is a Critique Task rather than a further Planned constraint, per Guide 02, Step 1's requirement that Planned Mode close with judgment applied in a different context.
 * **Exercise format and task source:** Critique Task on Vanguard's existing ability-activation system (In-Project, but structured as review rather than a build task specifically because of pre-release delivery risk, per Guide 07). Selected because it required Alex to apply the same abstraction-cost judgment to real, unfamiliar code without shipping any change, keeping production risk near zero while still meeting Planned Mode's transfer requirement.
+
+## Deferred to Future Iterations
+
+Per the Strategy Document's long-term prioritization, the following are explicitly out of scope for Season 1 and are not implied to be resolved by this season's results:
+
+* **Full allocator implementation** (ParticleSim's remaining scope for that module), reduced to an introductory discussion only after the Week 9 schedule compression.
+* **Parallelization and further ParticleSim stages**, not reached at all within this season.
+* **Judgment-under-pressure as an ongoing concern**, per the Strategy Document's framing that this gap is expected to need more than one season. Season 1 opens and narrows this gap; it does not close it, and no future document should read a lack of full closure here as a shortfall in this season specifically.
+* **Marcus's architecture-track development goal**, understood from the outset (see Individual Goals and Baseline Document, Part B) as a multi-season goal that this single pilot season cannot be expected to complete.
 
 ## Library Note
 

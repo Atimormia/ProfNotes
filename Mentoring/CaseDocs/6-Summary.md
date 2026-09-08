@@ -23,11 +23,12 @@ Alex's personal goal ("stop feeling like I'm translating from C# in my head") is
 * Sequencing the practice gap before the judgment gap gave Alex a stable technical foundation before being asked to make harder structural calls.
 * The Skeleton-Meat format in Module 2 directly addressed the habit flagged at Baseline (re-litigating structure) by removing the interface-design decision from Alex's scope for one round.
 * Separate-before-reconciled outcome records surfaced the Mentor-side teaching pattern (Guide 06) early, in Module 1, where both parties named it independently before discussing it, rather than it going unaddressed for the whole season.
+* The documentation discipline itself improved visibly module over module, from a two-sentence first draft needing direct HR follow-up in Module 1 to a substantially complete, largely self-sufficient record by Module 3. Neither party had used this kind of structured reflective documentation before this season.
 
 ## What Didn't, and Why
 
 * Three months was not enough time for the judgment gap to become automatic under pressure, even though it closed reliably under calm conditions. This appears to be a property of judgment gaps generally (see Guide 01's own worked example) rather than something specific to this pairing.
-* The Mentor's own development goal (see Manager Comparison Record) was only partially advanced; a single pilot season did not provide enough runway for architecture-track growth, a distinct finding from the Mentee's result.
+* The Mentor's own development goal (see Manager Comparison Record) was only partially advanced. This was expected from the outset per the Mentoring Strategy Document, which named architecture-track growth as a multi-season goal; the limiting factor is that this pilot was scoped as a single season with no committed continuation, not that one season of effort was insufficient in some open-ended way. Whether a second season happens at all is a decision outside this document's scope (see HR Program Review).
 
 ## Plans for Next Season
 
