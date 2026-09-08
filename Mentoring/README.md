@@ -43,12 +43,18 @@ The Mentor Guide is the practical toolkit referenced throughout the Program's ph
 7. [Balancing Teaching and Project Priorities](MentorGuide/7-TeachingInProduction.md) — deciding which tasks belong to mentoring versus dedicated exercises, and dividing time when the two compete.
 8. [When Something Isn't Working](MentorGuide/8-Escalation.md) — an evidence-gated escalation path for mentor-mentee friction that does not resolve on its own.
 
-## Suggested Reading Paths
+### Mentoring Framework Pilot
 
-**New Mentor:** [Mentoring Program Structure](MentoringFramework/Structure.md) → [Overview and How to Use This Guide](MentorGuide/Overview.md) → [Document Templates and Content Guide](MentorGuide/4-Documents.md) (know what you'll be producing) → [Diagnostic Toolkit](MentorGuide/1-Diagnose.md) (your first real task is diagnosing a starting gap).
+This folder tracks the 12-week mentoring pilot pairing Mentee Alex Chen with Mentor Marcus Webb during Project Vanguard's pre-release phase (anonymized). It provides a complete, evidence-based trail tracing technical skill development, mentor pedagogy, and organizational evaluation from initial baseline diagnostics through post-season HR review.
 
-**HR or Program Coordinator standing up the program:** [Mentoring Program Concept](MentoringFramework/Concept.md) → [Mentoring Program Introduction](MentoringFramework/Introduction.md) → [Mentoring Program Structure](MentoringFramework/Structure.md) → [Overview and How to Use This Guide](MentorGuide/Overview.md).
-
-**Manager supporting a Mentor-Mentee pair:** [Mentoring Program Concept](MentoringFramework/Concept.md) (roles section) → [Mentoring Program Structure](MentoringFramework/Structure.md) (Phase 0 and Phase 4, your points of direct involvement) → When Something Isn't Working (what escalates to you, and when).
-
-**Mentee:** [Mentoring Program Introduction](MentoringFramework/Introduction.md) → [Mentoring Program Structure](MentoringFramework/Structure.md) (Phase 1, your goal-setting role) is generally sufficient; the Mentor Guide toolkits are written for the Mentor's use, though a Mentee may find [Diagnosis Is Not Performance Review](MentorGuide/Overview.md/#diagnosis-is-not-performance-review) section useful context.
+1. **Diagnosis & Scoping:** Identify core practice and judgment gaps through work archaeology and team feedback before building a sandbox curriculum.
+   1. [Individual Goals and Baseline Document](PilotDocs/1-Goals.md) – Establishes initial baseline diagnostic evidence, gap classifications, and agreed closure definitions for both Mentee and Mentor. 
+   2. [Mentoring Strategy Document](PilotDocs/2-Strategy.md) – Outlines the high-level mentoring approach, topic prioritization between practice and judgment gaps, and anticipated delivery constraints. 
+   3. [Curriculum Record](PilotDocs/3-Curriculum.md) – Scopes the 12-week progression across Modules 1 through 3, specifying deferred topics and shared library promotion criteria. 
+2. **Execution & Checkpoints:** Execute planned exercises, capture unprompted evidence, and file independent feedback drafts prior to joint reconciliation sessions.
+   1. [Module Plans](PilotDocs/4-Modules.md) – Details specific learning objectives, exercise requirements, meeting cadences, and module-level Definitions of Done. 
+   2. [Module Outcome Records](PilotDocs/5-Records.md) – Tracks per-module progress using independent mentor and mentee feedback drafts reconciled with HR oversight. 
+3. **Synthesis & Evaluation:** Reclassify unresolved gaps based on trajectory data, evaluate team impact, and assess framework viability for scaling.
+   1. [Season Summary](PilotDocs/6-Summary.md) – Synthesizes the full-season trajectory, highlighting closed practice mechanics versus open judgment gaps under milestone pressure. 
+   2. [Manager Comparison Record](PilotDocs/7-Assessment.md) – Documents the engineering manager's formal review of pull request improvements and ongoing development plan adjustments. 
+   3. [HR Program Review](PilotDocs/Result.md) – Evaluates the organizational effectiveness of the mentoring framework pilot and recommends company-wide adoption.
