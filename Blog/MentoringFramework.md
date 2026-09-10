@@ -1,6 +1,6 @@
 # Mentorship Shape Is a Substrate for Architecture
 
-I combined four years of teaching computer science with my full IC background and experience on both sides of internal mentorship to design an engineering mentoring framework for my company. Along the way, I kept hitting the same wall from two directions.
+I combined four years of teaching computer science with my full IC background and experience on both sides of internal mentorship to design a [mentoring framework for my company](../Mentoring/README.md). Along the way, I kept hitting the same wall from two directions.
 
 I had been on the receiving end of both extremes:
 
