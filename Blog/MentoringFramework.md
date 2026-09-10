@@ -78,7 +78,7 @@ If a mentor rotates off or an engineering lead needs to evaluate the investment,
 
 ## The Practice: Watching the Two Gaps Diverge
 
-I evaluated this approach during a transition common across our teams: a C# engineer moving into a modern C++ codebase (bringing deep software instincts that did not cleanly transfer), paired with a mentor who possessed elite technical depth but little formal teaching experience. The engagement was explicitly constructed to isolate a practice gap from a judgment gap within the same engineer simultaneously, ensuring they were not diagnosed or treated identically.
+I [evaluated](../Mentoring/PilotDocs) this approach during a transition common across our teams: a C# engineer moving into a modern C++ codebase (bringing deep software instincts that did not cleanly transfer), paired with a mentor who possessed elite technical depth but little formal teaching experience. The engagement was explicitly constructed to isolate a practice gap from a judgment gap within the same engineer simultaneously, ensuring they were not diagnosed or treated identically.
 
 The results validated the thesis in real time:
 
