@@ -47,4 +47,4 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Code Review as Architecture Governance](CodeReview.md)
 - [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md)
 - [Training Juniors Is an Architecture Choice](TrainingJuniorsIsAnArchitechtureChoice.md)
-- A Mentoring Framework for Engineering Judgment
+- [Mentorship Shape Is a Substrate for Architecture](MentoringFramework.md)

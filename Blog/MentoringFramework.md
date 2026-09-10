@@ -1,6 +1,4 @@
-# Where Planned and Reactive Mentoring Meet
-
-*(working title, not final)*
+# Mentorship Shape Is a Substrate for Architecture
 
 I combined four years of teaching computer science with my full IC background and experience on both sides of internal mentorship to design an engineering mentoring framework for my company. Along the way, I kept hitting the same wall from two directions.
 
@@ -11,7 +9,7 @@ I had been on the receiving end of both extremes:
 
 Neither approach works on its own. I wanted to understand why before trying to build a third option.
 
-The timing matters more than I anticipated. AI has quietly changed what a junior engineer's job actually is. When a tool can draft the architecture, propose the fix, and generate a plausible answer to almost anything, the one remaining human responsibility is deciding whether to accept it. This is the exact narrowing of responsibility I explored in [Training Juniors Is an Architecture Choice](https://www.google.com/search?q=TrainingJuniorsIsAnArchitechtureChoice.md).
+The timing matters more than I anticipated. AI has quietly changed what a junior engineer's job actually is. When a tool can draft the architecture, propose the fix, and generate a plausible answer to almost anything, the one remaining human responsibility is deciding whether to accept it. This is the exact narrowing of responsibility I explored in [Training Juniors Is an Architecture Choice](TrainingJuniorsIsAnArchitechtureChoice.md).
 
 That post argued that fading AI support must be deliberately engineered into how a junior is trained, but it stopped at the boundary of a single pairing. This is the harder, operational half of that argument: how to run that discipline as a repeatable program across every pairing, visible to engineering leadership, at the exact moment most organizations have no real answer for how judgment gets built at all.
 
@@ -26,7 +24,7 @@ Most companies default to one of two models, and both fail in mirrored, structur
 
 When a formal mentoring program produces engineers who pass design reviews on principles they immediately abandon under deadline pressure, the curriculum is rarely the problem. The curriculum did what curricula do well: it codified a body of knowledge, standardized it across teams, and made it easy to verify for a promotion packet. That is valuable, but it exposes the core limitation: **judgment is not explicit knowledge**.
 
-Knowing the rule was never the bottleneck. This is the same pattern I traced in [Ownership Tax in Unreal Engine](https://www.google.com/search?q=OwnershipTaxUE.md), showing how a chain of technically defensible shortcuts slips past review: everyone involved usually already knows the rule they are bending.
+Knowing the rule was never the bottleneck. This is the same pattern I traced in [Ownership Tax in Unreal Engine](OwnershipTaxUE.md), showing how a chain of technically defensible shortcuts slips past review: everyone involved usually already knows the rule they are bending.
 
 Decades of research across cognitive science, education, and knowledge management converge on a distinction dating back to the mid-1960s:
 
@@ -63,9 +61,9 @@ This classification dictates the mentor's next move. Because confident self-asse
 
 ### 2. Curate knowledge, design judgment
 
-For a **knowledge gap** (or the informational layer of a larger issue), mentors should point to internal documentation or vetted external material before authoring anything new. This follows the same design principle outlined in [Data-Driven Design Is an Architecture Boundary](https://www.google.com/search?q=DataDrivenDesign.md): a value that changes rarely and is only touched by specialists does not need a bespoke system built around it; it needs a solid, reusable answer.
+For a **knowledge gap** (or the informational layer of a larger issue), mentors should point to internal documentation or vetted external material before authoring anything new. This follows the same design principle outlined in [Data-Driven Design Is an Architecture Boundary](DataDrivenDesign.md): a value that changes rarely and is only touched by specialists does not need a bespoke system built around it; it needs a solid, reusable answer.
 
-A **judgment gap** requires the exact opposite response: a custom-designed exercise chosen deliberately between two modes first introduced for architectural training in [Architecture Is a Felt Contrast](https://www.google.com/search?q=ArchitectureIsaFeltContrast.md):
+A **judgment gap** requires the exact opposite response: a custom-designed exercise chosen deliberately between two modes first introduced for architectural training in [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md):
 
 * **Planned Mode:** Sequences a small set of high-signal constraints from simple to complex, with each step gated behind a verified, working result. This builds clean, dependable execution. It is the natural fit for a **practice gap**, where the engineer understands the principle but requires progressive repetition to make it second nature.
 * **Reactive Mode:** Expands problem complexity unpredictably. It deliberately withholds the number and scope of upcoming requirements, demanding an end-to-end working resolution rather than a stopping point halfway through. This builds tolerance for ambiguity. It is the right match for a **judgment gap**, where an engineer knows the mechanics but needs exposure to unscripted uncertainty rather than more rote repetition.
@@ -74,13 +72,13 @@ A **judgment gap** requires the exact opposite response: a custom-designed exerc
 
 Every tactical choice (the selected mode, the exercise format, and the task source) is logged. The goal is not bureaucratic overhead, but operational continuity: it allows a full season of mentoring decisions to be evaluated as a coherent trajectory.
 
-If a mentor rotates off or an engineering lead needs to evaluate the investment, there is an audit trail of concrete data rather than vague impressions. As argued regarding review documentation in [Code Review as Architecture Governance](https://www.google.com/search?q=CodeReview.md): an unrecorded mechanism is a mechanism that quietly stops running. The written record ensures the process outlives the person who initiated it. It preserves individual flexibility (pairings still craft exercises tailored to their specific needs) while eliminating the black-box invisibility that prevents informal mentoring from scaling.
+If a mentor rotates off or an engineering lead needs to evaluate the investment, there is an audit trail of concrete data rather than vague impressions. As argued regarding review documentation in [Code Review as Architecture Governance](CodeReview.md): an unrecorded mechanism is a mechanism that quietly stops running. The written record ensures the process outlives the person who initiated it. It preserves individual flexibility (pairings still craft exercises tailored to their specific needs) while eliminating the black-box invisibility that prevents informal mentoring from scaling.
 
 ---
 
 ## The Practice: Watching the Two Gaps Diverge
 
-I evaluated this approach in an active transition that was common for my company: a C# engineer moving into a modern C++ codebase (bringing deep software instincts that did not cleanly transfer), paired with a mentor who possessed elite technical depth but little formal teaching experience. The engagement was explicitly constructed to isolate a practice gap from a judgment gap within the same engineer simultaneously, ensuring they were not diagnosed or treated identically.
+I evaluated this approach during a transition common across our teams: a C# engineer moving into a modern C++ codebase (bringing deep software instincts that did not cleanly transfer), paired with a mentor who possessed elite technical depth but little formal teaching experience. The engagement was explicitly constructed to isolate a practice gap from a judgment gap within the same engineer simultaneously, ensuring they were not diagnosed or treated identically.
 
 The results validated the thesis in real time:
 
@@ -94,7 +92,7 @@ Capturing this distinction in writing proved as critical as the diagnosis itself
 1. One mentoring cycle was insufficient to permanently cement this specific judgment gap.
 2. No second cycle had been formally scheduled or committed to in the first place.
 
-These are distinct realities with entirely different operational conclusions, and only one says anything true about the timeline of judgment formation. Evaluating an outcome with this level of precision (treating findings as diagnostic data rather than a pass/fail grade) reflects the mindset detailed in [Matching Effort to Evidence](https://www.google.com/search?q=MatchingEffortToEvidence.md). An informal program would have collapsed this into a hand-waving conclusion ("it worked well enough, mostly"), with no way to identify what actually happened.
+These are distinct realities with entirely different operational conclusions, and only one says anything true about the timeline of judgment formation. Evaluating an outcome with this level of precision (treating findings as diagnostic data rather than a pass/fail grade) reflects the mindset detailed in [Matching Effort to Evidence](MatchingEffortToEvidence.md). An informal program would have collapsed this into a hand-waving conclusion ("it worked well enough, mostly"), with no way to identify what actually happened.
 
 ---
 
