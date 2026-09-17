@@ -45,8 +45,6 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Matching Effort To Evidence](MatchingEffortToEvidence.md)
 - [Decomposition Is a Judgment Call](DecompositionIsAJudgmentCall.md)
 - [Code Review as Architecture Governance](CodeReview.md)
-
-
 - **Mentorship and Evaluation**
   - [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md)
   - [How to Hire Engineers When Syntax Is Free](TechInterview.md)
