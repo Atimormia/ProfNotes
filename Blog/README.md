@@ -12,7 +12,7 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 2. [Ownership Tax in Unreal Engine](OwnershipTaxUE.md)
 3. [Code Review as Architecture Governance](CodeReview.md)
 4. [Matching Effort To Evidence](MatchingEffortToEvidence.md)
-5. [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md)
+5. [Mentorship Shape Is a Substrate for Architecture](MentoringFramework.md)
 
 ## Content
 ### Game Engineering Architecture
@@ -35,6 +35,8 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Concurrency Is Architecture](ParallelArchitecture.md)
 - [Compile-Time Performance vs. Runtime Flexibility](CompileTimeVsRuntime.md)
 - [Where Abstraction Meets The Hot Path](AbstractionMeetsTheHotPath.md)
+- [The Compounding Network Tax](NetworkTax.md)
+- Copying vs Owning
 - Architecture First, Optimization Second
 
 ### Engineering Judgment
@@ -42,9 +44,12 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [The Engineer-Process Boundary](EngineerProcessBoundary.md)
 - [Matching Effort To Evidence](MatchingEffortToEvidence.md)
 - [Decomposition Is a Judgment Call](DecompositionIsAJudgmentCall.md)
-- [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md)
-- [How to Hire Engineers When Syntax Is Free](TechInterview.md)
 - [Code Review as Architecture Governance](CodeReview.md)
-- [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md)
-- [Training Juniors Is an Architecture Choice](TrainingJuniorsIsAnArchitechtureChoice.md)
-- [Mentorship Shape Is a Substrate for Architecture](MentoringFramework.md)
+
+
+- **Mentorship and Evaluation**
+  - [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md)
+  - [How to Hire Engineers When Syntax Is Free](TechInterview.md)
+  - [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md)
+  - [Training Juniors Is an Architecture Choice](TrainingJuniorsIsAnArchitechtureChoice.md)
+  - [Mentorship Shape Is a Substrate for Architecture](MentoringFramework.md)

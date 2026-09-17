@@ -1,6 +1,4 @@
-# The Cost of a Third-Party Call
-
-*(Working title, matching the "The Cost of a Virtual Function" naming pattern; happy to swap once the draft settles.)*
+# The Compounding Network Tax
 
 I keep running into the same complaint about loading screens on live-service games with more than one backend behind them: **nobody can point to the one slow thing.** QA files it as "loading takes too long." A network trace gets pulled, but it doesn't show one obviously guilty call. It shows five or six calls, each one taking a few hundred milliseconds, each one pointing to a different service: EOS for identity, PlayFab for inventory, Nakama for social state, an internal config service for feature flags, maybe an observability SDK and a chat filter initializing quietly in the background.
 
