@@ -36,7 +36,7 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Compile-Time Performance vs. Runtime Flexibility](CompileTimeVsRuntime.md)
 - [Where Abstraction Meets The Hot Path](AbstractionMeetsTheHotPath.md)
 - [The Compounding Network Tax](NetworkTax.md)
-- Copying vs Owning
+- [The Zero-Copy Trap](ZeroCopyTrap.md)
 - Architecture First, Optimization Second
 
 ### Engineering Judgment
