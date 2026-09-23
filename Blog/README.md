@@ -23,6 +23,7 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [The Invisible Rebuild Bottleneck](SilentBuildProblem.md)
 - [Data-Driven Design As Architecture Boundary](DataDrivenDesign.md)
 - [Refactoring a Legacy System at a Critical Point](RefactoringCase.md)
+- [The Silent Asset Loading Bottleneck](AssetLoadingBottleneck.md)
 - The Cost of Decoupling Everything (demand-driven pitfalls)
 - Backward Compatibility (+ feature-flags?)
 

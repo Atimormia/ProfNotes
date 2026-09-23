@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%" style="background: #090d16; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <defs>
+        <!-- Drop Shadow Filter -->
+        <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="130%">
+            <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+        </filter>
+
+        <!-- Marker: Cyan (Purchase) -->
+        <marker id="arrow-cyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+        </marker>
+
+        <!-- Marker: Emerald (Equip) -->
+        <marker id="arrow-emerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+        </marker>
+
+        <!-- Marker: Amber (Unequip) -->
+        <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+        </marker>
+
+        <!-- Marker: Muted Purple (Boundary Invalidation) -->
+        <marker id="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#a78bfa"/>
+        </marker>
+
+        <!-- Gradients -->
+        <linearGradient id="cold-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0284c7" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#0369a1" stop-opacity="0.02"/>
+        </linearGradient>
+
+        <linearGradient id="warm-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d97706" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#b45309" stop-opacity="0.02"/>
+        </linearGradient>
+
+        <linearGradient id="hot-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e11d48" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#be123c" stop-opacity="0.02"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Title & Context -->
+    <text x="480" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#f8fafc" letter-spacing="0.5">Three-Tier Loading Architecture and State Asymmetry</text>
+    <text x="480" y="66" text-anchor="middle" font-size="13" fill="#94a3b8">Classifying monotonic entitlements versus high-frequency reversible gameplay loops</text>
+
+    <!-- ==================== TIER 1: COLD ==================== -->
+    <g transform="translate(45, 105)">
+        <!-- Card Frame -->
+        <rect width="235" height="255" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" filter="url(#card-shadow)"/>
+        <rect width="235" height="255" rx="10" fill="url(#cold-grad)"/>
+
+        <!-- Header Badge -->
+        <rect x="16" y="18" width="60" height="20" rx="4" fill="#0369a1"/>
+        <text x="46" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="#e0f2fe" letter-spacing="0.5">COLD</text>
+
+        <text x="16" y="62" font-size="16" font-weight="700" fill="#f8fafc">Unowned Item</text>
+        <text x="16" y="80" font-size="12" fill="#38bdf8">Store Catalog Listing</text>
+
+        <!-- Details -->
+        <line x1="16" y1="94" x2="219" y2="94" stroke="#1e293b" stroke-width="1"/>
+
+        <text x="16" y="118" font-size="12" font-weight="600" fill="#cbd5e1">Memory Footprint:</text>
+        <text x="16" y="134" font-size="12" fill="#94a3b8">• Preview thumbnail only</text>
+        <text x="16" y="150" font-size="12" fill="#94a3b8">• Zero full mesh/texture data</text>
+
+        <text x="16" y="180" font-size="12" font-weight="600" fill="#cbd5e1">Fetch Strategy:</text>
+        <text x="16" y="196" font-size="12" fill="#94a3b8">• On-demand lazy load</text>
+        <text x="16" y="212" font-size="12" fill="#94a3b8">• Viewport windowed pool</text>
+
+        <rect x="16" y="226" width="203" height="18" rx="4" fill="#1e293b"/>
+        <text x="117" y="239" text-anchor="middle" font-size="10" font-weight="600" fill="#38bdf8">Entitlement: False (Unpurchased)</text>
+    </g>
+
+    <!-- ==================== TIER 2: WARM ==================== -->
+    <g transform="translate(362, 105)">
+        <!-- Card Frame -->
+        <rect width="235" height="255" rx="10" fill="#0f172a" stroke="#d97706" stroke-width="1.5" filter="url(#card-shadow)"/>
+        <rect width="235" height="255" rx="10" fill="url(#warm-grad)"/>
+
+        <!-- Header Badge -->
+        <rect x="16" y="18" width="60" height="20" rx="4" fill="#b45309"/>
+        <text x="46" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="#fef3c7" letter-spacing="0.5">WARM</text>
+
+        <text x="16" y="62" font-size="16" font-weight="700" fill="#f8fafc">Owned, Unequipped</text>
+        <text x="16" y="80" font-size="12" fill="#fbbf24">Dormant Inventory Item</text>
+
+        <!-- Details -->
+        <line x1="16" y1="94" x2="219" y2="94" stroke="#1e293b" stroke-width="1"/>
+
+        <text x="16" y="118" font-size="12" font-weight="600" fill="#cbd5e1">Memory Footprint:</text>
+        <text x="16" y="134" font-size="12" fill="#94a3b8">• Preview asset resident</text>
+        <text x="16" y="150" font-size="12" fill="#94a3b8">• Metadata held in memory</text>
+
+        <text x="16" y="180" font-size="12" font-weight="600" fill="#cbd5e1">Fetch Strategy:</text>
+        <text x="16" y="196" font-size="12" fill="#94a3b8">• Fast lookahead buffer</text>
+        <text x="16" y="212" font-size="12" fill="#94a3b8">• Standby for equip promotion</text>
+
+        <rect x="16" y="226" width="203" height="18" rx="4" fill="#1e293b"/>
+        <text x="117" y="239" text-anchor="middle" font-size="10" font-weight="600" fill="#fbbf24">Entitlement: True (Owned)</text>
+    </g>
+
+    <!-- ==================== TIER 3: HOT ==================== -->
+    <g transform="translate(680, 105)">
+        <!-- Card Frame -->
+        <rect width="235" height="255" rx="10" fill="#0f172a" stroke="#e11d48" stroke-width="1.5" filter="url(#card-shadow)"/>
+        <rect width="235" height="255" rx="10" fill="url(#hot-grad)"/>
+
+        <!-- Header Badge -->
+        <rect x="16" y="18" width="55" height="20" rx="4" fill="#be123c"/>
+        <text x="43" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="#ffe4e6" letter-spacing="0.5">HOT</text>
+
+        <text x="16" y="62" font-size="16" font-weight="700" fill="#f8fafc">Equipped Asset</text>
+        <text x="16" y="80" font-size="12" fill="#fb7185">Active Loadout Slot</text>
+
+        <!-- Details -->
+        <line x1="16" y1="94" x2="219" y2="94" stroke="#1e293b" stroke-width="1"/>
+
+        <text x="16" y="118" font-size="12" font-weight="600" fill="#cbd5e1">Memory Footprint:</text>
+        <text x="16" y="134" font-size="12" fill="#94a3b8">• Full skeletal mesh resident</text>
+        <text x="16" y="150" font-size="12" fill="#94a3b8">• 4K textures, audio, VFX</text>
+
+        <text x="16" y="180" font-size="12" font-weight="600" fill="#cbd5e1">Lifecycle Rule:</text>
+        <text x="16" y="196" font-size="12" fill="#94a3b8">• Fully pinned in memory</text>
+        <text x="16" y="212" font-size="12" fill="#94a3b8">• Requires explicit unload</text>
+
+        <rect x="16" y="226" width="203" height="18" rx="4" fill="#1e293b"/>
+        <text x="117" y="239" text-anchor="middle" font-size="10" font-weight="600" fill="#fb7185">Render State: Actively Mounted</text>
+    </g>
+
+    <!-- ==================== TRANSITION 1: PURCHASE (MONOTONIC) ==================== -->
+    <g transform="translate(280, 195)">
+        <!-- Pill Badge -->
+        <rect x="2" y="-22" width="78" height="16" rx="8" fill="#0c4a6e" stroke="#0284c7" stroke-width="1"/>
+        <text x="41" y="-10" text-anchor="middle" font-size="9" font-weight="700" fill="#7dd3fc">MONOTONIC</text>
+
+        <!-- Arrow -->
+        <line x1="2" y1="8" x2="74" y2="8" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow-cyan)"/>
+
+        <text x="41" y="28" text-anchor="middle" font-size="12" font-weight="700" fill="#f8fafc">Purchase</text>
+        <text x="41" y="42" text-anchor="middle" font-size="10" fill="#94a3b8">One-way path</text>
+        <text x="41" y="54" text-anchor="middle" font-size="9" fill="#64748b">(In-Session)</text>
+    </g>
+
+    <!-- ==================== TRANSITION 2: EQUIP / UNEQUIP (REVERSIBLE) ==================== -->
+    <g transform="translate(597, 175)">
+        <!-- Pill Badge -->
+        <rect x="3" y="-18" width="76" height="16" rx="8" fill="#3f141e" stroke="#be123c" stroke-width="1"/>
+        <text x="41" y="-6" text-anchor="middle" font-size="9" font-weight="700" fill="#fda4af">REVERSIBLE</text>
+
+        <!-- Equip Arrow (Forward) -->
+        <line x1="2" y1="12" x2="74" y2="12" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrow-emerald)"/>
+        <text x="41" y="8" text-anchor="middle" font-size="10" font-weight="700" fill="#34d399">Equip (Promote)</text>
+
+        <!-- Unequip Arrow (Return) -->
+        <line x1="76" y1="48" x2="6" y2="48" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrow-amber)"/>
+        <text x="41" y="64" text-anchor="middle" font-size="10" font-weight="700" fill="#fbbf24">Unequip (Demote)</text>
+
+        <text x="41" y="80" text-anchor="middle" font-size="9" fill="#94a3b8">Active runtime loop</text>
+    </g>
+
+    <!-- ==================== BOUNDARY INVALIDATION (MUTED RETURN) ==================== -->
+    <g>
+        <!-- Dashed Route from Warm to Cold bottom -->
+        <path d="M 450 360 L 450 425 Q 450 440 435 440 L 180 440 Q 165 440 165 425 L 165 368"
+              fill="none" stroke="#a78bfa" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-muted)"/>
+
+        <!-- Explanatory Banner Box -->
+        <rect x="205" y="422" width="550" height="36" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" filter="url(#card-shadow)"/>
+
+        <text x="480" y="437" text-anchor="middle" font-size="11" font-weight="700" fill="#c7d2fe">
+            Rare Invalidation Path: Session Boundary Only (Store restart or platform entitlement reconcile)
+        </text>
+        <text x="480" y="450" text-anchor="middle" font-size="10" fill="#94a3b8">
+            Zero live runtime demotion: eliminates mid-session race conditions and transient SDK disconnect bugs
+        </text>
+    </g>
+
+    <!-- Footer Insight Callout -->
+    <text x="480" y="492" text-anchor="middle" font-size="11" fill="#64748b">
+        Rule: Never build complex live demotion pipelines for facts that structurally only reverse on cold boundaries.
+    </text>
+</svg>
