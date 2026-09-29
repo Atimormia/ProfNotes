@@ -62,11 +62,13 @@ A cutover does not mean burning down the entire codebase. Software engineering u
 4. **Rearchitect:** Redesign core subsystems to support new capabilities and access patterns.
 5. **Rebuild or Replace:** Discard the legacy implementation entirely and engineer a ground-up solution.
 
-Most successful architectural updates apply different rungs of this ladder to different subsystems at once. That was the approach here:
+The most successful architectural updates apply different rungs of this ladder to different subsystems at once. That was the approach here:
 
 * Gameplay logic was mostly left alone, wrapped behind interfaces where necessary.
-* Peripheral systems around the edges received minor refactors and adjustments rather than full rewrites.
+* The progression system received minor refactors and adjustments rather than full rewrites.
 * The map organization, loading logic, and scene assembly pipeline was pushed all the way to a full rebuild, because it was the one component lacking the seams required for anything cheaper.
+
+![modernization_ladder.svg](misc/modernization_ladder.svg)
 
 #### 3. Declarative Tools Over Monolithic Blobs
 
