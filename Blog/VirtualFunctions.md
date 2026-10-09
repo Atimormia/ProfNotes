@@ -15,6 +15,8 @@ If you come from a managed-language background (C# or Java), polymorphism is the
 
 Neither survives contact with a real project. The mechanic sits underneath both. Runtime polymorphism is not the problem. **Applying the same abstraction model to a UI manager and to 100,000 hot-loop entities is.**
 
+A [published case](https://realtimerendering.com/blog/?p=14) shows the same shape. On a PS3 project a physics programmer followed a simple rule: if one function in a class is virtual, make them all virtual. Physics code makes a lot of calls, and the extra dispatch added up. Eberly removed the unnecessary `virtual` modifiers and cut frame time by 5 ms, in a game targeting 30 fps (a 33 ms frame), so roughly 15% of the budget. Polymorphism stayed where it was needed. What went away was dispatch nobody had chosen.
+
 When a class has a virtual function, the compiler generates a **Virtual Method Table (Vtable)**, and every instance carries a hidden pointer (the `vptr`) to it.
 
 ![vtable_layout.svg](misc/vtable_layout.svg)
@@ -76,13 +78,13 @@ CRTP has a cost of its own. Different `Derived` types are unrelated types, so yo
 
 ### 4. Measure First
 
-Do not rewrite a working hierarchy on principle. Profile the loop at realistic entity counts, and compare against a batched or flat version of the same logic. A conversion that is not justified by a measurement is the same mistake in the other direction: a boundary removed on instinct.
+Do not rewrite a working hierarchy on principle. Profile the loop at realistic entity counts, and compare against a batched or flat version of the same logic. A conversion that is not justified by a measurement is the same mistake in the other direction: a boundary removed on instinct. The 5 ms above is another team's number on another platform. A capture at your own entity counts is the only evidence that should drive the change.
 
 ---
 
 ## The Insight: Dispatch Follows Frequency
 
-The original hierarchy was reasonable when it was written. The part nobody owned was the point where the system crossed from "a few dozen objects, rarely" into "hundreds of objects, every frame." No single commit made the loop slow. A new weapon type changed the count, and the abstraction model stayed what it had always been.
+The original hierarchy was reasonable when it was written. The part nobody owned was the point where the system crossed from "a few dozen objects, rarely" into "hundreds of objects, every frame." No single commit made the loop slow. A new weapon type changed the count, and the abstraction model stayed what it had always been. The PS3 case has the same signature: the rule of thumb looked harmless in every class it touched, and nobody owned the total number of calls it turned into dynamic dispatch.
 
 This is the same placement question that [The `Tick()` Pitfalls](TickPitfalls.md) and [Garbage Collector Spikes](GarbageCollection.md) answer for scheduling and lifetime, and that [Where Abstraction Meets The Hot Path](AbstractionMeetsTheHotPath.md) answers for call chains: deciding, per system, whether code sits in the narrow, frequently executed fraction of the codebase or in the much larger fraction where clean abstraction should simply win. The same logic applies beyond a single process. [Network Tax](NetworkTax.md) extends it to backend calls, and [The Zero-Copy Trap](ZeroCopyTrap.md) shows an ownership model that looks clean on paper and fights the hardware underneath.
 
