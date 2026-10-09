@@ -1,6 +1,6 @@
 # Where Abstraction Meets The Hot Path
 
-A player opens their bank tab and the game stutters for half a second. Not a crash, not a hitch anyone would file a bug over on its own, just a small, ugly pause every single time. QA flags it. I open the profiler expecting to find the usual suspect: one bloated function doing far too much work, the kind of thing [The `Tick()` Pitfalls](TickPitfalls.md)'s aura actor turned out to be.
+A player opens their bank tab and the game stutters for half a second. Not a crash, not a hitch anyone would file a bug over on its own, just a small, ugly pause every single time. QA flags it. I open the profiler expecting to find the usual suspect: one bloated function doing far too much work, the kind of bloated function the aura actor turned out to be in [The `Tick()` Pitfalls](TickPitfalls.md).
 
 There wasn't one. The frame's cost was spread across a dozen small functions, each taking a percent or two, each reasonable in isolation. The profiler was answering the question it is built to answer: _what's expensive?_ And the honest answer this time was: **a little bit of everything, all at once, three hundred times.**
 
@@ -10,10 +10,10 @@ There wasn't one. The frame's cost was spread across a dozen small functions, ea
 
 There are two easy answers to how much abstraction a performance-sensitive codebase should tolerate, and I've observed both of them at different points in my career:
 
-* **The Reactive Approach:** Write clean code everywhere, and trust the architecture to stay flexible enough to fix whatever the profiler eventually flags. That's a reasonable instinct, and good architecture usually can absorb a fix. But a system can inherit a bottleneck nobody predicted simply because nobody expected it to become a hot path. By the time it is one, the cost is already load-bearing across a dozen features built on top of it. Worse, a profiler is built to find the loudest single function: a cost spread thin across many small, individually innocent functions doesn't reliably produce one.
+* **The Reactive Approach:** Write clean code everywhere, and trust the architecture to stay flexible enough to fix whatever the profiler eventually flags. That's a reasonable instinct, and good architecture usually can absorb a fix. But a system can inherit a bottleneck nobody predicted simply because nobody expected it to become a hot path. By the time it is one, the cost is already load-bearing across a dozen features built on top of it.
 * **The No-Abstraction Approach:** Abandon interfaces entirely and strip out boundaries everywhere in the name of performance. Eliminating boundaries triggers the exact failure [Ownership Tax in Unreal Engine](OwnershipTaxUE.md) already named (just on purpose instead of by accident): nothing owns a clean seam anymore, so nothing is easy to isolate, whether the bug is a crash or a frame spike.
 
-Neither extreme survives contact with what actually happened in the bank tab. The real mechanic sits underneath both:
+Neither extreme survives contact with what actually happened in the bank tab. A profiler is built to find the loudest single function, and a cost spread thin across many small, individually innocent functions doesn't reliably produce one. The real mechanic sits underneath both:
 
 $$\text{Cost} = \text{Frequency} \times \text{Depth} \times \text{Boundary Type}$$
 
@@ -27,6 +27,8 @@ The cost shows up specifically when a hop crosses a boundary the compiler can't 
 * Function pointers
 * Type-erased callbacks
 * Plugin or module seams
+
+Virtual calls are the best-understood of these. What they cost, and how to take them out of a hot loop, is covered in [The Cost of a Virtual Function](VirtualFunctions.md).
 
 In Unreal specifically, this is exactly what happens under a Gameplay Effect. Attribute resolution doesn't run as plain member access: it walks the reflection system, resolving `FProperty` pointers, matching gameplay tags, and reading scalable-float curve tables. None of that is a mistake. It's precisely the machinery that lets a designer add a new rarity tier or set bonus without anyone recompiling. It just isn't free, and it was never supposed to be evaluated three hundred times in a single frame.
 
@@ -69,7 +71,13 @@ void UInventoryItemInstance::ApplyAffixChain(FItemStatSnapshot& Stats) const
 }
 ```
 
-This is the reflection-backed boundary from a few paragraphs up, made visible instead of asserted. Every socketed gem walks its effect's modifier array, resolves each attribute through a property lookup, and evaluates a magnitude, and the other three hops in `GetEffectiveStats` each do their own version of the same walk. `ApplyRarityModifier` crosses a data table. `ApplySetBonusCheck` has to query tags across every other equipped item. `ApplyTemporaryBuffOverlay` reads the ability system component's active effect list. None of it shows up as a red flag from the top-level function, because the top-level function is exactly as clean as it looks. The cost is one layer down, in four independently reasonable design decisions that were never reviewed together.
+This is the reflection-backed boundary from a few paragraphs up, made visible instead of asserted. Every socketed gem walks its effect's modifier array, resolves each attribute through a property lookup, and evaluates a magnitude. The other three hops in `GetEffectiveStats` each do their own version of the same walk:
+
+* **`ApplyRarityModifier`:** crosses a data table.
+* **`ApplySetBonusCheck`:** queries tags across every other equipped item.
+* **`ApplyTemporaryBuffOverlay`:** reads the ability system component's active effect list.
+
+None of it shows up as a red flag from the top-level function, because the top-level function is exactly as clean as it looks. The cost is one layer down, in four independently reasonable design decisions that were never reviewed together.
 
 Every layer was added for a real feature, reviewed on its own merits, and crossed the same reflection-backed boundary GAS uses for flexibility. At equip time (once per item, once every few seconds at most), that cost is completely invisible. Rendered fresh for three hundred items at once, it's the stutter QA flagged.
 
@@ -81,7 +89,11 @@ None of this calls for flattening the chain. The rarity, affix, set-bonus, and b
 
 ### 1. Trigger on frequency changes
 
-The question worth asking in review isn't "how deep is this chain?", but **"did this call just move from something invoked rarely to something invoked per-item, per-frame, or across a whole collection at once?"** A stash tab rendering three hundred items, a raid-wide loot roll resolving stats for forty players, or a comparison tooltip wired to refresh continuously are all the same event: a call site's frequency changed underneath a chain designed for low frequency.
+The question worth asking in review isn't "how deep is this chain?", but **"did this call just move from something invoked rarely to something invoked per-item, per-frame, or across a whole collection at once?"** Each of these is the same event: a call site's frequency changed underneath a chain designed for low frequency.
+
+* A stash tab rendering three hundred items
+* A raid-wide loot roll resolving stats for forty players
+* A comparison tooltip wired to refresh continuously
 
 ### 2. Cache at the boundary
 
@@ -89,11 +101,14 @@ This is the same move from [Ownership Tax in Unreal Engine](OwnershipTaxUE.md), 
 
 ### 3. Account for caching trade-offs explicitly
 
-Caching isn't free, and it's worth being honest about that before reaching for it as a default. The read cost goes away, but a synchronization problem takes its place: a cached snapshot is only correct as long as something reliably invalidates it the moment any layer changes. The set-bonus layer makes that harder than it looks, since a single item's snapshot depends on whatever else happens to be equipped. Unequip one piece of a set, and every other piece's cached snapshot needs invalidating too, not just the piece that moved. Get that wrong and the bug doesn't disappear: it just goes quiet, sitting as a stale stat in a tooltip until something forces a recompute. There's a second cost alongside it: precomputing a snapshot for every item spends memory to buy back CPU time. On memory-constrained platforms (such as mobile builds or consoles with fixed heaps), a few hundred cached snapshots carries a cost that shows up just as plainly as the stutter did.
+Caching isn't free, and it's worth being honest about that before reaching for it as a default. The read cost goes away, but two other costs take its place:
+
+* **Invalidation:** A cached snapshot is only correct as long as something reliably invalidates it the moment any layer changes. The set-bonus layer makes that harder than it looks, since a single item's snapshot depends on whatever else happens to be equipped. Unequip one piece of a set, and every other piece's cached snapshot needs invalidating too, not just the piece that moved. Get that wrong and the bug doesn't disappear: it just goes quiet, sitting as a stale stat in a tooltip until something forces a recompute.
+* **Memory:** Precomputing a snapshot for every item spends memory to buy back CPU time. On memory-constrained platforms (such as mobile builds or consoles with fixed heaps), a few hundred cached snapshots carries a cost that shows up just as plainly as the stutter did.
 
 ### 4. Move resolution earlier when chains mature
 
-If a specific chain turns out to be both hot and stable (behavior that stopped changing once the system matured), resolve it at compile time instead of runtime, using the trade-offs worked out in [Compile-Time Performance vs. Runtime Flexibility](CompileTimeVsRuntime.md). That's rarely the first move for designer-editable item modifiers, but it remains a valid option for the rare hot chain that has genuinely stopped needing to change.
+If a specific chain turns out to be both hot and stable (behavior that stopped changing once the system matured), resolve it earlier: at compile time instead of runtime, or by batching and flattening the data it walks. The mechanics and costs of those options are in [The Cost of a Virtual Function](VirtualFunctions.md), and the build-time and flexibility trade-offs are in [Compile-Time Performance vs. Runtime Flexibility](CompileTimeVsRuntime.md). That's rarely the first move for designer-editable item modifiers, but it remains a valid option for the rare hot chain that has genuinely stopped needing to change.
 
 ---
 
@@ -103,13 +118,23 @@ This is the same failure shape [Data-Driven Design Is an Architecture Boundary](
 
 Nobody who added the rarity multiplier, the affix chain, or the set-bonus check made a bad decision. Each was the correct call, reviewed and approved on its own: a local, well-bounded addition a healthy codebase should welcome. What nobody tracked was the combination: five independently reasonable layers stacking into one call path that nobody had designed together, because nobody owned the chain end to end the way each layer's author owned their own piece.
 
-That's the placement rule [The `Tick()` Pitfalls](TickPitfalls.md), [Garbage Collector Spikes](GarbageCollection.md), [The Cost of a Virtual Function](VirtualFunctions.md), and [Data Layout Is Architecture](DataLayoutIsArchitecture.md) apply without stating directly: deciding, per system, whether a piece of code sits in the narrow, frequently executed fraction of the codebase or the much larger fraction where clean abstraction should simply win by default. Inventory items prove that decision isn't static. A system can start firmly in the flexible 80%, stay there through several honest feature additions, and cross into the hot 20% not because any single decision was wrong, but because frequency changed underneath a chain nobody was watching.
+That's the placement rule these posts apply without stating directly, each for a different cost:
+
+* [The `Tick()` Pitfalls](TickPitfalls.md): scheduling
+* [Garbage Collector Spikes](GarbageCollection.md): object lifetime
+* [The Cost of a Virtual Function](VirtualFunctions.md): dispatch
+* [Data Layout Is Architecture](DataLayoutIsArchitecture.md): memory layout
+* [Network Tax](NetworkTax.md): backend calls
+* [The Zero-Copy Trap](ZeroCopyTrap.md): ownership models that fight the hardware
+
+The rule is deciding, per system, whether a piece of code sits in the narrow, frequently executed fraction of the codebase or the much larger fraction where clean abstraction should simply win by default. Inventory items prove that decision isn't static. A system can start firmly in the flexible 80%, stay there through several honest feature additions, and cross into the hot 20% not because any single decision was wrong, but because frequency changed underneath a chain nobody was watching.
 
 The trigger isn't foresight: nobody predicts at design time that a bank tab two years later will call an exact chain three hundred times in a frame. **The trigger is catching the moment usage changes**, at the point closest to when it actually shifts: during code review, not scheduled audits or waiting for the profiler to notice on its own.
 
 ---
 
 ## Production Bottom Line
+
 > **Depth Was Never the Cost:** A chain of clean, well-reviewed abstraction layers can sit untouched and free for years, and every layer in it can be the right call. What turns it expensive isn't how deep it is, but whether a hop crosses a boundary the compiler can't see through, multiplied by how often that hop now runs.
 >
 > Flattening the chain on principle breaks the flexibility it was built for. Waiting for the profiler can miss a cost spread too thin to light up any single function. The useful signal is the moment a call's frequency changes: treat that moment, not a fixed depth limit or profiler alert, as the prompt to optimize.
