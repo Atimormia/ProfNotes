@@ -6,7 +6,7 @@ A bug like this doesn't fail to reproduce because it isn't there. It fails becau
 
 ---
 
-## The Blind Spot: Retained Too Long, Released Too Early
+## The Blind Spot: Unused vs. Unreachable
 
 There are two easy answers to a GC hitch, and both are reasonable:
 
@@ -18,7 +18,7 @@ Neither survives contact with a hitch that grows with session length. The mechan
 <details>
 <summary>Under the hood: how Unreal and Unity collect (optional reading)</summary>
 
-### Why a collector at all?
+### Why a Collector?
 
 The C++ alternative is smart pointers, but reference counting charges at every operation:
 
@@ -30,7 +30,7 @@ A tracing collector flips the trade: assigning a reference is free, cycles need 
 
 In Unreal there is a second reason. Because the collector finds references through reflection, the engine can serialize them and null them when a target is destroyed, which is what lets Blueprint designers work without reasoning about ownership. The price is the pause, and the pause is the subject of this post.
 
-### Unreal's Mark-And-Sweep And Clustering Mechanism
+### Unreal's Mark-And-Sweep and Clustering Mechanism
 
 Unreal's collector works on `UObject`s only. Every `UObject` is registered in a global object array, and reflection (the `UPROPERTY` macro and the code generated behind it) tells the collector where each object's references live, so it traverses them exactly instead of guessing. A pass has three stages:
 
@@ -76,7 +76,7 @@ A collector never knows that you are done with an object. It only knows whether 
 
 With smart pointers you had to write ownership down (`unique_ptr`, `shared_ptr`, `weak_ptr`), so it was at least visible in the code. A collector removes that ceremony, not the decision: every reference you leave behind is now an implicit vote to keep the object alive.
 
-The real question comes down to ownership. Who decided this stays reachable, and for how long? It fails in two directions.
+**The real question comes down to ownership.** Who decided this stays reachable, and for how long? It fails in two directions.
 
 ### Retained too long
 
