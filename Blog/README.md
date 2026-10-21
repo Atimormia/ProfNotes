@@ -25,7 +25,7 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 - [Refactoring a Legacy System at a Critical Point](RefactoringCase.md) - Compressing a textbook refactor of an undocumented settings system with system archaeology and a strangler fig.
 - [The Silent Asset Loading Bottleneck](AssetLoadingBottleneck.md) - An inventory hitch that grew with every cosmetics pack, and deciding fetch, virtualization, and eviction strategy on purpose.
 - [Finding Seams in a Monolith](NoSeamsRefactoringCase.md) - A 30 MB monolithic scene: understand why the fence exists, then climb the modernization ladder only as high as needed.
-- [Compatibility Is a Guardrail for the Next Engineer](BackwardCompatibility.md)
+- [Compatibility Is a Guardrail for the Next Engineer](BackwardCompatibility.md) - How a boundary that existed in the repository layout but not in the way two teams worked blocked builds, and the guardrails that closed the route a change travels.
 - The Cost of Decoupling Everything (demand-driven pitfalls)
 
 ### Performance as Architecture
