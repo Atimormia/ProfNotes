@@ -1,6 +1,6 @@
-# Cross-Team Code Sharing Policy: A Worked Example
+# Cross-Team Code Sharing Policy
 
-This is an illustrative policy written for two fictional teams: **Provider**, which owns a shared code repository, and **Consumer**, which builds a product on top of it. It is not a company document, and every name, window and threshold below is a placeholder to adapt. It demonstrates the approach from [Compatibility Is a Guardrail for the Next Engineer](BackwardCompatibility.md): make the correct path the easy one, rank controls by how little they depend on memory, and give every compatibility path an owner and an expiry.
+This is an illustrative policy written for two fictional teams: **Provider**, which owns a shared code repository, and **Consumer**, which builds a product on top of it. It is not a company document, and every name, window and threshold below is a placeholder to adapt. It demonstrates the approach from [Compatibility Is a Guardrail for the Next Engineer](../../Blog/BackwardCompatibility.md): make the correct path the easy one, rank controls by how little they depend on memory, and give every compatibility path an owner and an expiry.
 
 ---
 

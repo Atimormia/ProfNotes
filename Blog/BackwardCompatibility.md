@@ -56,7 +56,7 @@ Enforcing this needed server-side ownership beyond my own team, and it stayed a 
 
 Branching and deprecation turned out to be enough to stop the blocking. The trigger would not have prevented the original failures on its own, since their cause was incompatible changes. What it addresses is the route those changes travel, which stayed open: as far as I know, nothing prevents someone from importing a working branch again. Closing it removes one way for the same failure to happen.
 
-A tool-agnostic worked example of the kind of policy I mean is in [Cross-Team Code Sharing Policy: A Worked Example](CrossTeamCodeSharingPolicy.md). It includes a small read-only audit script ([`shared_code_audit.py`](shared_code_audit.py)) for the traceability rung, and it was written for this post based on a real proposal document.
+A tool-agnostic worked example of the kind of policy I mean is in [Cross-Team Code Sharing Policy](../Process/CrossTeam/CrossTeamCodeSharingPolicy.md). It includes a small read-only audit script ([`shared_code_audit.py`](../Process/CrossTeam/shared_code_audit.py)) for the traceability rung, and it was written for this post based on a real proposal document.
 
 ### Ranking the Mechanisms
 
@@ -64,7 +64,7 @@ The mechanisms differ in how much they depend on anyone remembering, and ranking
 
 1. **Remove the channel.** Consume a built artifact or an automated, pinned snapshot instead of live source, so that wrong path is no longer available.
 2. **Make it hard.** Read-only imports, a narrow interface, and changes made through one reviewed file. The wrong path still exists, but it costs effort and an explicit decision.
-3. **Make it traceable.** A periodic report of imports that point at working branches, changelist locks, and remaining uses of deprecated calls (a small read-only script for it is [`shared_code_audit.py`](shared_code_audit.py)). This prevents little by itself, but the wrong path leaves a record. The rung usually needs no one else's sign-off, and its numbers make the case for the rungs above it, which is the same logic as the lesson in [The Engineer-Process Boundary](EngineerProcessBoundary.md) about proving a problem before asking for funding.
+3. **Make it traceable.** A periodic report of imports that point at working branches, changelist locks, and remaining uses of deprecated calls (a small read-only script for it is [`shared_code_audit.py`](../Process/CrossTeam/shared_code_audit.py)). This prevents little by itself, but the wrong path leaves a record. The rung usually needs no one else's sign-off, and its numbers make the case for the rungs above it, which is the same logic as the lesson in [The Engineer-Process Boundary](EngineerProcessBoundary.md) about proving a problem before asking for funding.
 4. **Warn.** Deprecation messages, which point the next engineer toward the replacement at the moment they need it.
 5. **Document.** A written rule, which tends to ask the most of the reader and protect the least.
 
