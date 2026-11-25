@@ -61,7 +61,7 @@ As shown in [The Invisible Bottleneck](SilentBuildProblem.md), systemic damage h
 
 ### 4. Hire for Boundary Design, Not Typing Speed
 
-Live-coding interviews measure a skill that AI now provides for free. A judgment-focused technical interview evaluates what actually matters: Can this engineer draw clean system boundaries before writing code? Do they use abstraction wrappers instead of silent hacks? Do they make hidden technical debt visible? Do they know when an abstraction is worth its cost and when it isn't, the same judgment call behind [the true price of a virtual function](VirtualFunctions.md) or [knowing when Tick() is the wrong tool](TickPitfalls.md)?
+Live-coding interviews measure a skill that AI now provides for free. A judgment-focused technical interview evaluates what actually matters: Can this engineer draw clean system boundaries before writing code? Do they use abstraction wrappers instead of silent hacks? Do they make hidden technical debt visible? Do they know when an abstraction is worth its cost and when it isn't, the same judgment call behind [the true price of a virtual function](VirtualFunctions.md) or [knowing when Tick() is the wrong tool](SchedulingIsArchitecture.md)?
 
 ---
 

@@ -30,7 +30,7 @@ The common thread: many problems that look like optimization, tooling, hiring, o
 
 ### Performance as Architecture
 
-- [The `Tick()` Pitfalls](TickPitfalls.md) - Why an early-exiting `Tick()` still costs frame time at scale, and when to switch to demand-driven execution.
+- [Scheduling Is Architecture](SchedulingIsArchitecture.md) - How a profile that blamed `Tick` actually pointed at the work running at the tick's frequency, when to wake work on demand, and why sequence belongs in direct calls with events as notifications.
 - [Garbage Collector Spikes](GarbageCollection.md) - GC spikes in Unreal and Unity, and zero-allocation habits that prevent them during early architecture work.
 - [The Cost of a Virtual Function](VirtualFunctions.md) - The vtable and cache-miss tax of virtual calls at high instance counts, and when static polymorphism fits better.
 - [Data Layout Is Architecture](DataLayoutIsArchitecture.md) - AoS vs. SoA measured in ParticleSim, and how an interface over a volatile layout keeps the choice revisable per system.

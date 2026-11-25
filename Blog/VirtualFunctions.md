@@ -225,7 +225,7 @@ So polymorphism is not removed. It is relocated to the level where the count is 
 
 This also explains why the hierarchy in the opening looked fine for months. The `virtual` keyword is a decision about where the behavior is chosen, and `OnUpdate()` per element is the lowest possible level to make it. That is a good default for code that runs a few dozen times. It stops being one when the count grows, and the fix is a change of level or of visibility, not a rewrite of the behavior.
 
-The second move is the Boundary Type term from the formula in [Where Abstraction Meets The Hot Path](AbstractionMeetsTheHotPath.md): a variant does not lower the frequency, it changes how much of the boundary the compiler can see. Deciding when a system needs either move, and who notices that its frequency has changed, is a separate question. That post takes it up for whole call chains, and [The `Tick()` Pitfalls](TickPitfalls.md) does the same for scheduling.
+The second move is the Boundary Type term from the formula in [Where Abstraction Meets The Hot Path](AbstractionMeetsTheHotPath.md): a variant does not lower the frequency, it changes how much of the boundary the compiler can see. Deciding when a system needs either move, and who notices that its frequency has changed, is a separate question. That post takes it up for whole call chains, and [Scheduling Is Architecture](SchedulingIsArchitecture.md) does the same for scheduling.
 
 ---
 

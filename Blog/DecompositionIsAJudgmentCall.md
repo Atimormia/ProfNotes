@@ -49,7 +49,7 @@ Flow decomposition deserves equal status rather than being treated as structure'
 
 Flow decomposition has its own verification discipline: [CRC cards, from Beck and Cunningham](https://c2.com/doc/oopsla89/paper.html), walk a concrete scenario through a candidate design by hand, treating every snag in execution as a missing responsibility to fold back into the structure.
 
-Structure without flow verification is just as incomplete as flow without structure underneath it. [The `Tick()` Pitfalls](TickPitfalls.md) demonstrates a case where the flow question (what happens every frame) was answered correctly, while the structural question (who should own waking this actor up) was never asked at all.
+Structure without flow verification is just as incomplete as flow without structure underneath it. [Scheduling Is Architecture](SchedulingIsArchitecture.md) demonstrates a case where neither was checked: the flow question (what each pass does, and how often it runs) was left to the engine's default schedule, and the structural question (who should own waking this actor up) was never asked at all. The fix needed both: cheaper work per pass, and one owner for the wake-up.
 
 ### 3. Failure Decomposition
 
@@ -83,7 +83,7 @@ None of these axes require novel programming syntax. Writing a class, writing a 
 
 ### New feature
 
-New feature work defaults to flow. Because a feature is narrated chronologically before structure exists, narration becomes the path of least resistance. In [The `Tick()` Pitfalls](TickPitfalls.md), the aura actor's per-frame execution was answered immediately, but because narration never naturally introduces the question of ownership, waking the actor up remained unowned.
+New feature work defaults to flow. Because a feature is narrated chronologically before structure exists, narration becomes the path of least resistance. In [Scheduling Is Architecture](SchedulingIsArchitecture.md), the aura actor's tick was written as a narration of what happens on each pass, but because narration never naturally introduces the question of ownership, nobody decided when the actor should wake up or how often its work should run.
 
 ### Bug fixes
 

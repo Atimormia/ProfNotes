@@ -117,7 +117,7 @@ Mocking an interface for unit testing is nearly frictionless in C# because DI co
 
 ### The Practical Balance
 
-Applying the core message from [Tick Pitfalls](TickPitfalls.md): **evaluate what the target system specifically requires rather than relying on default coding habits.**
+Applying the core message from [Scheduling Is Architecture](SchedulingIsArchitecture.md): **evaluate what the target system specifically requires rather than relying on default coding habits.**
 
 * **Choose Compile-Time Resolution when:** Logic is stable, operates on a hot execution path (high frame-rate or throughput requirements), and is maintained entirely by programmers who can recompile binaries.
 * **Choose Runtime Resolution when:** Behavior must change dynamically without rebuilding binaries, needs to be configured by designers/non-engineers, or requires clean runtime substitution for testing.

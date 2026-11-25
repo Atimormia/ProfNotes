@@ -1,6 +1,6 @@
 # Where Abstraction Meets The Hot Path
 
-A player opens their bank tab and the game stutters for half a second. Not a crash, not a hitch anyone would file a bug over on its own, just a small, ugly pause every single time. QA flags it. I open the profiler expecting to find the usual suspect: one bloated function doing far too much work, the kind of bloated function the aura actor turned out to be in [The `Tick()` Pitfalls](TickPitfalls.md).
+A player opens their bank tab and the game stutters for half a second. Not a crash, not a hitch anyone would file a bug over on its own, just a small, ugly pause every single time. QA flags it. I open the profiler expecting to find the usual suspect: one bloated function doing far too much work, the kind of bloated function the aura actor turned out to be in [Scheduling Is Architecture](SchedulingIsArchitecture.md).
 
 There wasn't one. The frame's cost was spread across a dozen small functions, each taking a percent or two, each reasonable in isolation. The profiler was answering the question it is built to answer: _what's expensive?_ And the honest answer this time was: **a little bit of everything, all at once, three hundred times.**
 
@@ -120,7 +120,7 @@ Nobody who added the rarity multiplier, the affix chain, or the set-bonus check 
 
 That's the placement rule these posts apply without stating directly, each for a different cost:
 
-* [The `Tick()` Pitfalls](TickPitfalls.md): scheduling
+* [Scheduling Is Architecture](SchedulingIsArchitecture.md): scheduling
 * [Garbage Collector Spikes](GarbageCollection.md): object lifetime
 * [The Cost of a Virtual Function](VirtualFunctions.md): dispatch
 * [Data Layout Is Architecture](DataLayoutIsArchitecture.md): memory layout
