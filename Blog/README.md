@@ -59,5 +59,5 @@ From one engineer's decisions, through team mechanisms, to what an organization 
   - [Live-Coding Interview: What the Science Says About Our Favorite Technical Screen](Live-Coding.md) - What research says live-coding interviews actually measure, and what better predicts on-the-job performance.
   - [How to Hire Engineers When Syntax Is Free](TechInterview.md) - An interview format built around judgment: laddered async tasks with AI allowed, written answers, and code review.
   - [Architecture Is a Felt Contrast](ArchitectureIsaFeltContrast.md) - Architectural judgment is learned by building the rigid version first and feeling the contrast with planned growth.
-  - [Training Juniors Is an Architecture Choice](TrainingJuniorsIsAnArchitechtureChoice.md) - With safety-net roles gone and AI in the loop, teams must deliberately design how juniors build independent judgment.
+  - [Training Juniors Is an Architecture Choice](TrainingJuniorsIsAnArchitectureChoice.md) - With safety-net roles gone and AI in the loop, teams must deliberately design how juniors build independent judgment.
   - [Mentorship Shape Is a Substrate for Architecture](MentoringFramework.md) - Diagnose whether the gap is knowledge or judgment before choosing a mentoring structure.

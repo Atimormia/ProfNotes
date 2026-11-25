@@ -9,7 +9,7 @@ I had been on the receiving end of both extremes:
 
 Neither approach works on its own. I wanted to understand why before trying to build a third option.
 
-The timing matters more than I anticipated. AI has quietly changed what a junior engineer's job actually is. When a tool can draft the architecture, propose the fix, and generate a plausible answer to almost anything, the one remaining human responsibility is deciding whether to accept it. This is the exact narrowing of responsibility I explored in [Training Juniors Is an Architecture Choice](TrainingJuniorsIsAnArchitechtureChoice.md).
+The timing matters more than I anticipated. AI has quietly changed what a junior engineer's job actually is. When a tool can draft the architecture, propose the fix, and generate a plausible answer to almost anything, the one remaining human responsibility is deciding whether to accept it. This is the exact narrowing of responsibility I explored in [Training Juniors Is an Architecture Choice](TrainingJuniorsIsAnArchitectureChoice.md).
 
 That post argued that fading AI support must be deliberately engineered into how a junior is trained, but it stopped at the boundary of a single pairing. This is the harder, operational half of that argument: how to run that discipline as a repeatable program across every pairing, visible to engineering leadership, at the exact moment most organizations have no real answer for how judgment gets built at all.
 
