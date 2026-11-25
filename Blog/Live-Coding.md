@@ -36,7 +36,7 @@ In short, the act of observation actively alters the cognitive process we are tr
 
 ### The Cognitive Cost of the "Think-Aloud" Protocol
 
-Historically, tech interviewers have implicitly leaned on Ericsson & Simon's foundational work on "think-aloud" methodology, published in [Protocol Analysis: Verbal Reports as Data](https://en.wikipedia.org/wiki/Think_aloud_protocol). For decades, this research has been used to justify a simple idea: verbalizing your thoughts in real time doesn't distort your underlying cognitive process — a property called **"non-reactivity."** If true, "just tell us how you're thinking" is a legitimate scientific tool, not an arbitrary hoop to jump through.
+Historically, tech interviewers have implicitly leaned on Ericsson & Simon's foundational work on "think-aloud" methodology, published in [Protocol Analysis: Verbal Reports as Data](https://en.wikipedia.org/wiki/Think_aloud_protocol). For decades, this research has been used to justify a simple idea: verbalizing your thoughts in real time doesn't distort your underlying cognitive process, a property called **"non-reactivity."** If true, "just tell us how you're thinking" is a legitimate scientific tool, not an arbitrary hoop to jump through.
 
 But modern human-computer interaction (HCI) research ([Think Aloud: Effects and Validity](https://dl.acm.org/doi/pdf/10.1145/2379057.2379065)) has added an important asterisk: non-reactivity was documented under low-stress conditions, and it breaks down exactly when a task gets hard:
 
@@ -84,19 +84,19 @@ Because validated alternatives already exist, relying on a high-stress, unstanda
 
 With the rise of generative AI, many hiring managers have retreated to live-coding as their final line of defense. The logic seems sound: *if a candidate has to write code in real time, right in front of me, under observation pressure, they can't hide using AI to cheat.*
 
-But treating live-coding as "AI-proof" is a dangerous form of security theater. The numbers tell a different story: 80% of candidates use LLMs on code tests despite explicit prohibition, and 81% of FAANG interviewers already suspect it's happening ([SoftwareSeni](https://www.softwareseni.com/how-ai-tools-broke-technical-interviews-the-mechanics-and-scale-of-interview-cheating/)). Remote live-coding hasn't stopped AI use — it's become one of the *easiest* formats to exploit.
+But treating live-coding as "AI-proof" is a dangerous form of security theater. The numbers tell a different story: 80% of candidates use LLMs on code tests despite explicit prohibition, and 81% of FAANG interviewers already suspect it's happening ([SoftwareSeni](https://www.softwareseni.com/how-ai-tools-broke-technical-interviews-the-mechanics-and-scale-of-interview-cheating/)). Remote live-coding hasn't stopped AI use; it's become one of the *easiest* formats to exploit.
 
-* **Invisible Overlay Tools:** A real, commercially available class of tools now exploits exactly how operating systems render application layers. [Interview Coder](https://www.interviewcoder.co/) is a named, public example — its own product page states the overlay stays hidden during screen shares specifically *because* interview platforms all rely on the same underlying screen-share technology, so evading one means evading nearly all of them.
+* **Invisible Overlay Tools:** A real, commercially available class of tools now exploits exactly how operating systems render application layers. [Interview Coder](https://www.interviewcoder.co/) is a named, public example: its own product page states the overlay stays hidden during screen shares specifically *because* interview platforms all rely on the same underlying screen-share technology, so evading one means evading nearly all of them.
 
 
-* **The "Think-Aloud" Automation:** These tools don't stop at silent code suggestions. [Interview Solver](https://interviewsolver.com/) advertises processing interview audio in real time — listening to the interviewer's questions and discussion, then feeding the candidate contextually relevant answers to read aloud, seconds later.
+* **The "Think-Aloud" Automation:** These tools don't stop at silent code suggestions. [Interview Solver](https://interviewsolver.com/) advertises processing interview audio in real time, listening to the interviewer's questions and discussion, then feeding the candidate contextually relevant answers to read aloud, seconds later.
 
 
 * **The LeetCode Bias:** LLMs are trained on massive public datasets. This means they perform at their absolute peak on exactly the standard, isolated algorithmic puzzles most live-coding rounds still use.
 
 
 
-> **The Bottom Line:** By relying on isolated coding challenges, we aren't filtering out AI — we're running an interview format AI is uniquely equipped to win. Instead of keeping the process secure, live-coding has created an environment where an honest candidate struggles under artificial stress, while a candidate running a stealth overlay breezily passes.
+> **The Bottom Line:** By relying on isolated coding challenges, we aren't filtering out AI; we're running an interview format AI is uniquely equipped to win. Instead of keeping the process secure, live-coding has created an environment where an honest candidate struggles under artificial stress, while a candidate running a stealth overlay breezily passes.
 
 If the goal is to evaluate foundational understanding, we have to accept that we cannot out-proctor an LLM in a typing test. The only way forward is to shift focus from real-time syntax generation to high-level engineering judgment, trade-off analysis, and system-level reasoning.
 

@@ -8,11 +8,11 @@ That reaction skips a step. The scene did not end up in that state by accident, 
 
 ---
 
-### The Blind Spot: The Fence Has a Reason
+## The Blind Spot: The Fence Has a Reason
 
 There is a principle worth borrowing here, even though it was not written for software. In 1929, G.K. Chesterton described an eager reformer who comes across a fence built across a road. Seeing no obvious purpose for it, the reformer demands it be torn down immediately. The wiser response is to refuse demolition until someone can explain, specifically, why it was erected in the first place. Only once you know what problem the fence was built to hold back does removing it become an informed decision instead of a reckless guess.
 
-#### 1. How Solo Workflows Mask Architectural Debt
+### 1. How Solo Workflows Mask Architectural Debt
 
 Applied to a monolithic scene, the fence's origin becomes clear the moment you look at the creator's operational feedback loop.
 
@@ -22,7 +22,7 @@ Crucially, **there is zero collaboration to punish the pattern.** There are no p
 
 Without teammates to expose the blast radius, the monolith behaves like a boiling frog. The developer tolerates the slow saves and play-mode hangs because the friction accumulates gradually over months rather than blowing up in a single commit. The monolithic scene was technical debt that went unpunished because there was no concurrency to call its bluff.
 
-#### 2. Conway's Law in Reverse
+### 2. Conway's Law in Reverse
 
 The architectural collision traces back to a dynamic Melvin Conway identified in 1967: software architecture tends to reflect the communication structure of the organization that builds it.
 
@@ -30,7 +30,7 @@ A team of one has zero coordination overhead. An architecture with zero internal
 
 A larger team arrived behind the original prototype: more programmers, plus content creators who needed to check in levels in parallel. Yet the scene's structure kept answering an organization of one long after the studio had outgrown that footprint. The original setup went unexamined during the handoff, and the mismatch silently ate away at team velocity until routine content additions turned into daily git triage.
 
-#### 3. Proving Understanding Before Demolition
+### 3. Proving Understanding Before Demolition
 
 Knowing that an inherited structure has roots does not automatically tell you when you have understood it well enough to safely change it. Software engineering research into developer mental models has yet to converge on a single reliable method for comprehending unfamiliar code, and modifying a system on an incomplete mental model tends to make things worse. Confidence is not evidence.
 
@@ -44,17 +44,17 @@ This process mirrors a principle worth borrowing from legacy system testing: you
 
 ---
 
-### The Fix: Deciding How Much Fence to Tear Down
+## The Fix: Deciding How Much Fence to Tear Down
 
 Once the workload mismatch was clear, the refactor could not be treated as a casual cleanup. It was an intentional re-architecture targeted at the concurrent workload the scene now had to support.
 
-#### 1. The Cost of Missing Seams
+### 1. The Cost of Missing Seams
 
 The refactoring method was dictated by the coupling of the scene itself. In his work on legacy systems, Michael Feathers defines a **seam** as a place where you can alter program behavior without editing the source code directly in place.
 
 The original scene had almost no seams. Level geometry, triggers, UI hookups, and encounter state were physically interleaved inside a single serialized asset. Without a seam, the strangler fig approach I wrote about in [Refactoring a Legacy System at a Critical Point](RefactoringCase.md) (growing an isolated replacement alongside the original and migrating piece by piece) wasn't an option. When an asset is this fused, incremental edits across a team amplify merge conflicts rather than resolve them. The honest options narrowed to a planned, single-owner cutover, executed deliberately during an agreed-upon maintenance window to protect the rest of the team from churn.
 
-#### 2. Climbing the Modernization Ladder
+### 2. Climbing the Modernization Ladder
 
 A cutover does not mean burning down the entire codebase. Software engineering uses a well-established modernization ladder that ranks interventions from least invasive to most disruptive:
 
@@ -72,7 +72,7 @@ The most successful architectural updates apply different rungs of this ladder t
 
 ![modernization_ladder.svg](misc/modernization_ladder.svg)
 
-#### 3. Declarative Tools Over Monolithic Blobs
+### 3. Declarative Tools Over Monolithic Blobs
 
 The rebuild itself had three core components:
 
@@ -82,7 +82,7 @@ The rebuild itself had three core components:
 
 Moving level authorship out of a fused scene file and into a referenced, data-driven pipeline removed the merge collisions that used to be routine. Multiple designers could author content across separate data files without touching a single shared scene file.
 
-#### 4. The Maintenance Tax of Custom Tooling
+### 4. The Maintenance Tax of Custom Tooling
 
 Trading an inline workflow for a custom authoring tool is not an unqualified victory, and presenting it as one would be dishonest. Internal tools are long-lived software assets that carry their own ongoing maintenance tax.
 
@@ -92,25 +92,25 @@ That trade was still worth making. The merge failures and blocked production pip
 
 ---
 
-### The Insight: Reconstructing the Original Question
+## The Insight: Reconstructing the Original Question
 
 A few takeaways generalize past scene organization into any engineering project.
 
-#### 1. Identify the Context Before Judging the Implementation
+### 1. Identify the Context Before Judging the Implementation
 
 An architecture that looks absurd in hindsight was often shaped by pressures (or a total absence of constraints) that were invisible from the outside. Reconstruct why the structure was tolerable before proposing a change. If you cannot explain the operational environment that allowed the fence to stand, you do not have the context you need to tear it down safely.
 
-#### 2. Track Workload Drift, Not Just System Health
+### 2. Track Workload Drift, Not Just System Health
 
 Systems rarely decay in a vacuum; workloads change underneath them. An architecture that was merely a tolerable annoyance for a solo developer becomes an absolute production blocker the moment team concurrency is introduced. Revisit structural assumptions whenever team composition or concurrency patterns meaningfully shift.
 
-#### 3. Require Operational Proof Over Subjective Confidence
+### 3. Require Operational Proof Over Subjective Confidence
 
 A true mental model of an unfamiliar system is hard to validate through intuition alone. Look for concrete, domain-specific verification proxies: teaching the system's operational realities to a teammate, establishing behavioral parity through deterministic migrations, or isolating regressions with end-to-end integration tests. If you cannot demonstrate what the system actually does, you are not ready to rewrite it.
 
 ---
 
-### The Production Bottom Line
+## The Production Bottom Line
 
 > An architecture that looks broken from the outside is often the lingering echo of an operational reality that no longer exists.
 > 

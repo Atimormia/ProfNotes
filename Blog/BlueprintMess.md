@@ -4,7 +4,7 @@ When I transitioned into the Unreal Engine ecosystem after years of working with
 
 ![blueprint.png](misc/blueprint.png)
 
-This isn't a simple convention question; it is an engineering leadership problem. The game development industry is currently navigating massive anxiety over Epic Games’ roadmap for Unreal Engine 6, where Blueprints are marked for eventual deprecation in favor of the text-based Verse language. But looking closely at production realities, this structural shift was entirely predictable. The issue was never the visual node editor itself—it was the collapse of team discipline and architectural boundaries that the visual workflow inadvertently allowed.
+This isn't a simple convention question; it is an engineering leadership problem. The game development industry is currently navigating massive anxiety over Epic Games’ roadmap for Unreal Engine 6, where Blueprints are marked for eventual deprecation in favor of the text-based Verse language. But looking closely at production realities, this structural shift was entirely predictable. The issue was never the visual node editor itself; it was the collapse of team discipline and architectural boundaries that the visual workflow inadvertently allowed.
 
 ## The Blind Spot: "Making It Work at Any Cost"
 
@@ -100,7 +100,7 @@ protected:
 
 To back this up, the technical pipeline must be built into team communication:
 
-* **The Pre-Implementation Sync:** Before a feature is touched in the editor, the engineer and designer co-author a single-page technical design document. They identify the data schema contract—agreeing on what variables the designer needs access to (`BlueprintReadOnly`) and what visual triggers are required (`BlueprintImplementableEvent`).
+* **The Pre-Implementation Sync:** Before a feature is touched in the editor, the engineer and designer co-author a single-page technical design document. They identify the data schema contract: agreeing on what variables the designer needs access to (`BlueprintReadOnly`) and what visual triggers are required (`BlueprintImplementableEvent`).
 * **Data-Driven Sandboxes (`UDataAsset`):** For raw behavioral variations, we move designers out of scripting graphs entirely. If an enemy needs a new attack profile, the designer doesn't script a new behavior node network; they fill out raw data fields in a static configuration asset that the C++ system reads natively.
 
 ---

@@ -103,6 +103,6 @@ The real discipline is not avoiding every engine modification. It is making sure
 
 ## The Production Bottom Line
 
-> **Architectural Longevity:** Keeping a live-ops project maintainable over a decade takes immense discipline. Refusing to let the first "broken window" slide isn't about dogmatic purity — it's a critical production strategy. By strictly decoupling your gameplay systems and treating engine source as immutable, you ensure that upgrading your framework architecture remains a minor, predictable maintenance task rather than a multi-year engineering catastrophe.
+> **Architectural Longevity:** Keeping a live-ops project maintainable over a decade takes immense discipline. Refusing to let the first "broken window" slide isn't about dogmatic purity; it's a critical production strategy. By strictly decoupling your gameplay systems and treating engine source as immutable, you ensure that upgrading your framework architecture remains a minor, predictable maintenance task rather than a multi-year engineering catastrophe.
 
  
